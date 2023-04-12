@@ -1,0 +1,66 @@
+@import "colorPalette";
+@import "typography";
+
+/* Color Classes Start */
+
+.text-primary {
+  color: $primary-color;
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+.text-placeholder {
+  color: $placeholder-color;
+}
+
+.text-danger {
+  color: $danger-color;
+}
+
+.text-default {
+  color: $black-color;
+}
+
+/* Color Classes END */
+
+/* Font Size Classes Start */
+
+.small {
+  font-size: $small;
+}
+
+.medium {
+  font-size: $medium;
+}
+
+.large {
+  font-size: $large;
+}
+
+.x-large {
+  font-size: $x-large;
+}
+
+.title {
+  font-size: $title;
+}
+
+/* Font Size Classes End */
+
+/* Cursor Classes Start */
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+/* Cursor Classes End */

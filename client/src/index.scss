@@ -1,0 +1,70 @@
+@import "./assets/styles/colorPalette";
+@import "./assets/styles/typography";
+
+html,
+body,
+#root {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Poppins;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  *::placeholder {
+    font-size: $placeholder;
+    color: $placeholder-color;
+  }
+}
+
+code {
+  font-family: Poppins;
+}
+
+
+/* scrollbar starts here */
+
+* {
+  scrollbar-color: $primary-color white;
+  scrollbar-width: thin;
+}
+
+/* width */
+::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $grey-color;
+  border-radius: 7px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $dark-grey-color;
+}
+
+/* scrollbar ends here */
+
+
+@media screen and (max-width: 820px) {
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+  }
+}
