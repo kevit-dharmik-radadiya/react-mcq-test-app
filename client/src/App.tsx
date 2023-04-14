@@ -1,13 +1,14 @@
-import { useState } from 'react'
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes/Routes";
+import { ThemeProvider } from "@emotion/react";
+import { theme } from "./data/theme";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div>
-      <h1>MCQ TEST</h1>
-    </div>
-  )
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
