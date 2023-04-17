@@ -1,0 +1,40 @@
+.link {
+  color: $primary-color;
+  font-weight: 500;
+  &.decoration-none {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.grid {
+  display: grid;
+  align-items: stretch;
+  gap: 15px;
+}
+
+.grid-lg-6 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+@media screen and (max-width: 992px) {
+  .grid-md-12 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .d-md-none {
+    display: none;
+  }
+}

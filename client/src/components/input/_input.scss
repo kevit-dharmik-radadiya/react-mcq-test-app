@@ -1,0 +1,74 @@
+// .input .MuiFilledInput-underline:before,
+// .input .MuiFilledInput-underline:hover:before {
+//   border-bottom: none;
+// }
+// .input .MuiFilledInput-inputHiddenLabel.MuiFilledInput-inputMarginDense {
+//   height: 40px;
+//   padding: 12px 14px;
+//   box-sizing: border-box;
+
+//   &.MuiFilledInput-inputMultiline {
+//     height: unset;
+//   }
+// }
+
+// .input .MuiFilledInput-multiline.MuiFilledInput-marginDense {
+//   padding: 0;
+// }
+
+// .input .MuiFilledInput-adornedEnd {
+//   padding-right: 0;
+// }
+
+// .input .MuiFilledInput-root,
+// .input .MuiBox-root {
+//   background-color: $white-color;
+//   border-radius: 4px;
+//   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+//   -moz-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+//   -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+// }
+
+// .input .MuiFilledInput-root.Mui-disabled {
+//   background-color: rgba(0, 0, 0, 0.12);
+// }
+
+// .input-with-error {
+//   &.input .MuiFilledInput-root,
+//   .input .MuiFilledInput-root {
+//     box-shadow: 0px 0px 4px $error-color;
+//     -moz-box-shadow: 0px 0px 4px $error-color;
+//     -webkit-box-shadow: 0px 0px 4px $error-color;
+//   }
+// }
+
+// /* date input start here */
+
+// .MuiTextField-root {
+//   width: 100%;
+// }
+// .MuiOutlinedInput-root {
+//   > input {
+//     color: $dark-grey-color;
+//     font-size: $placeholder;
+//     line-height: 20px;
+//     padding: 0;
+//   }
+// }
+
+// /* date input end here */
+
+// .input .MuiInputBase-root {
+//   color: $dark-grey-color;
+//   font-size: $placeholder;
+// }
+
+// .input .MuiInputAdornment-root {
+//   margin-right: 4px;
+// }
+
+// @media screen and (max-width: 640px) {
+//   .input .MuiInputBase-root {
+//     font-size: $placeholder;
+//   }
+// }
