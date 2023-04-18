@@ -1,9 +1,5 @@
 import { useState } from "react";
-import {
-  FormControl,
-  IconButton,
-  InputAdornment,
-} from "@mui/material";
+import { FormControl, IconButton, InputAdornment } from "@mui/material";
 import SignIn from "../../assets/images/backgrounds/Sign-In.svg";
 import { ROUTE_CONSTANTS_VARIABLE } from "../../routes/Routes";
 import AuthTemplate from "./authTemplate/AuthTemplate";
@@ -70,6 +66,7 @@ const Login = () => {
       redirectLink={ROUTE_CONSTANTS_VARIABLE.REGISTER}
       redirectLinkText="Don't have an Account?"
       buttonEvent={onClickLogin}
+      buttonText="Sign In"
     >
       {
         <div className="auth_form mt-2">
@@ -114,7 +111,7 @@ const Login = () => {
           </FormControl>
           <div className="auth_forgot">
             <NavLink
-              to={ROUTE_CONSTANTS_VARIABLE.REGISTER}
+              to={ROUTE_CONSTANTS_VARIABLE.FORGOT_PASSWORD}
               className="link decoration-none"
             >
               Forgot Password?

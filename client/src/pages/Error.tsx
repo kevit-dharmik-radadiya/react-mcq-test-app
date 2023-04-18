@@ -1,4 +1,6 @@
 import Oops from "../assets/images/backgrounds/Oops.svg";
+import { ROUTE_CONSTANTS_VARIABLE } from "../routes/Routes";
+import BackToPage from "./BackToPage";
 
 const Error = () => {
   return (
@@ -9,6 +11,7 @@ const Error = () => {
         The page you are looking for may have been moved, deleted, or possibly
         never existed.
       </p>
+      <BackToPage text="Home" to={ROUTE_CONSTANTS_VARIABLE.ROOT} />
     </main>
   );
 };

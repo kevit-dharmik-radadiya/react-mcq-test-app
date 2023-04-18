@@ -76,6 +76,7 @@ const Register = () => {
       redirectLinkText="Already have an Account?"
       redirectText="Sign In"
       buttonEvent={onClickLogin}
+      buttonText="Sign Up"
     >
       {
         <div className="auth_form mt-2">

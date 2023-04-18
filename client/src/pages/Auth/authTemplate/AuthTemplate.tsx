@@ -2,6 +2,9 @@ import Button from "../../../components/Button/Button";
 import CompanyLogo from "../../../assets/images/logos/company.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import { MouseEvent } from "react";
+import BackToPage from "../../BackToPage";
+import { ROUTE_CONSTANTS_VARIABLE } from "../../../routes/Routes";
+
 type AuthTemplateProps = {
   title: string;
   subTitle?: string;
@@ -11,10 +14,13 @@ type AuthTemplateProps = {
   imageSubTitle?: string;
   children: JSX.Element;
   buttonEvent?: () => void;
-  redirectText: string;
-  redirectLink: string;
-  redirectLinkText: string;
+  buttonText: string;
+  redirectText?: string;
+  redirectLink?: string;
+  redirectLinkText?: string;
+  backToPage?: boolean;
 };
+
 const AuthTemplate = (props: AuthTemplateProps) => {
   const {
     title,
@@ -25,9 +31,11 @@ const AuthTemplate = (props: AuthTemplateProps) => {
     imageTitle,
     imageSubTitle,
     buttonEvent,
+    buttonText,
     redirectText,
     redirectLink,
     redirectLinkText,
+    backToPage,
   } = props;
 
   const navigate = useNavigate();
@@ -53,14 +61,21 @@ const AuthTemplate = (props: AuthTemplateProps) => {
             className="auth_button w-100"
             onClick={buttonEvent}
           >
-            {title}
+            {buttonText}
           </Button>
-          <div className="auth_footer">
-            {redirectLinkText}
-            <NavLink to={redirectLink} className="link decoration-none px-1">
-              {redirectText}
-            </NavLink>
-          </div>
+          {redirectLink && (
+            <div className="auth_footer">
+              {redirectLinkText}
+              <NavLink to={redirectLink} className="link decoration-none px-1">
+                {redirectText}
+              </NavLink>
+            </div>
+          )}
+          {backToPage && (
+            <div className="back_to_auth">
+              <BackToPage text="Login" to={ROUTE_CONSTANTS_VARIABLE.LOGIN} />
+            </div>
+          )}
         </div>
       </div>
       <div className="auth_right-side flex-center flex-column bg-primary-light d-md-none p-50">
