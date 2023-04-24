@@ -55,6 +55,10 @@
   font-size: $title;
 }
 
+.text-body {
+  font-size: $body;
+}
+
 /* Font Size Classes End */
 
 /* Cursor Classes Start */
@@ -99,6 +103,10 @@
   max-width: 992px;
 }
 
+.mw-mobile {
+  max-width: 525px;
+}
+
 .mw-sm {
   max-width: 350px;
 }
@@ -114,6 +122,10 @@
 
 .mx-1 {
   margin: 0 0.25rem 0 0.25rem;
+}
+
+.mx-2 {
+  margin: 0 0.5rem 0 0.5rem;
 }
 
 .my-2 {
@@ -136,7 +148,7 @@
   padding: 0 50px;
 }
 
-// Other
+// Text
 .text-center {
   text-align: center;
 }
@@ -151,6 +163,16 @@
 
 .text-decoration-none {
   text-decoration: none;
+}
+
+.text-hover:hover {
+  color: $primary-color;
+}
+
+// Other
+
+.gap-0 {
+  gap: 0 !important;
 }
 
 @media screen and (max-width: 992px) {

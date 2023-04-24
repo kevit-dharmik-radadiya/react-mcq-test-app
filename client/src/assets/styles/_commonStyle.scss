@@ -30,6 +30,35 @@
   flex-direction: column;
 }
 
+.Toastify__toast-container {
+  text-align: center;
+  .Toastify__toast {
+    min-height: 54px;
+    border-radius: 5px;
+    color: $white-color;
+  }
+}
+
+.toast-success {
+  background-color: $primary-color;
+}
+
+.toast-error {
+  background-color: $danger-color;
+}
+
+.toast-warning {
+  background-color: $warning-color;
+}
+
+.toast-body {
+  font-weight: 550;
+}
+
+.Toastify__close-button--light {
+  color: $white-color;
+}
+
 @media screen and (max-width: 992px) {
   .grid-md-12 {
     grid-template-columns: repeat(1, minmax(0, 1fr));

@@ -1,0 +1,21 @@
+.auth {
+  .auth_left-side {
+    .company-logo {
+      position: fixed;
+      top: 40px;
+      left: 40px;
+      line-height: 1;
+    }
+    .auth_content {
+      transform: scale(1);
+      max-width: 30.5rem;
+      width: 100%;
+      .auth_footer {
+        margin-top: 15px;
+      }
+      .back_to_auth {
+        margin-top: 50px;
+      }
+    }
+  }
+}
