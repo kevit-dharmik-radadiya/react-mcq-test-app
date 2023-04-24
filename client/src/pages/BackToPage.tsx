@@ -3,12 +3,12 @@ import { ButtonProps, IconButton } from "@mui/material";
 import { NavLink as RouterLink } from "react-router-dom";
 import { ROUTE_CONSTANTS_VARIABLE } from "../routes/Routes";
 
-interface MyButtonProps extends ButtonProps {
+interface BackButtonProps extends ButtonProps {
   to: string;
   text: string;
 }
 
-const BackToPage: React.FC<MyButtonProps> = ({ to, text }) => {
+const BackToPage: React.FC<BackButtonProps> = ({ to, text }) => {
   return (
     <div className="flex-center gap-0 my-2 ">
       <IconButton

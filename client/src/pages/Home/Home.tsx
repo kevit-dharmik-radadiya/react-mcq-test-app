@@ -52,6 +52,17 @@ const Home = () => {
           >
             Sign Up
           </Button>
+          <Button
+            component={RouterLink}
+            to={ROUTE_CONSTANTS_VARIABLE.DASHBOARD}
+            variant="contained"
+            color="primary"
+            sx={{
+              m: 0.5,
+            }}
+          >
+            Dashboard
+          </Button>
         </div>
       </div>
     </div>

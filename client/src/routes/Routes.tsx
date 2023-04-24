@@ -58,8 +58,8 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: "*",
-  //   element: <Navigate to="dashboard" replace />,
-  // },
+  {
+    path: "*",
+    element: <Navigate to={ROUTE_CONSTANTS_VARIABLE.DASHBOARD} replace />,
+  },
 ]);
