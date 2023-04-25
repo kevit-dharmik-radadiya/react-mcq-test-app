@@ -13,7 +13,6 @@ export const successNotification = (message: string) => {
     progress: undefined,
     closeButton: false,
     className: "toast-success",
-    bodyClassName: "toast-body",
     icon: false,
   });
   return false;
@@ -30,7 +29,6 @@ export const errorNotification = (message: string) => {
     progress: undefined,
     closeButton: false,
     className: "toast-error",
-    bodyClassName: "toast-body",
     icon: false,
   });
   return false;
@@ -47,7 +45,6 @@ export const warningNotification = (message: string) => {
     progress: undefined,
     closeButton: false,
     className: "toast-warning",
-    bodyClassName: "toast-body",
     icon: false,
   });
   return false;

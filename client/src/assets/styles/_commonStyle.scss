@@ -32,8 +32,13 @@
 
 .Toastify__toast-container {
   text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  width: 100%;
+  max-width: 500px;
+  padding: 5px;
   .Toastify__toast {
-    min-height: 54px;
+    min-height: 45px;
     border-radius: 5px;
     color: $white-color;
   }
@@ -49,10 +54,6 @@
 
 .toast-warning {
   background-color: $warning-color;
-}
-
-.toast-body {
-  font-weight: 550;
 }
 
 .Toastify__close-button--light {

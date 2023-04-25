@@ -61,9 +61,7 @@ export const theme = createTheme({
     MuiFormLabel: {
       styleOverrides: {
         root: {
-          "&.Mui-focused": {
-            fontSize: "18px",
-          },
+          fontSize: "18px",
         },
       },
     },

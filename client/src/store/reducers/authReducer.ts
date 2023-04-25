@@ -19,6 +19,12 @@ export const authReducer = (
         authStatus: action?.status,
       };
 
+    case AUTH_REDUX_CONSTANTS.LOGOUT_USER_ACTION:
+      return {
+        ...state,
+        authStatus: false,
+      };
+
     default:
       return state;
   }

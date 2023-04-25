@@ -5,6 +5,10 @@
       top: 40px;
       left: 40px;
       line-height: 1;
+      @media (max-width: 992px) {
+        top: 24px;
+        left: 15px;
+      }
     }
     .auth_content {
       transform: scale(1);

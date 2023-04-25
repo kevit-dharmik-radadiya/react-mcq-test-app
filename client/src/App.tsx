@@ -3,7 +3,7 @@ import { router } from "./routes/Routes";
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "./data/theme";
 import { Provider } from "react-redux";
-import { persistStoreData, store } from "./store/redux/store";
+import { persistStoreData, store } from "./app/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { ToastContainer } from "react-toastify";
 

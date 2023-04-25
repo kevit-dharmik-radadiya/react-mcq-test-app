@@ -7,6 +7,8 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Input from "../../components/input/Input";
 import { isEmail, passwordValidate } from "../../helpers/validationHelper";
 import { NavLink } from "react-router-dom";
+import { loginUser } from "../../store/actions/authAction";
+import { useAppDispatch } from "../../app/hook";
 
 const Login = () => {
   const [loginForm, setLoginForm] = useState({
@@ -25,6 +27,8 @@ const Login = () => {
     showPassword: false,
     rememberMe: false,
   });
+
+  const dispatch = useAppDispatch();
 
   const onHandleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -52,6 +56,18 @@ const Login = () => {
         password: isPasswordValid,
       },
     }));
+
+    if (isEmailValid.status && isPasswordValid.status) {
+      const response = await dispatch(
+        loginUser({ email: loginForm.email, password: loginForm.password })
+      );
+      if (!response) {
+        setLoginForm({
+          ...loginForm,
+          password: "",
+        });
+      }
+    }
   };
 
   return (
