@@ -6,7 +6,7 @@ import AuthTemplate from "./authTemplate/AuthTemplate";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Input from "../../components/input/Input";
 import { isEmail, passwordValidate } from "../../helpers/validationHelper";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { loginUser } from "../../store/actions/authAction";
 import { useAppDispatch } from "../../app/hook";
 
@@ -29,6 +29,7 @@ const Login = () => {
   });
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const onHandleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -59,7 +60,10 @@ const Login = () => {
 
     if (isEmailValid.status && isPasswordValid.status) {
       const response = await dispatch(
-        loginUser({ email: loginForm.email, password: loginForm.password })
+        loginUser(
+          { email: loginForm.email, password: loginForm.password },
+          navigate
+        )
       );
       if (!response) {
         setLoginForm({

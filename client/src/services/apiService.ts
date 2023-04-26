@@ -99,8 +99,8 @@ instance.interceptors.response.use(
         }
         break;
       case 403:
-        window.location.href = "/forbidden-access";
-        return false;
+      // window.location.href = "/forbidden-access";
+      // return false;
 
       default:
         break;

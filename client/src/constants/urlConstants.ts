@@ -1,8 +1,6 @@
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+const FIREBASE_REQUEST_URL = import.meta.env.VITE_FIREBASE_REQUEST_URL;
+const FIREBASE_API_KEY = import.meta.env.VITE_FIREBASE_API_KEY;
 
 export const AUTH_URLS = {
-  LOGIN_URL: `${BASE_URL}auth/login`,
-  LOGOUT_URL: `${BASE_URL}auth/logout`,
-  ON_REGISTER_URL: `${BASE_URL}auth/sign-up`,
-  FORGOT_PASSWORD_URL: `${BASE_URL}auth/forget-password`,
+  LOGIN_URL: `${FIREBASE_REQUEST_URL}signInWithPassword/?key=${FIREBASE_API_KEY}`,
 };
