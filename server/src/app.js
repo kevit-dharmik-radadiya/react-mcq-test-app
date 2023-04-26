@@ -54,10 +54,12 @@ app.use(cookieParser());
  * Import and Register Routes
  */
 const index = require('./routes/index');
-const auth = require('./routes/auth');
+const auth = require('./routes/auth.routes');
+const user = require('./routes/user.routes');
 
 app.use('/', index);
 app.use('/auth', auth);
+app.use('/user', user);
 
 /**
  * Catch 404 routes
