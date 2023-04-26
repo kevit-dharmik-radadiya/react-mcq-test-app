@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const testSchema = new mongoose.Schema({
-  _id: mongoose.Schema.Types.ObjectId,
   testName: String,
+  language: String,
   createdAt: { type: Date, default: Date.now },
 });
 
