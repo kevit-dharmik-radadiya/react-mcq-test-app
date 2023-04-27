@@ -58,12 +58,14 @@ const auth = require('./routes/auth.routes');
 const user = require('./routes/user.routes');
 const test = require('./routes/test.routes');
 const questions = require('./routes/question.route');
+const userScore = require('./routes/score.routes');
 
 app.use('/', index);
 app.use('/auth', auth);
 app.use('/user', user);
 app.use('/test', test);
 app.use('/questions', questions);
+app.use('/score', userScore);
 
 /**
  * Catch 404 routes
