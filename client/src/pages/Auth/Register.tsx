@@ -10,6 +10,9 @@ import {
   usernameValidate,
 } from "../../helpers/validationHelper";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { registerUser } from "../../store/actions/authAction";
+import { useAppDispatch } from "../../app/hook";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [loginForm, setLoginForm] = useState({
@@ -31,19 +34,23 @@ const Register = () => {
       },
     },
     showPassword: false,
-    rememberMe: false,
   });
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const onHandleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setLoginForm({
-      ...loginForm,
+    setLoginForm((prevState) => ({
+      ...prevState,
       [name]: value,
-    });
+    }));
   };
 
   const handleClickShowPassword = () => {
-    setLoginForm({ ...loginForm, showPassword: !loginForm.showPassword });
+    setLoginForm((prevState) => ({
+      ...prevState,
+      showPassword: !loginForm.showPassword,
+    }));
   };
 
   const onClickLogin = async () => {
@@ -62,6 +69,29 @@ const Register = () => {
         username: isUsernameValid,
       },
     }));
+
+    if (
+      isUsernameValid.status &&
+      isEmailValid.status &&
+      isPasswordValid.status
+    ) {
+      const response = await dispatch(
+        registerUser(
+          {
+            email: loginForm.email,
+            password: loginForm.password,
+            username: loginForm.username,
+          },
+          navigate
+        )
+      );
+      if (!response) {
+        setLoginForm((prevState) => ({
+          ...prevState,
+          password: "",
+        }));
+      }
+    }
   };
 
   return (

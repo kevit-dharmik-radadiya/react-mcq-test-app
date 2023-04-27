@@ -19,18 +19,48 @@ export const loginUser = (
       const data = {
         email: email.toLowerCase().trim(),
         password: password.trim(),
-        returnSecureToken: true,
       };
       const response = await authApiServices.loginUser(data);
-      if (response?.status === 200) {
-        const { idToken } = response?.data;
-        saveAuthTokenToLocalStorage(idToken);
-        successNotification("Login successfully");
+      if (response?.data?.success === true) {
+        const { token } = response?.data?.data;
+        saveAuthTokenToLocalStorage(token);
+        successNotification(response?.data?.message ?? "Login successfully");
         dispatch({
           type: AUTH_REDUX_CONSTANTS.CHANGE_AUTH_STATUS,
           status: true,
         });
         navigate(ROUTE_CONSTANTS_VARIABLE.DASHBOARD);
+        return true;
+      } else return false;
+    } catch (e) {
+      displayErrors(e);
+    }
+  };
+};
+
+type RegisterUserProps = {
+  email: string;
+  password: string;
+  username: string;
+};
+
+export const registerUser = (
+  { email, password, username }: RegisterUserProps,
+  navigate: any
+) => {
+  return async () => {
+    try {
+      const data = {
+        email: email.toLowerCase().trim(),
+        password: password.trim(),
+        userName: username.trim(),
+      };
+      const response = await authApiServices.registerUser(data);
+      if (response?.data?.success === true) {
+        successNotification(
+          response?.data?.message ?? "Registration successfully"
+        );
+        navigate(ROUTE_CONSTANTS_VARIABLE.LOGIN);
         return true;
       } else return false;
     } catch (e) {

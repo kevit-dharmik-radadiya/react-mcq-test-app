@@ -1,7 +1,7 @@
 import Button from "../../../components/Button/Button";
 import CompanyLogo from "../../../assets/images/logos/company.png";
 import { NavLink, useNavigate } from "react-router-dom";
-import { MouseEvent } from "react";
+import React, { MouseEvent } from "react";
 import BackToPage from "../../BackToPage";
 import { ROUTE_CONSTANTS_VARIABLE } from "../../../routes/Routes";
 
@@ -10,7 +10,7 @@ type AuthTemplateProps = {
   subTitle?: string;
   authImage: string;
   authImageWidth: string;
-  imageTitle?: string;
+  imageTitle?: React.ReactNode;
   imageSubTitle?: string;
   children: JSX.Element;
   buttonEvent?: () => void;

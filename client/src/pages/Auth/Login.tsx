@@ -25,7 +25,6 @@ const Login = () => {
       },
     },
     showPassword: false,
-    rememberMe: false,
   });
 
   const dispatch = useAppDispatch();
@@ -33,14 +32,17 @@ const Login = () => {
 
   const onHandleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setLoginForm({
-      ...loginForm,
+    setLoginForm((prevState) => ({
+      ...prevState,
       [name]: value,
-    });
+    }));
   };
 
   const handleClickShowPassword = () => {
-    setLoginForm({ ...loginForm, showPassword: !loginForm.showPassword });
+    setLoginForm((prevState) => ({
+      ...prevState,
+      showPassword: !loginForm.showPassword,
+    }));
   };
 
   const onClickLogin = async () => {
@@ -50,6 +52,7 @@ const Login = () => {
       loginForm.password,
       true
     );
+
     setLoginForm((prevState) => ({
       ...prevState,
       error: {
@@ -66,10 +69,10 @@ const Login = () => {
         )
       );
       if (!response) {
-        setLoginForm({
-          ...loginForm,
+        setLoginForm((prevState) => ({
+          ...prevState,
           password: "",
-        });
+        }));
       }
     }
   };

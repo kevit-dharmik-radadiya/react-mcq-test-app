@@ -3,10 +3,10 @@ import OnlineTest from "../../assets/images/backgrounds/Online-Test.svg";
 import { ROUTE_CONSTANTS_VARIABLE } from "../../routes/Routes";
 import Button from "../../components/Button/Button";
 import { NavLink as RouterLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../app/hook";
 
 const Home = () => {
-  const authStatus: boolean = useSelector(
+  const authStatus: boolean = useAppSelector(
     ({ authReducer }: Record<string, any>) => authReducer?.authStatus ?? false
   );
 
