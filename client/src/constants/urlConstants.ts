@@ -1,7 +1,6 @@
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+const REQUEST_URL = import.meta.env.VITE_REQUEST_URL;
 
 export const AUTH_URLS = {
-  LOGIN_URL: `${BASE_URL}auth/login`,
-  ON_REGISTER_URL: `${BASE_URL}auth/sign-up`,
-  FORGOT_PASSWORD_URL: `${BASE_URL}auth/forget-password`,
+  LOGIN_URL: `${REQUEST_URL}auth/login`,
+  REGISTER_URL: `${REQUEST_URL}auth/signup`,
 };
