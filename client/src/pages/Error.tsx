@@ -1,5 +1,5 @@
 import Oops from "../assets/images/backgrounds/Oops.svg";
-import { ROUTE_CONSTANTS_VARIABLE } from "../routes/Routes";
+import { ROUTE_CONSTANTS_VARIABLE } from "../constants/routeConstants";
 import BackToPage from "./BackToPage";
 
 const Error = () => {
