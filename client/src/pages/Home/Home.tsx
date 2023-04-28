@@ -1,9 +1,9 @@
 import CompanyLogo from "../../assets/images/logos/company.png";
 import OnlineTest from "../../assets/images/backgrounds/Online-Test.svg";
-import { ROUTE_CONSTANTS_VARIABLE } from "../../routes/Routes";
 import Button from "../../components/Button/Button";
 import { NavLink as RouterLink } from "react-router-dom";
 import { useAppSelector } from "../../app/hook";
+import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
 
 const Home = () => {
   const authStatus: boolean = useAppSelector(

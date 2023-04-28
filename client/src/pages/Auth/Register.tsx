@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { FormControl, IconButton, InputAdornment } from "@mui/material";
 import SignUp from "../../assets/images/backgrounds/Sign-Up.svg";
-import { ROUTE_CONSTANTS_VARIABLE } from "../../routes/Routes";
 import AuthTemplate from "./authTemplate/AuthTemplate";
 import Input from "../../components/input/Input";
 import {
@@ -13,6 +12,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { registerUser } from "../../store/actions/authAction";
 import { useAppDispatch } from "../../app/hook";
 import { useNavigate } from "react-router-dom";
+import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
 
 const Register = () => {
   const [loginForm, setLoginForm] = useState({

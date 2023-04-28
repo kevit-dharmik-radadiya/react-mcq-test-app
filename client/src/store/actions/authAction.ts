@@ -3,7 +3,7 @@ import { displayErrors } from "../../helpers/errorNotifyHelper";
 import authApiServices from "../../services/authApiServices";
 import { saveAuthTokenToLocalStorage } from "../../helpers/localStorageHelper";
 import { successNotification } from "../../helpers/notifyHelper";
-import { ROUTE_CONSTANTS_VARIABLE } from "../../routes/Routes";
+import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
 
 type LoginUserProps = {
   email: string;

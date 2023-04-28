@@ -9,15 +9,8 @@ import { UnProtectedRoute } from "./UnProtectedRoute";
 import { ProtectedRoute } from "./ProtectedRoute";
 import ForgotPassword from "../pages/Auth/ForgotPassword";
 import ResetPassword from "../pages/Auth/ResetPassword";
-
-export const ROUTE_CONSTANTS_VARIABLE = {
-  ROOT: "/",
-  DASHBOARD: "/dashboard",
-  LOGIN: "/login",
-  REGISTER: "/register",
-  FORGOT_PASSWORD: "/forgot-password",
-  RESET_PASSWORD: "/reset-password",
-};
+import { ROUTE_CONSTANTS_VARIABLE } from "../constants/routeConstants";
+import Submissions from "../pages/Submissions/Submissions";
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +56,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Dashboard />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: ROUTE_CONSTANTS_VARIABLE.SUBMISSIONS,
+        element: (
+          <ProtectedRoute>
+            <Submissions />
           </ProtectedRoute>
         ),
       },

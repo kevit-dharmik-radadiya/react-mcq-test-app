@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { FormControl, IconButton, InputAdornment } from "@mui/material";
 import SignIn from "../../assets/images/backgrounds/Sign-In.svg";
-import { ROUTE_CONSTANTS_VARIABLE } from "../../routes/Routes";
 import AuthTemplate from "./authTemplate/AuthTemplate";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Input from "../../components/input/Input";
@@ -9,6 +8,7 @@ import { isEmail, passwordValidate } from "../../helpers/validationHelper";
 import { NavLink, useNavigate } from "react-router-dom";
 import { loginUser } from "../../store/actions/authAction";
 import { useAppDispatch } from "../../app/hook";
+import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
 
 const Login = () => {
   const [loginForm, setLoginForm] = useState({

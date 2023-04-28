@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material";
+import Sidebar from ".././assets/images/backgrounds/Sidebar.png";
 
 const colorPalette = {
   primary: "#00a783",
@@ -93,6 +94,56 @@ export const theme = createTheme({
         root: {
           margin: 0,
           paddingTop: "5px",
+        },
+      },
+    },
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          color: colorPalette.secondary,
+          margin: "15px 0",
+        },
+      },
+    },
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: "5px",
+          paddingTop: "5px",
+          paddingBottom: "5px",
+          "&:hover": {
+            backgroundColor: colorPalette.hover,
+            color: colorPalette.primary,
+            ".MuiListItemIcon-root svg": {
+              fill: colorPalette.primary,
+            },
+          },
+        },
+      },
+    },
+    MuiListItemIcon: {
+      styleOverrides: {
+        root: {
+          minWidth: "40px",
+        },
+      },
+    },
+    MuiListItemText: {
+      styleOverrides: {
+        root: {
+          ".MuiTypography-root": {
+            fontWeight: "500",
+          },
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundImage: `url(${Sidebar})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "bottom",
+          backgroundSize: "contain",
         },
       },
     },
