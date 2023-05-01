@@ -1,10 +1,15 @@
 import CompanyLogo from "../../assets/images/logos/company.png";
 import OnlineTest from "../../assets/images/backgrounds/Online-Test.svg";
-import { ROUTE_CONSTANTS_VARIABLE } from "../../routes/Routes";
 import Button from "../../components/Button/Button";
 import { NavLink as RouterLink } from "react-router-dom";
+import { useAppSelector } from "../../app/hook";
+import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
 
 const Home = () => {
+  const authStatus: boolean = useAppSelector(
+    ({ authReducer }: Record<string, any>) => authReducer?.authStatus ?? false
+  );
+
   return (
     <div className="flex-center mh-100">
       <div className="flex-center flex-column mw-md text-center mx-auto p-24">
@@ -30,39 +35,44 @@ const Home = () => {
           you.
         </p>
         <div>
-          <Button
-            component={RouterLink}
-            to={ROUTE_CONSTANTS_VARIABLE.LOGIN}
-            variant="outlined"
-            color="primary"
-            sx={{
-              m: 0.5,
-            }}
-          >
-            Sign In
-          </Button>
-          <Button
-            component={RouterLink}
-            to={ROUTE_CONSTANTS_VARIABLE.REGISTER}
-            variant="contained"
-            color="primary"
-            sx={{
-              m: 0.5,
-            }}
-          >
-            Sign Up
-          </Button>
-          <Button
-            component={RouterLink}
-            to={ROUTE_CONSTANTS_VARIABLE.DASHBOARD}
-            variant="contained"
-            color="primary"
-            sx={{
-              m: 0.5,
-            }}
-          >
-            Dashboard
-          </Button>
+          {authStatus ? (
+            <Button
+              component={RouterLink}
+              to={ROUTE_CONSTANTS_VARIABLE.DASHBOARD}
+              variant="contained"
+              color="primary"
+              sx={{
+                m: 0.5,
+              }}
+            >
+              Dashboard
+            </Button>
+          ) : (
+            <>
+              <Button
+                component={RouterLink}
+                to={ROUTE_CONSTANTS_VARIABLE.LOGIN}
+                variant="outlined"
+                color="primary"
+                sx={{
+                  m: 0.5,
+                }}
+              >
+                Sign In
+              </Button>
+              <Button
+                component={RouterLink}
+                to={ROUTE_CONSTANTS_VARIABLE.REGISTER}
+                variant="contained"
+                color="primary"
+                sx={{
+                  m: 0.5,
+                }}
+              >
+                Sign Up
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </div>

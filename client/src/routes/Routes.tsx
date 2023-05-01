@@ -8,14 +8,9 @@ import Register from "../pages/Auth/Register";
 import { UnProtectedRoute } from "./UnProtectedRoute";
 import { ProtectedRoute } from "./ProtectedRoute";
 import ForgotPassword from "../pages/Auth/ForgotPassword";
-
-export const ROUTE_CONSTANTS_VARIABLE = {
-  ROOT: "/",
-  DASHBOARD: "/dashboard",
-  LOGIN: "/login",
-  REGISTER: "/register",
-  FORGOT_PASSWORD: "/forgot-password",
-};
+import ResetPassword from "../pages/Auth/ResetPassword";
+import { ROUTE_CONSTANTS_VARIABLE } from "../constants/routeConstants";
+import Submissions from "../pages/Submissions/Submissions";
 
 export const router = createBrowserRouter([
   {
@@ -49,10 +44,26 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: `${ROUTE_CONSTANTS_VARIABLE.RESET_PASSWORD}/:id`,
+        element: (
+          <UnProtectedRoute>
+            <ResetPassword />
+          </UnProtectedRoute>
+        ),
+      },
+      {
         path: ROUTE_CONSTANTS_VARIABLE.DASHBOARD,
         element: (
           <ProtectedRoute>
             <Dashboard />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: ROUTE_CONSTANTS_VARIABLE.SUBMISSIONS,
+        element: (
+          <ProtectedRoute>
+            <Submissions />
           </ProtectedRoute>
         ),
       },

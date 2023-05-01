@@ -1,7 +1,9 @@
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
-  )
-}
+    <section className="dashboard">
+      <h1>Dashboard</h1>
+    </section>
+  );
+};
 
-export default Dashboard
+export default Dashboard;

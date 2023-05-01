@@ -35,6 +35,10 @@
   font-size: $small;
 }
 
+.extra-small {
+  font-size: $extra-small;
+}
+
 .medium {
   font-size: $medium;
 }
@@ -79,7 +83,7 @@
 
 // Background
 .bg-primary {
-  background-color: $primary-color;
+  background-color: $primary-color !important;
 }
 
 .bg-primary-light {
@@ -167,6 +171,12 @@
 
 .text-hover:hover {
   color: $primary-color;
+}
+
+// Font Weight
+
+.bold {
+  font-weight: bold;
 }
 
 // Other
