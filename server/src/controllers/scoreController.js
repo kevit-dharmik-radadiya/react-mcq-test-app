@@ -1,5 +1,9 @@
 const UserScore = require('../models/userScore.model');
-const logger = require('../services/logger');
+const {
+  successResponse,
+  errorResponse,
+  statusCodes,
+} = require('../utils/responses');
 
 exports.getScores = async (req, res, next) => {
   try {
@@ -12,14 +16,14 @@ exports.getScores = async (req, res, next) => {
       const { testId, ...rest } = score;
       return { testDetails: testId, ...rest };
     });
-    logger.log.info('Score Details', scores);
-    res.status(200).json({
+    successResponse(res, {
       message: 'Score fetched successfully!',
       data: scores,
-      success: true,
     });
   } catch (err) {
-    logger.log.error('500 - Get User Details', err);
-    res.status(500).json({ message: 'Something went wrong!', success: false });
+    errorResponse(res, {
+      message: 'Something went wrong!, Try again after some time!',
+      statusCode: statusCodes.INTERNAL_SERVER_ERROR,
+    });
   }
 };

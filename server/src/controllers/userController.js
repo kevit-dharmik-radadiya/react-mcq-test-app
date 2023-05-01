@@ -1,11 +1,18 @@
 const User = require('../models/user.model');
-const logger = require('../services/logger');
+const {
+  errorResponse,
+  successResponse,
+  statusCodes,
+} = require('../utils/responses');
 
 exports.getUserDetails = async (req, res, next) => {
   try {
     const user = await User.findById(req.params.id);
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      errorResponse(res, {
+        message: 'User does not exist!',
+        statusCode: statusCodes.BAD_REQUEST,
+      });
     }
     const { userName, email, lastLoginAt, _id } = user;
     const response = {
@@ -14,10 +21,14 @@ exports.getUserDetails = async (req, res, next) => {
       email,
       lastLoginAt,
     };
-    logger.log.info('User Details', response);
-    res.status(200).json(response);
+    successResponse(res, {
+      message: `User details fetched successfully!`,
+      data: response,
+    });
   } catch (err) {
-    logger.log.error('500 - Get User Details', err);
-    res.status(500).json({ message: 'Something went wrong!', success: false });
+    errorResponse(res, {
+      message: 'Something went wrong!, Try again after some time!',
+      statusCode: statusCodes.INTERNAL_SERVER_ERROR,
+    });
   }
 };

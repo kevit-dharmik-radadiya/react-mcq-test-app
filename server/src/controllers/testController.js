@@ -3,6 +3,11 @@ const Question = require('../models/questions.model');
 const Test = require('../models/test.modal');
 const logger = require('../services/logger');
 const UserScore = require('../models/userScore.model');
+const {
+  successResponse,
+  errorResponse,
+  statusCodes,
+} = require('../utils/responses');
 
 exports.createTest = async (req, res, next) => {
   try {
@@ -12,12 +17,15 @@ exports.createTest = async (req, res, next) => {
       testName,
       language,
     });
-    const result = await newTest.save();
-    logger.log.info('Test Created', result);
-    res.status(201).json({ message: 'Test created', success: true });
+    await newTest.save();
+    successResponse(res, {
+      message: `Test named ${testName} created successfully`,
+    });
   } catch (err) {
-    logger.log.error('500 - test creation', err);
-    res.status(500).json({ message: 'Something went wrong!', success: false });
+    errorResponse(res, {
+      message: 'Something went wrong!, Try again after some time!',
+      statusCode: statusCodes.INTERNAL_SERVER_ERROR,
+    });
   }
 };
 
@@ -27,15 +35,15 @@ exports.getTests = async (req, res, next) => {
     const tests = await Test.find(
       language ? { language: req.query.language } : {},
     );
-    logger.log.info('Test Details', tests);
-    res.status(200).json({
-      message: 'Tests fetched successfully!',
-      data: tests || [],
-      success: true,
+    successResponse(res, {
+      message: `Test data fetched successfully!`,
+      data: tests,
     });
   } catch (err) {
-    logger.log.error('500 - test creation', err);
-    res.status(500).json({ message: 'Something went wrong!', success: false });
+    errorResponse(res, {
+      message: 'Something went wrong!, Try again after some time!',
+      statusCode: statusCodes.INTERNAL_SERVER_ERROR,
+    });
   }
 };
 
@@ -76,12 +84,13 @@ exports.submitTest = async (req, res, next) => {
     result.scoreDetails = scoreData;
     const scoreToSave = new UserScore(result);
     await scoreToSave.save();
-    res.status(200).json({
-      message: 'Tests submitted successfully!',
-      success: true,
+    successResponse(res, {
+      message: `Test submitted successfully!`,
     });
   } catch (err) {
-    logger.log.error('500 - test creation', err);
-    res.status(500).json({ message: 'Something went wrong!', success: false });
+    errorResponse(res, {
+      message: 'Something went wrong!, Try again after some time!',
+      statusCode: statusCodes.INTERNAL_SERVER_ERROR,
+    });
   }
 };

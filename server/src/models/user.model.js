@@ -6,6 +6,8 @@ const userSchema = new mongoose.Schema({
   userName: String,
   createdAt: { type: Date, default: Date.now },
   lastLoginAt: Date,
+  resetPasswordToken: String,
+  resetPasswordExpires: Date,
 });
 
 const User = mongoose.model('User', userSchema);

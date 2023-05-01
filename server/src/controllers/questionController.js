@@ -1,15 +1,17 @@
 const Question = require('../models/questions.model');
-const Test = require('../models/test.modal');
-const logger = require('../services/logger');
+const { successResponse, errorResponse } = require('../utils/responses');
 
 exports.addQuestions = async (req, res, next) => {
   try {
-    const result = await Question.create(req.body);
-    logger.log.info('Questions added', result);
-    res.status(201).json({ message: 'Questions created', success: true });
+    await Question.create(req.body);
+    successResponse(res, {
+      message: `Questions added successfully!`,
+    });
   } catch (err) {
-    logger.log.error('500 - Questions creation', err);
-    res.status(500).json({ message: 'Something went wrong!', success: false });
+    errorResponse(res, {
+      message: 'Something went wrong!, Try again after some time!',
+      statusCode: statusCodes.INTERNAL_SERVER_ERROR,
+    });
   }
 };
 
@@ -23,14 +25,14 @@ exports.getQuestionsByTest = async (req, res, next) => {
       question: e.questionText,
       options: e.answers.map((ans) => ({ _id: ans._id, text: ans.answerText })),
     }));
-    logger.log.info('Fetched questions by test' + testId, response);
-    res.status(201).json({
-      message: 'Questions fetched successfully!',
-      data: response || [],
-      success: true,
+    successResponse(res, {
+      message: `Question fetched successfully!`,
+      data: response,
     });
   } catch (err) {
-    logger.log.error('500 - Questions fetch', err);
-    res.status(500).json({ message: 'Something went wrong!', success: false });
+    errorResponse(res, {
+      message: 'Something went wrong!, Try again after some time!',
+      statusCode: statusCodes.INTERNAL_SERVER_ERROR,
+    });
   }
 };
