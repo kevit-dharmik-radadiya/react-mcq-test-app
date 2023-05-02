@@ -1,0 +1,30 @@
+.dashboard {
+  .exam-box {
+    margin-top: 50px;
+    max-width: 200px;
+    min-height: 200px;
+    background: $primary-light-color;
+    background: linear-gradient(
+      98deg,
+      $primary-color 0%,
+      $primary-light-color 100%
+    );
+    padding: 25px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    p {
+      line-height: 40px;
+    }
+    a:hover {
+      color: $white-color;
+    }
+    .corner-img {
+      position: absolute;
+      right: -90px;
+      bottom: -44px;
+      width: 100%;
+    }
+  }
+}

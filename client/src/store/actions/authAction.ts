@@ -1,7 +1,10 @@
 import { AUTH_REDUX_CONSTANTS } from "../reduxConstants/authReduxConstants";
 import { displayErrors } from "../../helpers/errorNotifyHelper";
 import authApiServices from "../../services/authApiServices";
-import { saveAuthTokenToLocalStorage } from "../../helpers/localStorageHelper";
+import {
+  saveAuthTokenToLocalStorage,
+  saveUserIDToLocalStorage,
+} from "../../helpers/localStorageHelper";
 import { successNotification } from "../../helpers/notifyHelper";
 import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
 
@@ -22,8 +25,9 @@ export const loginUser = (
       };
       const response = await authApiServices.loginUser(data);
       if (response?.data?.success === true) {
-        const { token } = response?.data?.data;
+        const { token, id } = response?.data?.data;
         saveAuthTokenToLocalStorage(token);
+        saveUserIDToLocalStorage(id);
         successNotification(response?.data?.message ?? "Login successfully");
         dispatch({
           type: AUTH_REDUX_CONSTANTS.CHANGE_AUTH_STATUS,
@@ -67,6 +71,20 @@ export const registerUser = (
       displayErrors(e);
     }
   };
+};
+
+export const forgotPassword = async (email: string, callBack: () => void) => {
+  try {
+    const data = { email };
+    const response = await authApiServices.forgotPassword(data);
+
+    if (response?.status === 200) {
+      successNotification(response?.data?.message);
+      callBack();
+    }
+  } catch (e) {
+    displayErrors(e);
+  }
 };
 
 export const logOutUser = (navigate: any) => {

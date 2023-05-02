@@ -1,5 +1,5 @@
 import Button from "../../../components/Button/Button";
-import CompanyLogo from "../../../assets/images/logos/company.png";
+import CompanyLogo from "../../../assets/images/logos/Company.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import React, { MouseEvent } from "react";
 import BackToPage from "../../BackToPage";

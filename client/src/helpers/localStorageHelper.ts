@@ -9,3 +9,15 @@ export const getAuthTokenFromLocalStorage = () => {
 export const clearAuthTokenFromLocalStorage = () => {
   localStorage.removeItem("authToken");
 };
+
+export const saveUserIDToLocalStorage = (id: string) => {
+  localStorage.setItem("userID", id);
+};
+
+export const getUserIDFromLocalStorage = () => {
+  return localStorage.getItem("userID");
+};
+
+export const clearUserIDFromLocalStorage = () => {
+  localStorage.removeItem("userID");
+};

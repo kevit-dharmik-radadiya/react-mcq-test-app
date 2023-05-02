@@ -1,4 +1,4 @@
-import CompanyLogo from "../../assets/images/logos/company.png";
+import CompanyLogo from "../../assets/images/logos/Company.png";
 import OnlineTest from "../../assets/images/backgrounds/Online-Test.svg";
 import Button from "../../components/Button/Button";
 import { NavLink as RouterLink } from "react-router-dom";

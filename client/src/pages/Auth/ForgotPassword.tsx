@@ -4,6 +4,9 @@ import { FormControl } from "@mui/material";
 import Input from "../../components/input/Input";
 import ForgotPasswordSVG from "../../assets/images/backgrounds/Forgot-Password.svg";
 import { isEmail } from "../../helpers/validationHelper";
+import { forgotPassword } from "../../store/actions/authAction";
+import { useNavigate } from "react-router-dom";
+import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
 
 const ForgotPassword = () => {
   const [validEmail, setValidEmail] = useState({
@@ -13,6 +16,7 @@ const ForgotPassword = () => {
       message: ``,
     },
   });
+  const navigate = useNavigate();
 
   const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     const emailText = e.target.value;
@@ -25,6 +29,12 @@ const ForgotPassword = () => {
       ...prevState,
       error: isEmailValid,
     }));
+
+    if (isEmailValid.status) {
+      await forgotPassword(validEmail.email?.trim(), () =>
+        navigate(ROUTE_CONSTANTS_VARIABLE.LOGIN)
+      );
+    }
   };
 
   const onEnterKeyUp = (event: any) => {
