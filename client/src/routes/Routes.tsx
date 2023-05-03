@@ -13,6 +13,7 @@ import { ROUTE_CONSTANTS_VARIABLE } from "../constants/routeConstants";
 import Submissions from "../pages/Submissions/Submissions";
 import Quiz from "../pages/Quiz/Quiz";
 import QuizBegan from "../pages/Quiz/QuizBegan/QuizBegan";
+import QuizResult from "../pages/Quiz/QuizResult/QuizResult";
 
 export const router = createBrowserRouter([
   {
@@ -77,6 +78,14 @@ export const router = createBrowserRouter([
             element: (
               <ProtectedRoute>
                 <QuizBegan />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "result",
+            element: (
+              <ProtectedRoute>
+                <QuizResult />
               </ProtectedRoute>
             ),
           },

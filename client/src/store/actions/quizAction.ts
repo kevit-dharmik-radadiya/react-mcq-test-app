@@ -1,18 +1,18 @@
 import { displayErrors } from "../../helpers/errorNotifyHelper";
-import userApiServices from "../../services/userApiService";
-import { USER_REDUX_CONSTANTS } from "../reduxConstants/userReduxConstants";
+import quizApiServices from "../../services/quizApiService";
+import { QUIZ_REDUX_CONSTANTS } from "../reduxConstants/quizReduxConstants";
 
-type UserProps = {
+type QuizProps = {
   id: string;
 };
 
-export const getUserDetails = ({ id }: UserProps) => {
+export const getQuizDetails = ({ id }: QuizProps) => {
   return async (dispatch: any) => {
     try {
-      const response = await userApiServices.getUserDetails(id);
+      const response = await quizApiServices.getQuizDetails(id);
       if (response?.data?.success === true) {
         dispatch({
-          type: USER_REDUX_CONSTANTS.GET_USER_DETAILS,
+          type: QUIZ_REDUX_CONSTANTS.GET_QUIZ_DETAILS,
           data: response?.data?.data,
           status: true,
         });
