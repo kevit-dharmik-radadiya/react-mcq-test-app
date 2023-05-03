@@ -13,6 +13,7 @@ export const getUserDetails = ({ id }: UserProps) => {
       if (response?.data?.success === true) {
         dispatch({
           type: USER_REDUX_CONSTANTS.GET_USER_DETAILS,
+          data: response?.data?.data,
           status: true,
         });
         return true;

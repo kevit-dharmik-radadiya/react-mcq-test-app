@@ -25,9 +25,9 @@ export const loginUser = (
       };
       const response = await authApiServices.loginUser(data);
       if (response?.data?.success === true) {
-        const { token, id } = response?.data?.data;
+        const { token, _id } = response?.data?.data;
         saveAuthTokenToLocalStorage(token);
-        saveUserIDToLocalStorage(id);
+        saveUserIDToLocalStorage(_id);
         successNotification(response?.data?.message ?? "Login successfully");
         dispatch({
           type: AUTH_REDUX_CONSTANTS.CHANGE_AUTH_STATUS,

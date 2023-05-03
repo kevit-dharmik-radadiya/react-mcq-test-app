@@ -102,6 +102,14 @@ export const theme = createTheme({
         root: {
           color: colorPalette.secondary,
           margin: "15px 0",
+          borderRadius: "5px",
+          "&.active": {
+            backgroundColor: colorPalette.hover,
+            color: colorPalette.primary,
+            ".MuiListItemIcon-root svg": {
+              fill: colorPalette.primary,
+            },
+          },
         },
       },
     },
@@ -111,6 +119,7 @@ export const theme = createTheme({
           borderRadius: "5px",
           paddingTop: "5px",
           paddingBottom: "5px",
+          transition: "all 0.3s",
           "&:hover": {
             backgroundColor: colorPalette.hover,
             color: colorPalette.primary,

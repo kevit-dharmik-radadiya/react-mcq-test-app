@@ -3,14 +3,14 @@ import { USER_REDUX_CONSTANTS } from "../reduxConstants/userReduxConstants";
 interface initialReducerProps {
   userDetails: {
     email: string;
-    token: string;
+    lastLoginAt: string;
     userName: string;
     _id: string;
   };
 }
 
 const initialUserReducer: initialReducerProps = {
-  userDetails: { email: "", token: "", userName: "", _id: "fff" },
+  userDetails: { email: "", lastLoginAt: "", userName: "", _id: "fff" },
 };
 
 export const userReducer = (

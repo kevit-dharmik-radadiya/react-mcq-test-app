@@ -20,7 +20,7 @@ instance.interceptors.request.use(
     const token = getAuthTokenFromLocalStorage();
 
     if (token) {
-      request.headers.common.authorization = token;
+      request.headers.authorization = `Bearer ${token}`;
     }
 
     // If the application exists cancel
