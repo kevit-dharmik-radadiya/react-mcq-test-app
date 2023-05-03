@@ -11,7 +11,7 @@ import SIDEBAR_CONSTANTS from "./sidebarConstants";
 import LogoutIcon from "../../assets/images/sidebar/LogoutIcon";
 import { NavLink as RouterLink, useNavigate } from "react-router-dom";
 import { logOutUser } from "../../store/actions/authAction";
-import { useAppDispatch } from "../../app/hook";
+import { useAppDispatch, useAppSelector } from "../../app/hook";
 
 interface Props {
   /**
@@ -25,6 +25,10 @@ interface Props {
 }
 
 const Sidebar = (props: Props) => {
+  const userDetails: Record<string, any> = useAppSelector(
+    ({ userReducer }: Record<string, any>) => userReducer?.userDetails ?? {}
+  );
+
   const { window, drawerWidth, mobileOpen, handleDrawerToggle } = props;
   const container =
     window !== undefined ? () => window().document.body : undefined;
@@ -46,10 +50,10 @@ const Sidebar = (props: Props) => {
         }}
       >
         <Avatar className="bg-primary" sx={{ width: 45, height: 45 }}>
-          D
+          {userDetails.userName.charAt(0).toUpperCase()}
         </Avatar>
         <div>
-          <h3 className="m-0">Dharmik</h3>
+          <h3 className="m-0">{userDetails.userName}</h3>
           <p className="m-0 extra-small">Programmer</p>
         </div>
       </Box>

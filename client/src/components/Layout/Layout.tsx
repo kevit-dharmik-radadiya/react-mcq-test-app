@@ -1,19 +1,26 @@
 import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
 import Sidebar from "../Sidebar/Sidebar";
-import { useState } from "react";
-import MenuIcon from "../../assets/images/logos/menu.svg";
+import { useEffect, useState } from "react";
 import Menu from "../../assets/images/Menu";
+import { useAppDispatch } from "../../app/hook";
+import { getUserDetails } from "../../store/actions/userAction";
+import { getUserIDFromLocalStorage } from "../../helpers/localStorageHelper";
 
 const drawerWidth: number = 240;
 
 const Layout = (props: any) => {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const [isHover, setIsHover] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  useEffect(() => {
+    const userID = getUserIDFromLocalStorage() ?? "";
+    dispatch(getUserDetails({ id: userID }));
+  }, []);
 
   return (
     <Box sx={{ display: "flex" }}>

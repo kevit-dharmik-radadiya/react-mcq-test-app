@@ -27,6 +27,14 @@
   color: $light-black-color;
 }
 
+.text-white {
+  color: $white-color;
+}
+
+.text-light-white {
+  color: $light-white;
+}
+
 /* Color Classes END */
 
 /* Font Size Classes Start */
@@ -179,10 +187,18 @@
   font-weight: bold;
 }
 
+.f-500 {
+  font-weight: 500;
+}
+
 // Other
 
 .gap-0 {
   gap: 0 !important;
+}
+
+.position-relative {
+  position: relative;
 }
 
 @media screen and (max-width: 992px) {

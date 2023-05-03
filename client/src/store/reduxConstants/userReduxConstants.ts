@@ -1,0 +1,3 @@
+export const USER_REDUX_CONSTANTS = {
+  GET_USER_DETAILS: "GET_USER_DETAILS",
+};

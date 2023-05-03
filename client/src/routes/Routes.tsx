@@ -11,6 +11,7 @@ import ForgotPassword from "../pages/Auth/ForgotPassword";
 import ResetPassword from "../pages/Auth/ResetPassword";
 import { ROUTE_CONSTANTS_VARIABLE } from "../constants/routeConstants";
 import Submissions from "../pages/Submissions/Submissions";
+import Quiz from "../pages/Quiz/Quiz";
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +57,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Dashboard />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: ROUTE_CONSTANTS_VARIABLE.QUIZ,
+        element: (
+          <ProtectedRoute>
+            <Quiz />
           </ProtectedRoute>
         ),
       },
