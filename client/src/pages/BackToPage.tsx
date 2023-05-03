@@ -1,7 +1,6 @@
 import { ArrowBackIosNew } from "@mui/icons-material";
 import { ButtonProps, IconButton } from "@mui/material";
 import { NavLink as RouterLink } from "react-router-dom";
-import { ROUTE_CONSTANTS_VARIABLE } from "../routes/Routes";
 
 interface BackButtonProps extends ButtonProps {
   to: string;

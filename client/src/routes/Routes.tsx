@@ -12,7 +12,7 @@ import ResetPassword from "../pages/Auth/ResetPassword";
 import { ROUTE_CONSTANTS_VARIABLE } from "../constants/routeConstants";
 import Submissions from "../pages/Submissions/Submissions";
 import Quiz from "../pages/Quiz/Quiz";
-import QuizBegan from "../pages/Quiz/QuizBegan";
+import QuizBegan from "../pages/Quiz/QuizBegan/QuizBegan";
 
 export const router = createBrowserRouter([
   {

@@ -34,6 +34,7 @@ export const theme = createTheme({
         root: {
           marginRight: 0,
           padding: "10px",
+          transition: "all 0.3s",
           "&:hover": {
             backgroundColor: colorPalette.hover,
           },
@@ -49,6 +50,13 @@ export const theme = createTheme({
           fontSize: "1.125rem",
           whiteSpace: "nowrap",
           boxShadow: "0px 0px 8px 1px rgba(0, 0, 0, 0.16)",
+        },
+      },
+    },
+    MuiRadio: {
+      styleOverrides: {
+        root: {
+          padding: "6px",
         },
       },
     },
@@ -75,6 +83,15 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           marginBottom: "20px",
+        },
+      },
+    },
+    MuiFormControlLabel: {
+      styleOverrides: {
+        root: {
+          "& .MuiTypography-root": {
+            fontSize: "14px",
+          },
         },
       },
     },

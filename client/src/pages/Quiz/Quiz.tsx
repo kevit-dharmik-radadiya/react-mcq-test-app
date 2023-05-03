@@ -6,7 +6,7 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import CustomButton from "../../components/Button/Button";
+import Button from "../../components/Button/Button";
 import { useEffect, useState } from "react";
 import ApiService from "../../services/apiService";
 import { QUIZ_URLS } from "../../constants/urlConstants";
@@ -55,7 +55,10 @@ const Quiz = () => {
 
       <h4 className="text-placeholder medium mt-4">Instructions</h4>
       <ol className="text-placeholder small">
-        <li>Click on the start button to begin the exam.</li>
+        <li>
+          Click on the <strong className="text-primary">Let's go!</strong>{" "}
+          button to begin the exam.
+        </li>
         <li>Read each question carefully before answering.</li>
         <li>Write your answers in the space provided.</li>
         <li>
@@ -82,7 +85,8 @@ const Quiz = () => {
         Additionally, taking the exam can be a valuable learning experience as
         it can highlight areas where you need to improve your knowledge or
         understanding of the subject matter. <br />
-        <br /> So, stay focused and motivated to do your best in the exam!
+        <br /> So, stay focused and motivated to do your{" "}
+        <strong className="text-primary">best in the exam!</strong>
       </p>
 
       <FormControl sx={{ my: 3, maxWidth: 250 }}>
@@ -103,13 +107,13 @@ const Quiz = () => {
       </FormControl>
 
       <Box>
-        <CustomButton
+        <Button
           variant="contained"
           disabled={language ? false : true}
           onClick={handleClick}
         >
           Let's go!
-        </CustomButton>
+        </Button>
       </Box>
     </section>
   );
