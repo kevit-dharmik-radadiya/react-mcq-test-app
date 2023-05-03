@@ -9,3 +9,7 @@ export const AUTH_URLS = {
 export const USER_URLS = {
   GET_DETAILS: `${REQUEST_URL}user/getUserDetails`,
 };
+
+export const QUIZ_URLS = {
+  GET_LANGUAGES: `${REQUEST_URL}test/getTests`,
+};

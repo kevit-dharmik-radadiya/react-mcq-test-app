@@ -62,7 +62,12 @@ export const theme = createTheme({
     MuiFormLabel: {
       styleOverrides: {
         root: {
-          fontSize: "18px",
+          "&.Mui-focused": {
+            fontSize: "18px",
+          },
+          "&.MuiInputLabel-shrink": {
+            fontSize: "18px",
+          },
         },
       },
     },
@@ -149,10 +154,12 @@ export const theme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          backgroundImage: `url(${Sidebar})`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "bottom",
-          backgroundSize: "contain",
+          "&.MuiDrawer-paper": {
+            backgroundImage: `url(${Sidebar})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "bottom",
+            backgroundSize: "contain",
+          },
         },
       },
     },

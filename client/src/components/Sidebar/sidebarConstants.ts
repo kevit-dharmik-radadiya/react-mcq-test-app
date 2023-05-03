@@ -17,7 +17,7 @@ const SIDEBAR_CONSTANTS = [
     url: ROUTE_CONSTANTS_VARIABLE.DASHBOARD,
   },
   {
-    name: "submissions",
+    name: "quiz",
     label: SIDEBAR_MENU.QUIZ,
     icon: QuizIcon,
     url: ROUTE_CONSTANTS_VARIABLE.QUIZ,

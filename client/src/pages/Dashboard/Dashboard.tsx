@@ -8,7 +8,7 @@ const Dashboard = () => {
     ({ userReducer }: Record<string, any>) => userReducer?.userDetails ?? {}
   );
   return (
-    <section className="dashboard p-50">
+    <section className="dashboard p-24">
       <div>
         <p className="title bold m-0">Hey!</p>
         <h2 className="text-primary xxx-large m-0">{userDetails.userName}</h2>
