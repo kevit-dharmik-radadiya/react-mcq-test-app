@@ -12,6 +12,8 @@ import ResetPassword from "../pages/Auth/ResetPassword";
 import { ROUTE_CONSTANTS_VARIABLE } from "../constants/routeConstants";
 import Submissions from "../pages/Submissions/Submissions";
 import Quiz from "../pages/Quiz/Quiz";
+import QuizBegan from "../pages/Quiz/QuizBegan/QuizBegan";
+import QuizResult from "../pages/Quiz/QuizResult/QuizResult";
 
 export const router = createBrowserRouter([
   {
@@ -62,11 +64,32 @@ export const router = createBrowserRouter([
       },
       {
         path: ROUTE_CONSTANTS_VARIABLE.QUIZ,
-        element: (
-          <ProtectedRoute>
-            <Quiz />
-          </ProtectedRoute>
-        ),
+        children: [
+          {
+            index: true,
+            element: (
+              <ProtectedRoute>
+                <Quiz />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: ":id",
+            element: (
+              <ProtectedRoute>
+                <QuizBegan />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "result",
+            element: (
+              <ProtectedRoute>
+                <QuizResult />
+              </ProtectedRoute>
+            ),
+          },
+        ],
       },
       {
         path: ROUTE_CONSTANTS_VARIABLE.SUBMISSIONS,

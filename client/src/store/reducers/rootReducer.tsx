@@ -3,6 +3,7 @@ import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import { authReducer } from "./authReducer";
 import { userReducer } from "./userReducer";
+import { quizReducer } from "./quizReducer";
 import {
   clearAuthTokenFromLocalStorage,
   clearUserIDFromLocalStorage,
@@ -18,6 +19,7 @@ const persistConfig = {
 const appReducer = combineReducers({
   authReducer,
   userReducer,
+  quizReducer,
 });
 
 const rootReducer = (state: any, action: any) => {
