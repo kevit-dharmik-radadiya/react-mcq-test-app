@@ -51,7 +51,7 @@ const QuizBegan = () => {
           data
         );
         if (response?.data?.success) {
-          navigate(`${ROUTE_CONSTANTS_VARIABLE.QUIZ}/result`);
+          navigate(`${ROUTE_CONSTANTS_VARIABLE.SUBMISSIONS}`);
         }
       };
       submitQuiz();

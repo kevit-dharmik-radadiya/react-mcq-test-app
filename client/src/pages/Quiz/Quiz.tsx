@@ -24,7 +24,7 @@ const initializeValue: Language = {
 
 const Quiz = () => {
   const [languages, setLanguages] = useState<Language[]>([initializeValue]);
-  const [language, setLanguage] = useState<string>("");
+  const [languageId, setLanguageId] = useState<string>("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,11 +36,11 @@ const Quiz = () => {
   }, []);
 
   const handleChange = (event: SelectChangeEvent<string>) => {
-    setLanguage(event.target.value);
+    setLanguageId(event.target.value);
   };
 
   const handleClick = () => {
-    navigate(language);
+    navigate(languageId);
   };
 
   return (
@@ -94,7 +94,7 @@ const Quiz = () => {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={language}
+          value={languageId}
           label="Select Language"
           onChange={handleChange}
         >
@@ -109,7 +109,7 @@ const Quiz = () => {
       <Box>
         <Button
           variant="contained"
-          disabled={language ? false : true}
+          disabled={languageId ? false : true}
           onClick={handleClick}
         >
           Let's go!

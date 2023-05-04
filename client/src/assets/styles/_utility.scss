@@ -67,6 +67,10 @@
   font-size: $title;
 }
 
+.subtitle {
+  font-size: $subtitle;
+}
+
 .text-body {
   font-size: $body;
 }
@@ -215,6 +219,13 @@
 
 .position-relative {
   position: relative;
+}
+
+.text-ellipsis {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; 
 }
 
 @media screen and (max-width: 992px) {

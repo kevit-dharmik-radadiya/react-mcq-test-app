@@ -60,6 +60,35 @@
   color: $white-color;
 }
 
+// Alert
+
+.alert {
+  padding: 10px 20px;
+  width: max-content;
+  font-weight: 500;
+  border-radius: 10px;
+}
+
+.alert-success {
+  background-color: $hover-color;
+  color: $primary-color;
+}
+
+.alert-danger {
+  background-color: $danger-hover-color;
+  color: $danger-color;
+}
+
+.tag {
+  width: max-content;
+  padding: 2px 5px;
+  background: $hover-color;
+  color: $primary-color;
+  border-radius: 5px;
+  font-size: $extra-small;
+  font-weight: 500;
+}
+
 @media screen and (max-width: 992px) {
   .grid-md-12 {
     grid-template-columns: repeat(1, minmax(0, 1fr));

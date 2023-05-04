@@ -6,5 +6,5 @@ export const ROUTE_CONSTANTS_VARIABLE = {
   RESET_PASSWORD: "/reset-password",
   DASHBOARD: "/dashboard",
   QUIZ: "/quiz",
-  SUBMISSIONS: "/Submissions",
+  SUBMISSIONS: "/submissions",
 };
