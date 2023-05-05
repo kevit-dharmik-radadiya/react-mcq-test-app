@@ -11,14 +11,5 @@
         height: 45px;
       }
     }
-    @media (min-width: 900px) {
-      &.temporary {
-        display: none;
-      }
-
-      &.permanent {
-        display: block;
-      }
-    }
   }
 }

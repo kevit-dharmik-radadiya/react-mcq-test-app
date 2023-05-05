@@ -109,7 +109,7 @@ const Register = () => {
       buttonText="Sign Up"
     >
       {
-        <div className="auth_form mt-2">
+        <div className="auth_form">
           <FormControl>
             <Input
               variant="outlined"

@@ -30,6 +30,7 @@ const Submissions = () => {
               boxHeight="133px"
               canWidth={270}
               canHeight={133}
+              boxShadow={true}
             >
               <rect x="20" y="27" rx="5" ry="5" width="130" height="20" />
               <rect x="20" y="55" rx="5" ry="5" width="50" height="22" />

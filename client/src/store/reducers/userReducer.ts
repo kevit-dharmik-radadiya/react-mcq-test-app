@@ -10,7 +10,7 @@ interface initialReducerProps {
 }
 
 const initialUserReducer: initialReducerProps = {
-  userDetails: { email: "", lastLoginAt: "", userName: "", _id: "fff" },
+  userDetails: { email: "", lastLoginAt: "", userName: "", _id: "" },
 };
 
 export const userReducer = (

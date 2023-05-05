@@ -88,6 +88,7 @@ const Sidebar = (props: Props) => {
           keepMounted: true,
         }}
         sx={{
+          display: { xs: "block", md: "none" },
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
             width: drawerWidth,
