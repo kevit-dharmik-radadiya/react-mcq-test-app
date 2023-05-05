@@ -21,20 +21,26 @@ const Submissions = () => {
     <section className="submissions p-24">
       <h2 className="text-light-b mt-0">Hey Buddy!</h2>
       <p className="text-secondary">Find your Submissions here</p>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          flexWrap: "wrap",
-          gap: "20px",
-          marginTop: "50px",
-        }}
-      >
+      <Box className="submissions-content">
         {score.length <= 0 ? (
           <>
-            <PlaceholderLoader />
-            <PlaceholderLoader />
-            <PlaceholderLoader />
+            <PlaceholderLoader
+              iteration={3}
+              boxWidth="270px"
+              boxHeight="133px"
+              canWidth={270}
+              canHeight={133}
+              boxShadow={true}
+            >
+              <rect x="20" y="27" rx="5" ry="5" width="130" height="20" />
+              <rect x="20" y="55" rx="5" ry="5" width="50" height="22" />
+              <circle cx="215" cy="49" r="35" />
+              <rect x="20" y="85" rx="3" ry="3" width="17" height="20" />
+              <rect x="46" y="85" rx="3" ry="3" width="17" height="20" />
+              <rect x="70" y="85" rx="3" ry="3" width="34" height="20" />
+              <rect x="195" y="92" rx="3" ry="3" width="17" height="20" />
+              <rect x="220" y="92" rx="3" ry="3" width="17" height="20" />
+            </PlaceholderLoader>
           </>
         ) : (
           score.map((item: any) => {
@@ -43,19 +49,7 @@ const Submissions = () => {
               .toLocaleDateString("en-GB")
               .replace(/\//g, "-");
             return (
-              <Box
-                key={item._id}
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  maxWidth: "270px",
-                  width: "100%",
-                  boxShadow: "0 0 10px #cbcbcb",
-                  borderRadius: "10px",
-                  padding: "15px 20px",
-                }}
-              >
+              <Box className="submission-card" key={item._id}>
                 <div>
                   <Tooltip
                     arrow
@@ -70,9 +64,7 @@ const Submissions = () => {
                   <div className="tag">{item.testDetails.language}</div>
                   <p className="text-secondary mt-2 small">{formattedDate}</p>
                 </div>
-                <Box
-                  sx={{ maxWidth: 70, fontWeight: "500", textAlign: "center" }}
-                >
+                <Box className="card-progress">
                   <CircularProgressbar
                     value={item.scoreDetails.percentage}
                     text={`${item.scoreDetails.percentage}%`}

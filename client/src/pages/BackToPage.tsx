@@ -17,7 +17,7 @@ const BackToPage: React.FC<BackButtonProps> = ({ to, text }) => {
         to={to}
         size="small"
         sx={{
-          border: "2px solid #00a783",
+          border: "2px solid #00a783", 
         }}
       >
         <ArrowBackIosNew fontSize="inherit" />

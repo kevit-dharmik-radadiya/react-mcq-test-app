@@ -44,18 +44,6 @@
   }
 }
 
-.toast-success {
-  background-color: $primary-color;
-}
-
-.toast-error {
-  background-color: $danger-color;
-}
-
-.toast-warning {
-  background-color: $warning-color;
-}
-
 .Toastify__close-button--light {
   color: $white-color;
 }
@@ -92,8 +80,5 @@
 @media screen and (max-width: 992px) {
   .grid-md-12 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
-  .d-md-none {
-    display: none;
   }
 }

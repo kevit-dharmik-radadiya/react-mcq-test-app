@@ -180,5 +180,17 @@ export const theme = createTheme({
         },
       },
     },
+    MuiSkeleton: {
+      styleOverrides: {
+        root: {
+          backgroundColor: colorPalette.hover,
+          transform: "scale(1)",
+          "&::after": {
+            background:
+              "linear-gradient(90deg,transparent,#00a78380,transparent)",
+          },
+        },
+      },
+    },
   },
 });

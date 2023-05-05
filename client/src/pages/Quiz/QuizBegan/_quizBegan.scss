@@ -1,14 +1,10 @@
 .quiz-began {
   .quiz-began_box {
-    border: 2px solid $primary-color;
-    padding: 24px;
-    border-radius: 10px;
-    margin-top: 20px;
     .options {
-      background-color: $hover-color;
-      padding: 10px 20px;
-      border-radius: 10px;
-      margin-top: 10px;
+      margin-top: 20px;
+    }
+    .error {
+      min-height: 21px;
     }
     .controls {
       .Mui-disabled {
