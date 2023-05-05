@@ -1,30 +1,84 @@
 .dashboard {
-  .exam-box {
-    margin-top: 50px;
-    max-width: 200px;
-    min-height: 200px;
-    background: $primary-light-color;
-    background: linear-gradient(
-      98deg,
-      $primary-color 0%,
-      $primary-light-color 100%
-    );
-    padding: 25px;
-    border-radius: 10px;
+  .dashboard-box {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    p {
-      line-height: 40px;
+    flex-wrap: wrap;
+    gap: 100px;
+    margin-top: 50px;
+    @media (max-width: 992px) {
+      gap: 30px;
     }
-    a:hover {
-      color: $white-color;
-    }
-    .corner-img {
-      position: absolute;
-      right: -90px;
-      bottom: -44px;
+    .box-content {
+      max-width: 200px;
       width: 100%;
+      min-height: 200px;
+      background: $hover-color;
+      box-shadow: 0 0 10px #cbcbcb;
+      padding: 25px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 2px solid $primary-color;
+      @media (max-width: 992px) {
+        min-height: 180px;
+      }
+      &.wide {
+        max-width: 400px;
+        img {
+          max-width: 220px;
+        }
+      }
+      p {
+        line-height: 40px;
+      }
+      a {
+        position: relative;
+        width: max-content;
+        &:after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -2px;
+          width: 100%;
+          height: 3px;
+          background-color: $primary-color;
+          transform: scaleX(0);
+          transform-origin: right;
+          transition: transform 0.75s ease-in-out;
+        }
+        &:hover:after {
+          transform: scaleX(1);
+          transform-origin: left;
+          transition: transform 0.25s ease-in-out;
+        }
+      }
+      .corner-img {
+        position: absolute;
+        right: -90px;
+        bottom: -44px;
+        width: 100%;
+      }
+    }
+    .contact-us {
+      background-color: $primary-color;
+      padding: 20px 25px;
+      border-radius: 10px;
+      max-width: 730px;
+      position: relative;
+      .contact-img {
+        position: absolute;
+        max-width: 200px;
+        width: 100%;
+        top: -4px;
+        right: 0;
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+      }
+      a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
     }
   }
 }

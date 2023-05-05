@@ -1,0 +1,17 @@
+.MuiFormGroup-root {
+  &.option {
+    display: grid;
+    align-items: stretch;
+    gap: 15px;
+    .MuiFormControlLabel-root {
+      margin: 0;
+      background-color: $bg-light-color;
+      border-radius: 10px;
+      padding: 5px;
+      border: 2px solid transparent;
+      &:has(> .Mui-checked) {
+        border: 2px solid $primary-color;
+      }
+    }
+  }
+}
