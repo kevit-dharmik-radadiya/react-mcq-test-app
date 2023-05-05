@@ -103,8 +103,8 @@ const QuizBegan = () => {
   };
 
   return (
-    <div className="quiz-began">
-      <h2 className="text-primary">General Knowledge</h2>
+    <div className="quiz-began p-24">
+      <h2 className="text-primary mt-0">General Knowledge</h2>
       <div className="quiz-began_box">
         <div className="question text-light-b">
           <span className="text-primary bold mx-1">
@@ -113,7 +113,7 @@ const QuizBegan = () => {
           {quizDetails[index].question}
         </div>
         <div className="options">
-          <FormControl sx={{ width: "auto" }}>
+          <FormControl className="w-auto">
             <RadioGroup
               aria-labelledby="quiz-radio-buttons-group-label"
               name="radio-buttons-group"

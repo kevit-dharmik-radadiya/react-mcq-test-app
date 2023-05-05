@@ -36,20 +36,12 @@ const Sidebar = (props: Props) => {
   const navigate = useNavigate();
 
   const drawer = (
-    <Box sx={{ p: "24px" }}>
+    <Box className="p-24">
       <Box>
         <p className="text-primary x-large bold text-center">QuickQuiz</p>
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-          px: "12px",
-          my: "25px",
-        }}
-      >
-        <Avatar className="bg-primary" sx={{ width: 45, height: 45 }}>
+      <Box className="avatar">
+        <Avatar className="avatar-icon bg-primary">
           {userDetails.userName.charAt(0).toUpperCase()}
         </Avatar>
         <div>
@@ -87,22 +79,21 @@ const Sidebar = (props: Props) => {
 
   return (
     <>
-      {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
       <Drawer
         container={container}
         variant="temporary"
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
+          keepMounted: true,
         }}
         sx={{
-          display: { xs: "block", md: "none" },
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
             width: drawerWidth,
           },
         }}
+        className="sidebar-drawer temporary"
       >
         {drawer}
       </Drawer>
@@ -115,6 +106,7 @@ const Sidebar = (props: Props) => {
             width: drawerWidth,
           },
         }}
+        className="sidebar-drawer permanent"
         open
       >
         {drawer}

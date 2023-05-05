@@ -23,34 +23,17 @@ const Layout = (props: any) => {
   }, []);
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box className="layout d-flex">
       <Box
         aria-label="open drawer"
         onClick={handleDrawerToggle}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
-        sx={{
-          display: { md: "none" },
-          position: "fixed",
-          top: "24px",
-          right: "24px",
-          cursor: "pointer",
-          p: "10px",
-          borderRadius: "50%",
-          transition: "all 0.3s ease-in-out",
-          lineHeight: 0,
-          "&:hover": {
-            backgroundColor: "#00a78321",
-          },
-        }}
+        className="drawer-menu_icon"
       >
         <Menu fill={isHover ? "#00a783" : "#979797"} size="1.5em" />
       </Box>
-      <Box
-        component="nav"
-        sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}
-        aria-label="mailbox folders"
-      >
+      <Box component="nav" aria-label="mailbox folders" className="sidebar">
         <Sidebar
           drawerWidth={drawerWidth}
           mobileOpen={mobileOpen}
@@ -60,10 +43,9 @@ const Layout = (props: any) => {
       <Box
         component="main"
         sx={{
-          flexGrow: 1,
-          p: 3,
           width: { md: `calc(100% - ${drawerWidth}px)` },
         }}
+        className="main"
       >
         {props.children}
       </Box>

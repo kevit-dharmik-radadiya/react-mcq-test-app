@@ -89,7 +89,7 @@ const Quiz = () => {
         <strong className="text-primary">best in the exam!</strong>
       </p>
 
-      <FormControl sx={{ my: 3, maxWidth: 250 }}>
+      <FormControl className="select-language">
         <InputLabel id="demo-simple-select-label">Select Language</InputLabel>
         <Select
           labelId="demo-simple-select-label"

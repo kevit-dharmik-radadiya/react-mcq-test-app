@@ -41,9 +41,7 @@ const Home = () => {
               to={ROUTE_CONSTANTS_VARIABLE.DASHBOARD}
               variant="contained"
               color="primary"
-              sx={{
-                m: 0.5,
-              }}
+              className="m-1"
             >
               Dashboard
             </Button>
@@ -54,9 +52,7 @@ const Home = () => {
                 to={ROUTE_CONSTANTS_VARIABLE.LOGIN}
                 variant="outlined"
                 color="primary"
-                sx={{
-                  m: 0.5,
-                }}
+                className="m-1"
               >
                 Sign In
               </Button>
@@ -65,9 +61,7 @@ const Home = () => {
                 to={ROUTE_CONSTANTS_VARIABLE.REGISTER}
                 variant="contained"
                 color="primary"
-                sx={{
-                  m: 0.5,
-                }}
+                className="m-1"
               >
                 Sign Up
               </Button>

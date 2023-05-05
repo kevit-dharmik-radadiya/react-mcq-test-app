@@ -1,0 +1,24 @@
+.sidebar {
+  .sidebar-drawer {
+    .avatar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 12px 0;
+      margin: 25px 0 25px;
+      .avatar-icon {
+        width: 45px;
+        height: 45px;
+      }
+    }
+    @media (min-width: 900px) {
+      &.temporary {
+        display: none;
+      }
+
+      &.permanent {
+        display: block;
+      }
+    }
+  }
+}
