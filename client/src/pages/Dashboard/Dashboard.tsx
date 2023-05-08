@@ -8,8 +8,9 @@ import Hotline from "../../assets/images/logos/Hotline";
 
 const Dashboard = () => {
   const userDetails: Record<string, any> = useAppSelector(
-    ({ userReducer }: Record<string, any>) => userReducer?.userDetails ?? {}
+    ({ user }: Record<string, any>) => user?.userDetails ?? {}
   );
+
   return (
     <section className="dashboard p-24">
       <div>

@@ -5,34 +5,30 @@ import ResetPasswordSVG from "../../assets/images/backgrounds/Reset-Password.svg
 import { passwordValidate } from "../../helpers/validationHelper";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useAppDispatch, useAppSelector } from "../../app/hook";
-import { AUTH_VALIDATE_REDUX_CONSTANTS } from "../../store/reduxConstants/authValidateReduxConstant";
+import {
+  isPasswordMatch,
+  setErrorStatus,
+  setInputValues,
+  showPassword,
+} from "../../store/reducers/authValidateSlice";
 
 const ResetPassword = () => {
   const authValidate: Record<string, any> = useAppSelector(
-    ({ authValidateReducer }: Record<string, any>) => authValidateReducer ?? {}
+    ({ authValidate }: Record<string, any>) => authValidate ?? {}
   );
   const dispatch = useAppDispatch();
 
   const onHandleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    dispatch({
-      type: AUTH_VALIDATE_REDUX_CONSTANTS.CHANGE_INPUT_VALUE,
-      data: { name, value },
-    });
+    dispatch(setInputValues({ name, value }));
   };
 
   const handleClickShowPassword = () => {
-    dispatch({
-      type: AUTH_VALIDATE_REDUX_CONSTANTS.SHOW_PASSWORD,
-      data: { showPassword: !authValidate.showPassword },
-    });
+    dispatch(showPassword(""));
   };
 
   const handleClickShowConfirmPassword = () => {
-    dispatch({
-      type: AUTH_VALIDATE_REDUX_CONSTANTS.SHOW_CONFIRM_PASSWORD,
-      data: { showConfirmPassword: !authValidate.showConfirmPassword },
-    });
+    dispatch(showPassword("confirm"));
   };
 
   const onClickForgotPassword = async () => {
@@ -47,16 +43,12 @@ const ResetPassword = () => {
       authValidate.confirmPassword
     );
 
-    dispatch({
-      type: AUTH_VALIDATE_REDUX_CONSTANTS.CHANGE_AUTH_ERROR_STATUS,
-      data: { isPasswordValid, isConfirmPasswordValid, isMatch: true },
-    });
+    dispatch(
+      setErrorStatus({ isPasswordValid, isConfirmPasswordValid, isMatch: true })
+    );
 
     if (authValidate.password !== authValidate.confirmPassword) {
-      dispatch({
-        type: AUTH_VALIDATE_REDUX_CONSTANTS.IS_PASSWORD_MATCH,
-        data: { isMatch: false },
-      });
+      dispatch(isPasswordMatch(false));
     }
   };
 

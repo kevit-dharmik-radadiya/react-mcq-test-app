@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import axios, { AxiosError, AxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { getAuthTokenFromLocalStorage } from "../helpers/localStorageHelper";
 import authApiServices from "./authApiServices";
 import { store } from "../app/store";

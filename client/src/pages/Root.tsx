@@ -1,8 +1,8 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../app/hook";
 import Layout from "../components/Layout/Layout";
-import { AUTH_VALIDATE_REDUX_CONSTANTS } from "../store/reduxConstants/authValidateReduxConstant";
 import { useEffect } from "react";
+import { resetAuthStates } from "../store/reducers/authValidateSlice";
 
 const Root = () => {
   const authStatus: boolean = useAppSelector(
@@ -19,9 +19,7 @@ const Root = () => {
       location.pathname === "/forgot-password" ||
       location.pathname === "/reset-password"
     ) {
-      dispatch({
-        type: AUTH_VALIDATE_REDUX_CONSTANTS.RESET_STATES,
-      });
+      dispatch(resetAuthStates());
     }
   }, [location]);
 

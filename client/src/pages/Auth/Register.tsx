@@ -12,11 +12,15 @@ import { registerUser } from "../../store/actions/authAction";
 import { useAppDispatch, useAppSelector } from "../../app/hook";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
-import { AUTH_VALIDATE_REDUX_CONSTANTS } from "../../store/reduxConstants/authValidateReduxConstant";
+import {
+  setErrorStatus,
+  setInputValues,
+  showPassword,
+} from "../../store/reducers/authValidateSlice";
 
 const Register = () => {
   const authValidate: Record<string, any> = useAppSelector(
-    ({ authValidateReducer }: Record<string, any>) => authValidateReducer ?? {}
+    ({ authValidate }: Record<string, any>) => authValidate ?? {}
   );
 
   const dispatch = useAppDispatch();
@@ -24,17 +28,11 @@ const Register = () => {
 
   const onHandleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    dispatch({
-      type: AUTH_VALIDATE_REDUX_CONSTANTS.CHANGE_INPUT_VALUE,
-      data: { name, value },
-    });
+    dispatch(setInputValues({ name, value }));
   };
 
   const handleClickShowPassword = () => {
-    dispatch({
-      type: AUTH_VALIDATE_REDUX_CONSTANTS.SHOW_PASSWORD,
-      data: { showPassword: !authValidate.showPassword },
-    });
+    dispatch(showPassword(""));
   };
 
   const onClickLogin = async () => {
@@ -46,10 +44,9 @@ const Register = () => {
       true
     );
 
-    dispatch({
-      type: AUTH_VALIDATE_REDUX_CONSTANTS.CHANGE_AUTH_ERROR_STATUS,
-      data: { isEmailValid, isPasswordValid, isUsernameValid },
-    });
+    dispatch(
+      setErrorStatus({ isEmailValid, isPasswordValid, isUsernameValid })
+    );
 
     if (
       isUsernameValid.status &&
@@ -67,10 +64,7 @@ const Register = () => {
         )
       );
       if (!response) {
-        dispatch({
-          type: AUTH_VALIDATE_REDUX_CONSTANTS.CHANGE_INPUT_VALUE,
-          data: { name: "password", value: "" },
-        });
+        dispatch(setInputValues({ name: "password", value: "" }));
       }
     }
   };

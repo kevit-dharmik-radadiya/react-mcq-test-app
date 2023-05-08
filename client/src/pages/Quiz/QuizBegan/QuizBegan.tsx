@@ -27,7 +27,7 @@ const QuizBegan = () => {
   const navigate = useNavigate();
 
   const quizDetails: Record<string, any> = useAppSelector(
-    ({ quizReducer }: Record<string, any>) => quizReducer?.quizDetails ?? {}
+    ({ quiz }: Record<string, any>) => quiz?.quizDetails ?? {}
   );
 
   useEffect(() => {

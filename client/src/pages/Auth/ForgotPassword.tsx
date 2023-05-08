@@ -7,11 +7,14 @@ import { forgotPassword } from "../../store/actions/authAction";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
 import { useAppDispatch, useAppSelector } from "../../app/hook";
-import { AUTH_VALIDATE_REDUX_CONSTANTS } from "../../store/reduxConstants/authValidateReduxConstant";
+import {
+  setErrorStatus,
+  setInputValues,
+} from "../../store/reducers/authValidateSlice";
 
 const ForgotPassword = () => {
   const authValidate: Record<string, any> = useAppSelector(
-    ({ authValidateReducer }: Record<string, any>) => authValidateReducer ?? {}
+    ({ authValidate }: Record<string, any>) => authValidate ?? {}
   );
 
   const dispatch = useAppDispatch();
@@ -19,20 +22,13 @@ const ForgotPassword = () => {
 
   const onChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-
-    dispatch({
-      type: AUTH_VALIDATE_REDUX_CONSTANTS.CHANGE_INPUT_VALUE,
-      data: { name, value },
-    });
+    dispatch(setInputValues({ name, value }));
   };
 
   const onClickForgotPassword = async () => {
     const isEmailValid = isEmail("email", authValidate.email);
 
-    dispatch({
-      type: AUTH_VALIDATE_REDUX_CONSTANTS.CHANGE_AUTH_ERROR_STATUS,
-      data: { isEmailValid },
-    });
+    dispatch(setErrorStatus({ isEmailValid }));
 
     if (isEmailValid.status) {
       await forgotPassword(authValidate.email?.trim(), () =>

@@ -1,3 +1,0 @@
-export const QUIZ_REDUX_CONSTANTS = {
-  GET_QUIZ_DETAILS: "GET_QUIZ_DETAILS",
-};

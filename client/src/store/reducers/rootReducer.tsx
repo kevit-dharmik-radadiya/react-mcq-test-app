@@ -2,9 +2,9 @@ import { combineReducers } from "redux";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import authReducer from "./authSlice";
-import { authValidateReducer } from "./authValidateReducer";
-import { userReducer } from "./userReducer";
-import { quizReducer } from "./quizReducer";
+import authValidateReducer from "./authValidateSlice";
+import userReducer from "./userSlice";
+import quizReducer from "./quizSlice";
 import {
   clearAuthTokenFromLocalStorage,
   clearUserIDFromLocalStorage,
@@ -18,9 +18,9 @@ const persistConfig = {
 
 const appReducer = combineReducers({
   auth: authReducer,
-  authValidateReducer,
-  userReducer,
-  quizReducer,
+  authValidate: authValidateReducer,
+  user: userReducer,
+  quiz: quizReducer,
 });
 
 const rootReducer = (state: any, action: any) => {
