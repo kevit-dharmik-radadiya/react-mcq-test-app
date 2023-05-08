@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
-import { authReducer } from "./authReducer";
+import authReducer from "./authSlice";
 import { authValidateReducer } from "./authValidateReducer";
 import { userReducer } from "./userReducer";
 import { quizReducer } from "./quizReducer";
@@ -9,23 +9,22 @@ import {
   clearAuthTokenFromLocalStorage,
   clearUserIDFromLocalStorage,
 } from "../../helpers/localStorageHelper";
-import { AUTH_REDUX_CONSTANTS } from "../reduxConstants/authReduxConstants";
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["authReducer"],
+  whitelist: ["auth"],
 };
 
 const appReducer = combineReducers({
-  authReducer,
+  auth: authReducer,
   authValidateReducer,
   userReducer,
   quizReducer,
 });
 
 const rootReducer = (state: any, action: any) => {
-  if (action.type === AUTH_REDUX_CONSTANTS.LOGOUT_USER_ACTION) {
+  if (action.type === "LOGOUT_USER") {
     clearAuthTokenFromLocalStorage();
     clearUserIDFromLocalStorage();
 

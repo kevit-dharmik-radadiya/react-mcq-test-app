@@ -9,7 +9,7 @@ interface Props {
 export const UnProtectedRoute = ({ children, ...props }: Props) => {
   let location = useLocation();
   const authStatus: boolean = useAppSelector(
-    ({ authReducer }: Record<string, any>) => authReducer?.authStatus ?? false
+    ({ auth }: Record<string, any>) => auth?.authStatus ?? false
   );
   if (authStatus) {
     return <Navigate to="/dashboard" state={{ from: location }} replace />;

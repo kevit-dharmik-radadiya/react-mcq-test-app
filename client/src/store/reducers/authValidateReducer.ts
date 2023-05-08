@@ -60,7 +60,6 @@ export const authValidateReducer = (
   state = initialAuthValidate,
   action: { type: string; data: Record<string, any>; status?: boolean }
 ) => {
-  console.log({ action });
   switch (action?.type) {
     case AUTH_VALIDATE_REDUX_CONSTANTS.CHANGE_AUTH_ERROR_STATUS:
       const isEmailValid = action.data.isEmailValid;
