@@ -187,7 +187,7 @@ export const theme = createTheme({
           transform: "scale(1)",
           "&::after": {
             background:
-              "linear-gradient(90deg,transparent,#00a78380,transparent)",
+              "linear-gradient(90deg,transparent,#00a78321,transparent)",
           },
         },
       },

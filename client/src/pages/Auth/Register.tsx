@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { FormControl, IconButton, InputAdornment } from "@mui/material";
 import SignUp from "../../assets/images/backgrounds/Sign-Up.svg";
 import AuthTemplate from "./authTemplate/AuthTemplate";
@@ -10,65 +9,47 @@ import {
 } from "../../helpers/validationHelper";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { registerUser } from "../../store/actions/authAction";
-import { useAppDispatch } from "../../app/hook";
+import { useAppDispatch, useAppSelector } from "../../app/hook";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
+import { AUTH_VALIDATE_REDUX_CONSTANTS } from "../../store/reduxConstants/authValidateReduxConstant";
 
 const Register = () => {
-  const [loginForm, setLoginForm] = useState({
-    email: "",
-    password: "",
-    username: "",
-    error: {
-      email: {
-        status: true,
-        message: ``,
-      },
-      password: {
-        status: true,
-        message: ``,
-      },
-      username: {
-        status: true,
-        message: ``,
-      },
-    },
-    showPassword: false,
-  });
+  const authValidate: Record<string, any> = useAppSelector(
+    ({ authValidateReducer }: Record<string, any>) => authValidateReducer ?? {}
+  );
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const onHandleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setLoginForm((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    dispatch({
+      type: AUTH_VALIDATE_REDUX_CONSTANTS.CHANGE_INPUT_VALUE,
+      data: { name, value },
+    });
   };
 
   const handleClickShowPassword = () => {
-    setLoginForm((prevState) => ({
-      ...prevState,
-      showPassword: !loginForm.showPassword,
-    }));
+    dispatch({
+      type: AUTH_VALIDATE_REDUX_CONSTANTS.SHOW_PASSWORD,
+      data: { showPassword: !authValidate.showPassword },
+    });
   };
 
   const onClickLogin = async () => {
-    const isUsernameValid = usernameValidate("username", loginForm.username);
-    const isEmailValid = isEmail("email", loginForm.email);
+    const isUsernameValid = usernameValidate("username", authValidate.username);
+    const isEmailValid = isEmail("email", authValidate.email);
     const isPasswordValid = passwordValidate(
       "password",
-      loginForm.password,
+      authValidate.password,
       true
     );
-    setLoginForm((prevState) => ({
-      ...prevState,
-      error: {
-        email: isEmailValid,
-        password: isPasswordValid,
-        username: isUsernameValid,
-      },
-    }));
+
+    dispatch({
+      type: AUTH_VALIDATE_REDUX_CONSTANTS.CHANGE_AUTH_ERROR_STATUS,
+      data: { isEmailValid, isPasswordValid, isUsernameValid },
+    });
 
     if (
       isUsernameValid.status &&
@@ -78,18 +59,18 @@ const Register = () => {
       const response = await dispatch(
         registerUser(
           {
-            email: loginForm.email,
-            password: loginForm.password,
-            username: loginForm.username,
+            email: authValidate.email,
+            password: authValidate.password,
+            username: authValidate.username,
           },
           navigate
         )
       );
       if (!response) {
-        setLoginForm((prevState) => ({
-          ...prevState,
-          password: "",
-        }));
+        dispatch({
+          type: AUTH_VALIDATE_REDUX_CONSTANTS.CHANGE_INPUT_VALUE,
+          data: { name: "password", value: "" },
+        });
       }
     }
   };
@@ -117,10 +98,10 @@ const Register = () => {
               name="username"
               type="text"
               placeholder="Username"
-              value={loginForm.username}
+              value={authValidate.username}
               onChange={onHandleChangeInput}
-              helperText={loginForm.error.username.message}
-              error={!loginForm.error.username.status}
+              helperText={authValidate.error.username.message}
+              error={!authValidate.error.username.status}
             />
           </FormControl>
           <FormControl>
@@ -130,10 +111,10 @@ const Register = () => {
               name="email"
               type="email"
               placeholder="Email"
-              value={loginForm.email}
+              value={authValidate.email}
               onChange={onHandleChangeInput}
-              helperText={loginForm.error.email.message}
-              error={!loginForm.error.email.status}
+              helperText={authValidate.error.email.message}
+              error={!authValidate.error.email.status}
             />
           </FormControl>
           <FormControl>
@@ -141,17 +122,17 @@ const Register = () => {
               variant="outlined"
               label="Password"
               name="password"
-              type={loginForm.showPassword ? "text" : "password"}
+              type={authValidate.showPassword ? "text" : "password"}
               placeholder="Password"
-              value={loginForm.password}
+              value={authValidate.password}
               onChange={onHandleChangeInput}
-              helperText={loginForm.error.password.message}
-              error={!loginForm.error.password.status}
+              helperText={authValidate.error.password.message}
+              error={!authValidate.error.password.status}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton onClick={handleClickShowPassword} size="large">
-                      {loginForm.showPassword ? (
+                      {authValidate.showPassword ? (
                         <VisibilityOff />
                       ) : (
                         <Visibility />

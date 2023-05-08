@@ -7,6 +7,7 @@ import {
 } from "../../helpers/localStorageHelper";
 import { successNotification } from "../../helpers/notifyHelper";
 import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
+import { AUTH_VALIDATE_REDUX_CONSTANTS } from "../reduxConstants/authValidateReduxConstant";
 
 type LoginUserProps = {
   email: string;
@@ -100,6 +101,9 @@ export const logOutUser = (navigate: any) => {
       //     response.data?.message || "Logged out successfully."
       //   );
       // }
+      dispatch({
+        type: AUTH_VALIDATE_REDUX_CONSTANTS.RESET_STATES,
+      });
       dispatch({
         type: AUTH_REDUX_CONSTANTS.LOGOUT_USER_ACTION,
       });

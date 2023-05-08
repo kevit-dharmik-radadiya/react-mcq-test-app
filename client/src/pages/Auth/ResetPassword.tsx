@@ -1,78 +1,62 @@
-import { useState } from "react";
 import AuthTemplate from "./authTemplate/AuthTemplate";
 import { FormControl, IconButton, InputAdornment } from "@mui/material";
 import Input from "../../components/input/Input";
 import ResetPasswordSVG from "../../assets/images/backgrounds/Reset-Password.svg";
 import { passwordValidate } from "../../helpers/validationHelper";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useAppDispatch, useAppSelector } from "../../app/hook";
+import { AUTH_VALIDATE_REDUX_CONSTANTS } from "../../store/reduxConstants/authValidateReduxConstant";
 
 const ResetPassword = () => {
-  const [validatePassword, setValidatePassword] = useState({
-    password: "",
-    confirmPassword: "",
-    error: {
-      password: {
-        status: true,
-        message: ``,
-      },
-      confirmPassword: {
-        status: true,
-        message: ``,
-      },
-    },
-    isMatch: true,
-    showPassword: false,
-    showConfirmPassword: false,
-  });
+  const authValidate: Record<string, any> = useAppSelector(
+    ({ authValidateReducer }: Record<string, any>) => authValidateReducer ?? {}
+  );
+  const dispatch = useAppDispatch();
 
   const onHandleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setValidatePassword((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    dispatch({
+      type: AUTH_VALIDATE_REDUX_CONSTANTS.CHANGE_INPUT_VALUE,
+      data: { name, value },
+    });
   };
 
   const handleClickShowPassword = () => {
-    setValidatePassword((prevState) => ({
-      ...prevState,
-      showPassword: !validatePassword.showPassword,
-    }));
+    dispatch({
+      type: AUTH_VALIDATE_REDUX_CONSTANTS.SHOW_PASSWORD,
+      data: { showPassword: !authValidate.showPassword },
+    });
   };
 
   const handleClickShowConfirmPassword = () => {
-    setValidatePassword((prevState) => ({
-      ...prevState,
-      showConfirmPassword: !validatePassword.showConfirmPassword,
-    }));
+    dispatch({
+      type: AUTH_VALIDATE_REDUX_CONSTANTS.SHOW_CONFIRM_PASSWORD,
+      data: { showConfirmPassword: !authValidate.showConfirmPassword },
+    });
   };
 
   const onClickForgotPassword = async () => {
     const isPasswordValid = passwordValidate(
       "password",
-      validatePassword.password,
+      authValidate.password,
       true
     );
 
     const isConfirmPasswordValid = passwordValidate(
       "confirm password",
-      validatePassword.confirmPassword
+      authValidate.confirmPassword
     );
 
-    setValidatePassword((prevState) => ({
-      ...prevState,
-      error: {
-        password: isPasswordValid,
-        confirmPassword: isConfirmPasswordValid,
-      },
-      isMatch: true,
-    }));
+    dispatch({
+      type: AUTH_VALIDATE_REDUX_CONSTANTS.CHANGE_AUTH_ERROR_STATUS,
+      data: { isPasswordValid, isConfirmPasswordValid, isMatch: true },
+    });
 
-    if (validatePassword.password !== validatePassword.confirmPassword) {
-      setValidatePassword((prevState) => ({
-        ...prevState,
-        isMatch: false,
-      }));
+    if (authValidate.password !== authValidate.confirmPassword) {
+      dispatch({
+        type: AUTH_VALIDATE_REDUX_CONSTANTS.IS_PASSWORD_MATCH,
+        data: { isMatch: false },
+      });
     }
   };
 
@@ -101,12 +85,12 @@ const ResetPassword = () => {
                 variant="outlined"
                 label="Password"
                 name="password"
-                type={validatePassword.showPassword ? "text" : "password"}
+                type={authValidate.showPassword ? "text" : "password"}
                 placeholder="Password"
-                value={validatePassword.password}
+                value={authValidate.password}
                 onChange={onHandleChangeInput}
-                helperText={validatePassword.error.password.message}
-                error={!validatePassword.error.password.status}
+                helperText={authValidate.error.password.message}
+                error={!authValidate.error.password.status}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -114,7 +98,7 @@ const ResetPassword = () => {
                         onClick={handleClickShowPassword}
                         size="large"
                       >
-                        {validatePassword.showPassword ? (
+                        {authValidate.showPassword ? (
                           <VisibilityOff />
                         ) : (
                           <Visibility />
@@ -130,20 +114,18 @@ const ResetPassword = () => {
                 variant="outlined"
                 label="Confirm Password"
                 name="confirmPassword"
-                type={
-                  validatePassword.showConfirmPassword ? "text" : "password"
-                }
+                type={authValidate.showConfirmPassword ? "text" : "password"}
                 placeholder="Password"
-                value={validatePassword.confirmPassword}
+                value={authValidate.confirmPassword}
                 onChange={onHandleChangeInput}
                 helperText={
-                  validatePassword.error.confirmPassword.message ||
-                  (!validatePassword.isMatch &&
+                  authValidate.error.confirmPassword.message ||
+                  (!authValidate.isMatch &&
                     "Password and Confirm Password does not match.")
                 }
                 error={
-                  !validatePassword.error.confirmPassword.status ||
-                  !validatePassword.isMatch
+                  !authValidate.error.confirmPassword.status ||
+                  !authValidate.isMatch
                 }
                 InputProps={{
                   endAdornment: (
@@ -152,7 +134,7 @@ const ResetPassword = () => {
                         onClick={handleClickShowConfirmPassword}
                         size="large"
                       >
-                        {validatePassword.showConfirmPassword ? (
+                        {authValidate.showConfirmPassword ? (
                           <VisibilityOff />
                         ) : (
                           <Visibility />
