@@ -1,6 +1,6 @@
 import { displayErrors } from "../../helpers/errorNotifyHelper";
 import userApiServices from "../../services/userApiService";
-import { USER_REDUX_CONSTANTS } from "../reduxConstants/userReduxConstants";
+import { setUserDetails } from "../reducers/userSlice";
 
 type UserProps = {
   id: string;
@@ -11,11 +11,7 @@ export const getUserDetails = ({ id }: UserProps) => {
     try {
       const response = await userApiServices.getUserDetails(id);
       if (response?.data?.success === true) {
-        dispatch({
-          type: USER_REDUX_CONSTANTS.GET_USER_DETAILS,
-          data: response?.data?.data,
-          status: true,
-        });
+        dispatch(setUserDetails(response?.data?.data));
         return true;
       } else return false;
     } catch (e) {

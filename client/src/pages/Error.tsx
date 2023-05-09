@@ -4,7 +4,7 @@ import BackToPage from "./BackToPage";
 
 const Error = () => {
   return (
-    <main className="flex-center flex-column p-50 text-center">
+    <main className="flex-center-15 flex-column p-50 text-center">
       <img src={Oops} alt="Oops!" className="mw-mobile" />
       <h1 className="xxx-large">Oops!</h1>
       <p className="mw-mobile">

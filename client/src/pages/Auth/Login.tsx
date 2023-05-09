@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { FormControl, IconButton, InputAdornment } from "@mui/material";
 import SignIn from "../../assets/images/backgrounds/Sign-In.svg";
 import AuthTemplate from "./authTemplate/AuthTemplate";
@@ -7,72 +6,50 @@ import Input from "../../components/input/Input";
 import { isEmail, passwordValidate } from "../../helpers/validationHelper";
 import { NavLink, useNavigate } from "react-router-dom";
 import { loginUser } from "../../store/actions/authAction";
-import { useAppDispatch } from "../../app/hook";
+import { useAppDispatch, useAppSelector } from "../../app/hook";
 import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
+import {
+  setErrorStatus,
+  setInputValues,
+  showPassword,
+} from "../../store/reducers/authValidateSlice";
 
 const Login = () => {
-  const [loginForm, setLoginForm] = useState({
-    email: "",
-    password: "",
-    error: {
-      email: {
-        status: true,
-        message: ``,
-      },
-      password: {
-        status: true,
-        message: ``,
-      },
-    },
-    showPassword: false,
-  });
+  const authValidate: Record<string, any> = useAppSelector(
+    ({ authValidate }: Record<string, any>) => authValidate ?? {}
+  );
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const onHandleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setLoginForm((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    dispatch(setInputValues({ name, value }));
   };
 
   const handleClickShowPassword = () => {
-    setLoginForm((prevState) => ({
-      ...prevState,
-      showPassword: !loginForm.showPassword,
-    }));
+    dispatch(showPassword(""));
   };
 
   const onClickLogin = async () => {
-    const isEmailValid = isEmail("email", loginForm.email);
+    const isEmailValid = isEmail("email", authValidate.email);
     const isPasswordValid = passwordValidate(
       "password",
-      loginForm.password,
+      authValidate.password,
       true
     );
 
-    setLoginForm((prevState) => ({
-      ...prevState,
-      error: {
-        email: isEmailValid,
-        password: isPasswordValid,
-      },
-    }));
+    dispatch(setErrorStatus({ isEmailValid, isPasswordValid }));
 
     if (isEmailValid.status && isPasswordValid.status) {
       const response = await dispatch(
         loginUser(
-          { email: loginForm.email, password: loginForm.password },
+          { email: authValidate.email, password: authValidate.password },
           navigate
         )
       );
       if (!response) {
-        setLoginForm((prevState) => ({
-          ...prevState,
-          password: "",
-        }));
+        dispatch(setInputValues({ name: "password", value: "" }));
       }
     }
   };
@@ -100,10 +77,10 @@ const Login = () => {
               name="email"
               type="email"
               placeholder="Email"
-              value={loginForm.email}
+              value={authValidate.email}
               onChange={onHandleChangeInput}
-              helperText={loginForm.error.email.message}
-              error={!loginForm.error.email.status}
+              helperText={authValidate.error.email.message}
+              error={!authValidate.error.email.status}
             />
           </FormControl>
           <FormControl>
@@ -111,17 +88,17 @@ const Login = () => {
               variant="outlined"
               label="Password"
               name="password"
-              type={loginForm.showPassword ? "text" : "password"}
+              type={authValidate.showPassword ? "text" : "password"}
               placeholder="Password"
-              value={loginForm.password}
+              value={authValidate.password}
               onChange={onHandleChangeInput}
-              helperText={loginForm.error.password.message}
-              error={!loginForm.error.password.status}
+              helperText={authValidate.error.password.message}
+              error={!authValidate.error.password.status}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton onClick={handleClickShowPassword} size="large">
-                      {loginForm.showPassword ? (
+                      {authValidate.showPassword ? (
                         <VisibilityOff />
                       ) : (
                         <Visibility />

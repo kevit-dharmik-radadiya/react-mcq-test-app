@@ -4,7 +4,7 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import ApiService from "../../services/apiService";
 import { QUIZ_URLS } from "../../constants/urlConstants";
-import PlaceholderLoader from "../../components/PlaceholderLoader/PlaceholderLoader";
+import SubmissionsSkeleton from "./SubmissionsSkeleton";
 
 const Submissions = () => {
   const [score, setScore] = useState([]);
@@ -24,23 +24,9 @@ const Submissions = () => {
       <Box className="submissions-content">
         {score.length <= 0 ? (
           <>
-            <PlaceholderLoader
-              iteration={3}
-              boxWidth="270px"
-              boxHeight="133px"
-              canWidth={270}
-              canHeight={133}
-              boxShadow={true}
-            >
-              <rect x="20" y="27" rx="5" ry="5" width="130" height="20" />
-              <rect x="20" y="55" rx="5" ry="5" width="50" height="22" />
-              <circle cx="215" cy="49" r="35" />
-              <rect x="20" y="85" rx="3" ry="3" width="17" height="20" />
-              <rect x="46" y="85" rx="3" ry="3" width="17" height="20" />
-              <rect x="70" y="85" rx="3" ry="3" width="34" height="20" />
-              <rect x="195" y="92" rx="3" ry="3" width="17" height="20" />
-              <rect x="220" y="92" rx="3" ry="3" width="17" height="20" />
-            </PlaceholderLoader>
+            <SubmissionsSkeleton />
+            <SubmissionsSkeleton />
+            <SubmissionsSkeleton />
           </>
         ) : (
           score.map((item: any) => {

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import AuthTemplate from "./authTemplate/AuthTemplate";
 import { FormControl } from "@mui/material";
 import Input from "../../components/input/Input";
@@ -7,31 +6,32 @@ import { isEmail } from "../../helpers/validationHelper";
 import { forgotPassword } from "../../store/actions/authAction";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
+import { useAppDispatch, useAppSelector } from "../../app/hook";
+import {
+  setErrorStatus,
+  setInputValues,
+} from "../../store/reducers/authValidateSlice";
 
 const ForgotPassword = () => {
-  const [validEmail, setValidEmail] = useState({
-    email: "",
-    error: {
-      status: true,
-      message: ``,
-    },
-  });
+  const authValidate: Record<string, any> = useAppSelector(
+    ({ authValidate }: Record<string, any>) => authValidate ?? {}
+  );
+
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const emailText = e.target.value;
-    setValidEmail({ ...validEmail, email: emailText });
+  const onChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    dispatch(setInputValues({ name, value }));
   };
 
   const onClickForgotPassword = async () => {
-    const isEmailValid = isEmail("email", validEmail.email);
-    setValidEmail((prevState) => ({
-      ...prevState,
-      error: isEmailValid,
-    }));
+    const isEmailValid = isEmail("email", authValidate.email);
+
+    dispatch(setErrorStatus({ isEmailValid }));
 
     if (isEmailValid.status) {
-      await forgotPassword(validEmail.email?.trim(), () =>
+      await forgotPassword(authValidate.email?.trim(), () =>
         navigate(ROUTE_CONSTANTS_VARIABLE.LOGIN)
       );
     }
@@ -65,11 +65,11 @@ const ForgotPassword = () => {
                 name="email"
                 type="email"
                 placeholder="Email"
-                value={validEmail.email}
+                value={authValidate.email}
                 onChange={onChangeEmail}
                 onKeyUp={onEnterKeyUp}
-                helperText={validEmail.error.message}
-                error={!validEmail.error.status}
+                helperText={authValidate.error.email.message}
+                error={!authValidate.error.email.status}
               />
             </FormControl>
           </div>

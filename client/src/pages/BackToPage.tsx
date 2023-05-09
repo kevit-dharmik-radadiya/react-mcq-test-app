@@ -9,7 +9,7 @@ interface BackButtonProps extends ButtonProps {
 
 const BackToPage: React.FC<BackButtonProps> = ({ to, text }) => {
   return (
-    <div className="flex-center gap-0 my-2 ">
+    <div className="flex-center my-2 ">
       <IconButton
         color="primary"
         aria-label="Left"

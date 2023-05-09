@@ -7,13 +7,13 @@ import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
 
 const Home = () => {
   const authStatus: boolean = useAppSelector(
-    ({ authReducer }: Record<string, any>) => authReducer?.authStatus ?? false
+    ({ auth }: Record<string, any>) => auth?.authStatus ?? false
   );
 
   return (
-    <div className="flex-center mh-100">
-      <div className="flex-center flex-column mw-md text-center mx-auto p-24">
-        <div className="flex-center">
+    <div className="flex-center-15 mh-100">
+      <div className="flex-center-15 flex-column mw-md text-center mx-auto p-24">
+        <div className="flex-center-15">
           <img src={CompanyLogo} alt="Company Logo" width="50px" />
           <h1 className="text-primary xxx-large">QuickQuiz</h1>
         </div>

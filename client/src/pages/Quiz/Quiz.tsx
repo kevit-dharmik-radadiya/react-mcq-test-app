@@ -99,7 +99,10 @@ const Quiz = () => {
           onChange={handleChange}
         >
           {languages.map((language) => (
-            <MenuItem key={language._id} value={language._id}>
+            <MenuItem
+              key={language._id}
+              value={language.language.toLowerCase()}
+            >
               {language.language}
             </MenuItem>
           ))}

@@ -26,7 +26,7 @@ interface Props {
 
 const Sidebar = (props: Props) => {
   const userDetails: Record<string, any> = useAppSelector(
-    ({ userReducer }: Record<string, any>) => userReducer?.userDetails ?? {}
+    ({ user }: Record<string, any>) => user?.userDetails ?? {}
   );
 
   const { window, drawerWidth, mobileOpen, handleDrawerToggle } = props;

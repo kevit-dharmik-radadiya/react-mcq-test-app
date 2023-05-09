@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
-import axios, { AxiosError, AxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { getAuthTokenFromLocalStorage } from "../helpers/localStorageHelper";
 import authApiServices from "./authApiServices";
 import { store } from "../app/store";
-import { AUTH_REDUX_CONSTANTS } from "../store/reduxConstants/authReduxConstants";
 import { errorNotification } from "../helpers/notifyHelper";
+import { login } from "../store/reducers/authSlice";
 
 const instance = axios.create({
   timeout: 10000,
@@ -75,18 +75,15 @@ instance.interceptors.response.use(
         try {
           const response: any = await authApiServices.logoutUser();
           if (response.status === 200) {
+            store.dispatch(login(false));
             store.dispatch({
-              type: AUTH_REDUX_CONSTANTS.LOGOUT_USER_ACTION,
-            });
-            store.dispatch({
-              type: AUTH_REDUX_CONSTANTS.CHANGE_AUTH_STATUS,
-              status: false,
+              type: "LOGOUT_USER",
             });
           }
         } catch (e) {
           if (axios.isAxiosError(e)) {
             store.dispatch({
-              type: AUTH_REDUX_CONSTANTS.LOGOUT_USER_ACTION,
+              type: "LOGOUT_USER",
             });
             if (e.message !== "Previous same call cancellation") {
               errorNotification(

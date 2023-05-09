@@ -1,4 +1,3 @@
-import { AUTH_REDUX_CONSTANTS } from "../reduxConstants/authReduxConstants";
 import { displayErrors } from "../../helpers/errorNotifyHelper";
 import authApiServices from "../../services/authApiServices";
 import {
@@ -7,6 +6,8 @@ import {
 } from "../../helpers/localStorageHelper";
 import { successNotification } from "../../helpers/notifyHelper";
 import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
+import { login } from "../reducers/authSlice";
+import { resetAuthStates } from "../reducers/authValidateSlice";
 
 type LoginUserProps = {
   email: string;
@@ -29,10 +30,7 @@ export const loginUser = (
         saveAuthTokenToLocalStorage(token);
         saveUserIDToLocalStorage(_id);
         successNotification(response?.data?.message ?? "Login successfully");
-        dispatch({
-          type: AUTH_REDUX_CONSTANTS.CHANGE_AUTH_STATUS,
-          status: true,
-        });
+        dispatch(login(true));
         navigate(ROUTE_CONSTANTS_VARIABLE.DASHBOARD);
         return true;
       } else return false;
@@ -100,8 +98,10 @@ export const logOutUser = (navigate: any) => {
       //     response.data?.message || "Logged out successfully."
       //   );
       // }
+      dispatch(resetAuthStates());
+      dispatch(login(false));
       dispatch({
-        type: AUTH_REDUX_CONSTANTS.LOGOUT_USER_ACTION,
+        type: "LOGOUT_USER",
       });
       navigate(ROUTE_CONSTANTS_VARIABLE.LOGIN);
       successNotification("Logged out successfully.");

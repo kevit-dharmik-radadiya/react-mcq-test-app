@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import SkeletonLoader from "../../../components/SkeletonLoader/SkeletonLoader";
 
-const QuizSkeleton = () => {
+const QuizBeganSkeleton = () => {
   return (
     <Box
       sx={{
@@ -60,4 +60,4 @@ const QuizSkeleton = () => {
   );
 };
 
-export default QuizSkeleton;
+export default QuizBeganSkeleton;
