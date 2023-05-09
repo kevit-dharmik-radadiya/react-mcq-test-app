@@ -115,7 +115,7 @@
   width: 100%;
 }
 
-.w-auto{
+.w-auto {
   width: auto;
 }
 
@@ -136,7 +136,7 @@
   margin: 0;
 }
 
-.m-1{
+.m-1 {
   margin: 0.5rem !important;
 }
 
@@ -146,6 +146,10 @@
 
 .mx-1 {
   margin: 0 0.25rem 0 0.25rem;
+}
+
+.mr-1 {
+  margin-right: 0.25rem;
 }
 
 .mx-2 {
@@ -233,6 +237,14 @@
   gap: 0 !important;
 }
 
+.align-items-center {
+  align-items: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
 // Toast
 
 .toast-success {
@@ -249,6 +261,10 @@
 
 // Other
 
+.lh-0 {
+  line-height: 0;
+}
+
 .position-relative {
   position: relative;
 }
@@ -258,6 +274,15 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.text-ellipsis-3 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: normal;
 }
 
 @media screen and (max-width: 992px) {
