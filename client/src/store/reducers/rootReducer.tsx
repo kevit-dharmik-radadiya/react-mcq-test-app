@@ -5,6 +5,7 @@ import authReducer from "./authSlice";
 import authValidateReducer from "./authValidateSlice";
 import userReducer from "./userSlice";
 import quizReducer from "./quizSlice";
+import modalReducer from "./modalSlice";
 import {
   clearAuthTokenFromLocalStorage,
   clearUserIDFromLocalStorage,
@@ -21,6 +22,7 @@ const appReducer = combineReducers({
   authValidate: authValidateReducer,
   user: userReducer,
   quiz: quizReducer,
+  modal: modalReducer,
 });
 
 const rootReducer = (state: any, action: any) => {

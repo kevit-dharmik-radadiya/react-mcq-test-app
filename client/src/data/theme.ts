@@ -189,8 +189,11 @@ export const theme = createTheme({
             background:
               "linear-gradient(90deg,transparent,#00a78321,transparent)",
           },
+          "&>*": {
+            visibility: "unset",
+          },
         },
       },
-    },
+    }
   },
 });

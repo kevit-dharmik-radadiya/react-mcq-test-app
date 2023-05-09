@@ -45,7 +45,7 @@ const AuthTemplate = (props: AuthTemplateProps) => {
 
   return (
     <div className="auth grid grid-lg-6 grid-md-12 h-100">
-      <div className="auth_left-side flex-center p-50">
+      <div className="auth_left-side flex-center-15 p-50">
         <div className="company-logo cursor-pointer" onClick={handleClick}>
           <img src={CompanyLogo} alt="Company Logo" width="90px" />
         </div>
@@ -78,7 +78,7 @@ const AuthTemplate = (props: AuthTemplateProps) => {
           )}
         </div>
       </div>
-      <div className="auth_right-side flex-center flex-column bg-primary-light d-md-none p-50">
+      <div className="auth_right-side flex-center-15 flex-column bg-primary-light d-md-none p-50">
         <div className="text-center text-light-b">
           <h4 className="large m-0">{imageTitle}</h4>
           <p>{imageSubTitle}</p>

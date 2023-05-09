@@ -9,7 +9,7 @@ import ApiService from "../../../services/apiService";
 import { QUIZ_URLS } from "../../../constants/urlConstants";
 import { ROUTE_CONSTANTS_VARIABLE } from "../../../constants/routeConstants";
 import RadioButtonGroup from "../../../components/RadioButtonGroup/RadioButtonGroup";
-import QuizSkeleton from "./QuizSkeleton";
+import QuizBeganSkeleton from "./QuizBeganSkeleton";
 
 interface QuizData {
   questionId: string;
@@ -103,7 +103,7 @@ const QuizBegan = () => {
     <div className="quiz-began p-24">
       <h2 className="text-primary mt-0">General Knowledge</h2>
       {quizDetails[0]._id === "0" ? (
-        <QuizSkeleton />
+        <QuizBeganSkeleton />
       ) : (
         <div className="quiz-began_box mt-3">
           <div className="question text-light-b f-500">

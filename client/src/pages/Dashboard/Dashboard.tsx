@@ -26,7 +26,7 @@ const Dashboard = () => {
           </div>
           <NavLink
             to={ROUTE_CONSTANTS_VARIABLE.QUIZ}
-            className="text-light-b medium text-decoration-none"
+            className="text-light-b medium text-decoration-none text-hover-underline"
           >
             Start Now
           </NavLink>
@@ -39,7 +39,7 @@ const Dashboard = () => {
           </div>
           <NavLink
             to={ROUTE_CONSTANTS_VARIABLE.SUBMISSIONS}
-            className="text-light-b medium text-decoration-none"
+            className="text-light-b medium text-decoration-none text-hover-underline"
           >
             Find Now
           </NavLink>

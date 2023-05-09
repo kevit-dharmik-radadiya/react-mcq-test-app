@@ -31,27 +31,6 @@
       p {
         line-height: 40px;
       }
-      a {
-        position: relative;
-        width: max-content;
-        &:after {
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: -2px;
-          width: 100%;
-          height: 3px;
-          background-color: $primary-color;
-          transform: scaleX(0);
-          transform-origin: right;
-          transition: transform 0.75s ease-in-out;
-        }
-        &:hover:after {
-          transform: scaleX(1);
-          transform-origin: left;
-          transition: transform 0.25s ease-in-out;
-        }
-      }
       .corner-img {
         position: absolute;
         right: -90px;
