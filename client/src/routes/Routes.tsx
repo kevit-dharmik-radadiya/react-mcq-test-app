@@ -14,6 +14,7 @@ import Submissions from "../pages/Submissions/Submissions";
 import Quiz from "../pages/Quiz/Quiz";
 import QuizBegan from "../pages/Quiz/QuizBegan/QuizBegan";
 import QuizResult from "../pages/Quiz/QuizResult/QuizResult";
+import QuizList from "../pages/Quiz/QuizList/QuizList";
 
 export const router = createBrowserRouter([
   {
@@ -74,12 +75,25 @@ export const router = createBrowserRouter([
             ),
           },
           {
-            path: ":id",
-            element: (
-              <ProtectedRoute>
-                <QuizBegan />
-              </ProtectedRoute>
-            ),
+            path: ":language",
+            children: [
+              {
+                index: true,
+                element: (
+                  <ProtectedRoute>
+                    <QuizList />
+                  </ProtectedRoute>
+                ),
+              },
+              {
+                path: ":id",
+                element: (
+                  <ProtectedRoute>
+                    <QuizBegan />
+                  </ProtectedRoute>
+                ),
+              },
+            ],
           },
           {
             path: "result",

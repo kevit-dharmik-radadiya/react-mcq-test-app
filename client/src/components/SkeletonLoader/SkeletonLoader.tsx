@@ -1,4 +1,5 @@
 import { Skeleton, SxProps } from "@mui/material";
+import { ReactNode } from "react";
 
 interface MyComponentProps {
   iteration?: number;
@@ -7,6 +8,7 @@ interface MyComponentProps {
   variant?: "rounded" | "text" | "rectangular" | "circular";
   className?: string;
   sx?: SxProps;
+  children?: ReactNode;
 }
 
 const SkeletonLoader = (props: MyComponentProps) => {
@@ -17,7 +19,9 @@ const SkeletonLoader = (props: MyComponentProps) => {
     variant = "rounded",
     className,
     sx,
+    children,
   } = props;
+  
   const iterationCount: number[] = Array.from(
     { length: iteration },
     (_, index: number) => index
@@ -35,7 +39,9 @@ const SkeletonLoader = (props: MyComponentProps) => {
               variant={variant}
               className={className}
               sx={sx}
-            />
+            >
+              {children}
+            </Skeleton>
           );
         })}
       </>
@@ -49,7 +55,9 @@ const SkeletonLoader = (props: MyComponentProps) => {
       variant={variant}
       className={className}
       sx={sx}
-    />
+    >
+      {children}
+    </Skeleton>
   );
 };
 
