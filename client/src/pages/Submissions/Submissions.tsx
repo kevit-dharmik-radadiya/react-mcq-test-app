@@ -5,6 +5,7 @@ import "react-circular-progressbar/dist/styles.css";
 import ApiService from "../../services/apiService";
 import { QUIZ_URLS } from "../../constants/urlConstants";
 import SubmissionsSkeleton from "./SubmissionsSkeleton";
+import ProgressbarProvider from "../../components/ProgressbarProvider/ProgressbarProvider";
 
 const Submissions = () => {
   const [score, setScore] = useState([]);
@@ -18,7 +19,7 @@ const Submissions = () => {
   }, []);
 
   return (
-    <section className="submissions p-24">
+    <section className="submissions">
       <h2 className="text-light-b mt-0">Hey Buddy!</h2>
       <p className="text-secondary">Find your Submissions here</p>
       <Box className="submissions-content">
@@ -51,18 +52,24 @@ const Submissions = () => {
                   <p className="text-secondary mt-2 small">{formattedDate}</p>
                 </div>
                 <Box className="card-progress">
-                  <CircularProgressbar
-                    value={item.scoreDetails.percentage}
-                    text={`${item.scoreDetails.percentage}%`}
-                    strokeWidth={10}
-                    styles={buildStyles({
-                      textSize: "22px",
-                      pathTransitionDuration: 0.5,
-                      pathColor: `#00a783`,
-                      textColor: "#00a783",
-                      trailColor: "#00a78321",
-                    })}
-                  />
+                  <ProgressbarProvider
+                    values={[0, item.scoreDetails.percentage]}
+                  >
+                    {(percentage) => (
+                      <CircularProgressbar
+                        value={percentage}
+                        text={`${percentage}%`}
+                        strokeWidth={10}
+                        styles={buildStyles({
+                          textSize: "22px",
+                          pathTransitionDuration: 1,
+                          pathColor: `#00a783`,
+                          textColor: "#00a783",
+                          trailColor: "#00a78321",
+                        })}
+                      />
+                    )}
+                  </ProgressbarProvider>
                   <p className="text-primary f-500">
                     {item.scoreDetails.score}/{item.scoreDetails.testScore}
                   </p>
