@@ -30,9 +30,10 @@ const SkeletonLoader = (props: MyComponentProps) => {
   if (iteration) {
     return (
       <>
-        {iterationCount.map(() => {
+        {iterationCount.map((e) => {
           return (
             <Skeleton
+              key={e}
               animation="wave"
               width={width}
               height={height}

@@ -66,7 +66,6 @@ const authValidateSlice = createSlice({
   initialState: initialValidState,
   reducers: {
     setErrorStatus: (state, action) => {
-      console.log(action);
       const {
         isEmailValid,
         isPasswordValid,

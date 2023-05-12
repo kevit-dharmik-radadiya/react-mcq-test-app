@@ -44,7 +44,7 @@ const Quiz = () => {
   };
 
   return (
-    <section className="quiz p-24">
+    <section className="quiz">
       <h2 className="text-primary my-2 mt-0">Welcome to the Quiz!</h2>
       <p className="text-secondary mw-md">
         This exam is designed to test your understanding of the subject matter

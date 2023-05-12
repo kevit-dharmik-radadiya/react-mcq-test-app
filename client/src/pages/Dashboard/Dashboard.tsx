@@ -12,7 +12,7 @@ const Dashboard = () => {
   );
 
   return (
-    <section className="dashboard p-24">
+    <section className="dashboard">
       <div>
         <p className="title bold m-0">Hey!</p>
         <h2 className="text-primary xxx-large m-0">{userDetails.userName}</h2>

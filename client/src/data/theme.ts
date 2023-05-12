@@ -123,7 +123,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           color: colorPalette.secondary,
-          margin: "15px 0",
+          margin: "15px auto",
           borderRadius: "5px",
           "&.active": {
             backgroundColor: colorPalette.hover,
@@ -172,10 +172,8 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           "&.MuiDrawer-paper": {
-            backgroundImage: `url(${Sidebar})`,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "bottom",
-            backgroundSize: "contain",
+            borderRight: "none",
+            transition: "all 0.3s",
           },
         },
       },
@@ -194,6 +192,6 @@ export const theme = createTheme({
           },
         },
       },
-    }
+    },
   },
 });

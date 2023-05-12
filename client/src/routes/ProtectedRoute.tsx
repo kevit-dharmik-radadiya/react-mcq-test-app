@@ -6,8 +6,8 @@ interface Props {
   children?: ReactNode;
 }
 
-export const ProtectedRoute = ({ children, ...props }: Props) => {
-  let location = useLocation();
+export const ProtectedRoute = ({ children }: Props) => {
+  const location = useLocation();
   const authStatus: boolean = useAppSelector(
     ({ auth }: Record<string, any>) => auth?.authStatus ?? false
   );

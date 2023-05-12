@@ -18,7 +18,6 @@ const CustomModal = (props: ModalProps) => {
     ({ modal }: Record<string, any>) => modal ?? {}
   );
 
-  console.log({ modal });
   return (
     <Modal
       aria-labelledby="modal-title"

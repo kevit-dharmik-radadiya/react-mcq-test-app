@@ -2,7 +2,7 @@ import React from "react";
 
 const QuizResult = () => {
   return (
-    <section className="quiz-result p-24">
+    <section className="quiz-result">
       <div className="text-center">
         <p className="text-light-b large bold">Quiz Result</p>
         <h2 className="text-primary xxx-large">Congratulations!</h2>

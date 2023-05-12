@@ -100,7 +100,7 @@ const QuizBegan = () => {
   };
 
   return (
-    <div className="quiz-began p-24">
+    <div className="quiz-began">
       <h2 className="text-primary mt-0">General Knowledge</h2>
       {quizDetails[0]._id === "0" ? (
         <QuizBeganSkeleton />
