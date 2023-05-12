@@ -1,31 +1,66 @@
 .layout {
-  .drawer-menu_icon {
+  .drawer-header {
     position: fixed;
-    top: 24px;
-    right: 24px;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 50%;
-    transition: all 0.3s ease-in-out;
-    line-height: 0;
-    &:hover {
-      background-color: $bg-light-color;
+    top: 15px;
+    border-radius: 10px;
+    background-color: transparent;
+    box-shadow: none;
+    transition: all 0.3s;
+    &.active {
+      box-shadow: -35px 35px 45px 24px #ffffff;
+    }
+    .drawer-header_control {
+      position: fixed;
+      top: 18px;
+      right: 24px;
+      background-color: $white-color;
+      box-shadow: 0 0 10px $shadow-color;
+      padding: 10px 15px;
+      border-radius: 10px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      min-height: 60px;
+      .control-icon {
+        cursor: pointer;
+        &:hover {
+          .svg-icon {
+            fill: #00a783 !important;
+          }
+        }
+      }
+      .drawer-avatar {
+        display: none;
+      }
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      .breadcrumb-title {
+        font-size: $title;
+        font-weight: 500;
+      }
     }
   }
+
   .main {
     -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
-    padding: 24px;
-    max-width: 1320px;
+    padding: 15px 24px 24px;
+    margin-top: 80px;
+    height: calc(100vh - 82px);
   }
   @media (min-width: 900px) {
+    .drawer-avatar {
+      display: block !important;
+    }
     .drawer-menu_icon {
       display: none;
     }
     .sidebar {
-      width: 240px;
       -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
       flex-shrink: 0;

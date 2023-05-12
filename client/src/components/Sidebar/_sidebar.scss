@@ -1,15 +1,91 @@
 .sidebar {
-  .sidebar-drawer {
+  transition: all 0.3s;
+}
+.sidebar-drawer {
+  .drawer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 15px 24px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px $shadow-color;
+    .company {
+      margin: 20px 0;
+      position: relative;
+      .svg-icon {
+        margin-right: 50px;
+        transform: rotate(105deg);
+        transition: all 0.3s;
+      }
+      .company-text {
+        position: absolute;
+        bottom: 21px;
+        font-size: 36px;
+        right: 40px;
+        animation: fadeInRight 0.3s ease-in-out;
+      }
+    }
     .avatar {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 0 12px 0;
       margin: 25px 0 25px;
       .avatar-icon {
+        margin: 5px auto;
         width: 45px;
         height: 45px;
       }
     }
+    .drawer-menu {
+      flex: 1 1 0;
+      overflow: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    .collapse {
+      position: absolute;
+      top: 100px;
+      right: 10px;
+      padding: 4px;
+      font-size: 1rem;
+      border: 2px solid $primary-color;
+      background-color: $white-color;
+      &:hover {
+        background-color: $primary-color;
+        color: $white-color;
+      }
+    }
+    &.drawer-collapse {
+      .company {
+        .svg-icon {
+          transform: rotate(0deg);
+        }
+      }
+      .avatar-icon {
+        width: 35px;
+        height: 35px;
+      }
+      .MuiListItem-root {
+        width: max-content;
+        .MuiListItemButton-root {
+          padding: 9px;
+          .MuiListItemIcon-root {
+            min-width: unset;
+          }
+        }
+      }
+      .MuiButtonBase-root,
+      .MuiListItem-root {
+        border-radius: 50%;
+      }
+    }
+  }
+}
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(70px);
+  }
+  to {
+    opacity: 1;
   }
 }

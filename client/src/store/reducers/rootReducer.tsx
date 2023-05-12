@@ -6,6 +6,7 @@ import authValidateReducer from "./authValidateSlice";
 import userReducer from "./userSlice";
 import quizReducer from "./quizSlice";
 import modalReducer from "./modalSlice";
+import layoutReducer from "./layoutSlice";
 import {
   clearAuthTokenFromLocalStorage,
   clearUserIDFromLocalStorage,
@@ -20,6 +21,7 @@ const persistConfig = {
 const appReducer = combineReducers({
   auth: authReducer,
   authValidate: authValidateReducer,
+  layout: layoutReducer,
   user: userReducer,
   quiz: quizReducer,
   modal: modalReducer,

@@ -173,7 +173,7 @@ export const theme = createTheme({
         root: {
           "&.MuiDrawer-paper": {
             borderRight: "none",
-            transition: "all 0.3s",
+            transition: "all 225ms cubic-bezier(0, 0, 0.2, 1) 0ms !important",
           },
         },
       },
