@@ -1,6 +1,12 @@
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+/**
+ * These are TypeScript functions that display toast notifications with different types (success,
+ * error, warning) and styles.
+ * @param {string} message - The message to be displayed in the notification.
+ * @returns All three functions are returning `false`.
+ */
 export const successNotification = (message: string) => {
   toast(message, {
     type: 'success',
