@@ -1,21 +1,21 @@
-import { combineReducers } from "redux";
-import storage from "redux-persist/lib/storage";
-import { persistReducer } from "redux-persist";
-import authReducer from "./authSlice";
-import authValidateReducer from "./authValidateSlice";
-import userReducer from "./userSlice";
-import quizReducer from "./quizSlice";
-import modalReducer from "./modalSlice";
-import layoutReducer from "./layoutSlice";
+import { combineReducers } from '@reduxjs/toolkit';
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
+import authReducer from './authSlice';
+import authValidateReducer from './authValidateSlice';
+import userReducer from './userSlice';
+import quizReducer from './quizSlice';
+import modalReducer from './modalSlice';
+import layoutReducer from './layoutSlice';
 import {
   clearAuthTokenFromLocalStorage,
   clearUserIDFromLocalStorage,
-} from "../../helpers/localStorageHelper";
+} from '../../helpers/localStorageHelper';
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage,
-  whitelist: ["auth"],
+  whitelist: ['auth'],
 };
 
 const appReducer = combineReducers({
@@ -28,11 +28,11 @@ const appReducer = combineReducers({
 });
 
 const rootReducer = (state: any, action: any) => {
-  if (action.type === "LOGOUT_USER") {
+  if (action.type === 'LOGOUT_USER') {
     clearAuthTokenFromLocalStorage();
     clearUserIDFromLocalStorage();
 
-    sessionStorage.removeItem("persist:allFilters");
+    sessionStorage.removeItem('persist:allFilters');
     localStorage.clear();
 
     return appReducer(state, action);
@@ -42,4 +42,5 @@ const rootReducer = (state: any, action: any) => {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+type RootState = ReturnType<typeof appReducer>;
 export default persistedReducer;

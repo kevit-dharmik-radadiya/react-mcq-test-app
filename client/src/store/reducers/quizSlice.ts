@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-interface initialReducerProps {
+interface InitialReducerProps {
   quizDetails: {
     _id: string;
     question: string;
@@ -9,23 +9,26 @@ interface initialReducerProps {
   }[];
 }
 
-const initialQuizState: initialReducerProps = {
+const initialQuizState: InitialReducerProps = {
   quizDetails: [
     {
-      _id: "0",
-      question: "Where?",
+      _id: '0',
+      question: 'Where?',
       number: 1,
-      options: [{ _id: "0", text: "Choose" }],
+      options: [{ _id: '0', text: 'Choose' }],
     },
   ],
 };
 
 const quizSlice = createSlice({
-  name: "quiz",
+  name: 'quiz',
   initialState: initialQuizState,
   reducers: {
-    setQuizDetails: (state, action: Record<string, any>) => {
-      state.quizDetails = action?.payload;
+    setQuizDetails: (
+      state,
+      action: PayloadAction<{ quizDetails: InitialReducerProps['quizDetails'] }>
+    ) => {
+      state.quizDetails = action?.payload.quizDetails;
     },
   },
 });

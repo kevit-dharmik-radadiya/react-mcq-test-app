@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface initialReducerProps {
+interface InitialReducerProps {
   mobileOpen: boolean;
   drawerCollapse: boolean;
 }
 
-const initialLayoutState: initialReducerProps = {
+const initialLayoutState: InitialReducerProps = {
   mobileOpen: false,
   drawerCollapse: false,
 };
