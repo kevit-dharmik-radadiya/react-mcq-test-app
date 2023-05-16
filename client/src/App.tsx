@@ -1,11 +1,11 @@
-import { RouterProvider } from "react-router-dom";
-import { router } from "./routes/Routes";
-import { ThemeProvider } from "@emotion/react";
-import { theme } from "./data/theme";
-import { Provider } from "react-redux";
-import { persistStoreData, store } from "./app/store";
-import { PersistGate } from "redux-persist/integration/react";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer } from 'react-toastify';
+import { RouterProvider } from 'react-router-dom';
+import { ThemeProvider } from '@emotion/react';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStoreData, store } from './app/store';
+import theme from './data/theme';
+import router from './routes/Routes';
 
 function App() {
   return (

@@ -1,12 +1,13 @@
-import { Outlet, useLocation } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../app/hook";
-import Layout from "../components/Layout/Layout";
-import { useEffect } from "react";
-import { resetAuthStates } from "../store/reducers/authValidateSlice";
+import { Outlet, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../app/hook';
+import Layout from '../components/Layout/Layout';
+import { resetAuthStates } from '../store/reducers/authValidateSlice';
+import { RootState } from '../app/store';
 
 const Root = () => {
   const authStatus: boolean = useAppSelector(
-    ({ auth }: Record<string, any>) => auth?.authStatus ?? false
+    ({ auth }: RootState) => auth?.authStatus ?? false
   );
 
   const dispatch = useAppDispatch();
@@ -14,14 +15,14 @@ const Root = () => {
 
   useEffect(() => {
     if (
-      location.pathname === "/login" ||
-      location.pathname === "/register" ||
-      location.pathname === "/forgot-password" ||
-      location.pathname === "/reset-password"
+      location.pathname === '/login' ||
+      location.pathname === '/register' ||
+      location.pathname === '/forgot-password' ||
+      location.pathname === '/reset-password'
     ) {
       dispatch(resetAuthStates());
     }
-  }, [location]);
+  }, [location, dispatch]);
 
   return (
     <>

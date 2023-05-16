@@ -1,13 +1,13 @@
-import { ArrowBackIosNew } from "@mui/icons-material";
-import { ButtonProps, IconButton } from "@mui/material";
-import { NavLink as RouterLink } from "react-router-dom";
+import { ArrowBackIosNew } from '@mui/icons-material';
+import { ButtonProps, IconButton } from '@mui/material';
+import { NavLink as RouterLink } from 'react-router-dom';
 
 interface BackButtonProps extends ButtonProps {
   to: string;
   text: string;
 }
 
-const BackToPage: React.FC<BackButtonProps> = ({ to, text }) => {
+const BackToPage = ({ to, text }: BackButtonProps) => {
   return (
     <div className="flex-center my-2 ">
       <IconButton
@@ -17,7 +17,7 @@ const BackToPage: React.FC<BackButtonProps> = ({ to, text }) => {
         to={to}
         size="small"
         sx={{
-          border: "2px solid #00a783", 
+          border: '2px solid #00a783',
         }}
       >
         <ArrowBackIosNew fontSize="inherit" />

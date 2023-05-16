@@ -1,17 +1,16 @@
-import { createTheme } from "@mui/material";
-import Sidebar from ".././assets/images/backgrounds/Sidebar.png";
+import { createTheme } from '@mui/material';
 
 const colorPalette = {
-  primary: "#00a783",
-  secondary: "#979797",
-  lightPrimary: "#00a78380",
-  white: "#FFFFFF",
-  placeholder: "#6d6b6b",
-  darkGrey: "#666666",
-  hover: "#00a78321",
+  primary: '#00a783',
+  secondary: '#979797',
+  lightPrimary: '#00a78380',
+  white: '#FFFFFF',
+  placeholder: '#6d6b6b',
+  darkGrey: '#666666',
+  hover: '#00a78321',
 };
 
-export const theme = createTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: colorPalette.primary,
@@ -23,9 +22,9 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Poppins",
+    fontFamily: 'Poppins',
     button: {
-      textTransform: "none",
+      textTransform: 'none',
     },
   },
   components: {
@@ -33,9 +32,9 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           marginRight: 0,
-          padding: "10px",
-          transition: "all 0.3s",
-          "&:hover": {
+          padding: '10px',
+          transition: 'all 0.3s',
+          '&:hover': {
             backgroundColor: colorPalette.hover,
           },
         },
@@ -44,37 +43,37 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: "5px",
-          padding: "0 24px",
-          height: "40px",
-          fontSize: "1.125rem",
-          whiteSpace: "nowrap",
-          boxShadow: "0px 0px 8px 1px rgba(0, 0, 0, 0.16)",
+          borderRadius: '5px',
+          padding: '0 24px',
+          height: '40px',
+          fontSize: '1.125rem',
+          whiteSpace: 'nowrap',
+          boxShadow: '0px 0px 8px 1px rgba(0, 0, 0, 0.16)',
         },
       },
     },
     MuiRadio: {
       styleOverrides: {
         root: {
-          padding: "6px",
+          padding: '6px',
         },
       },
     },
     MuiFormControl: {
       styleOverrides: {
         root: {
-          width: "100%",
+          width: '100%',
         },
       },
     },
     MuiFormLabel: {
       styleOverrides: {
         root: {
-          "&.Mui-focused": {
-            fontSize: "18px",
+          '&.Mui-focused': {
+            fontSize: '18px',
           },
-          "&.MuiInputLabel-shrink": {
-            fontSize: "18px",
+          '&.MuiInputLabel-shrink': {
+            fontSize: '18px',
           },
         },
       },
@@ -82,15 +81,15 @@ export const theme = createTheme({
     MuiTextField: {
       styleOverrides: {
         root: {
-          marginBottom: "20px",
+          marginBottom: '20px',
         },
       },
     },
     MuiFormControlLabel: {
       styleOverrides: {
         root: {
-          "& .MuiTypography-root": {
-            fontSize: "14px",
+          '& .MuiTypography-root': {
+            fontSize: '14px',
           },
         },
       },
@@ -98,14 +97,14 @@ export const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          borderRadius: "5px",
-          ".MuiOutlinedInput-notchedOutline": {
-            fontSize: "18px",
+          borderRadius: '5px',
+          '.MuiOutlinedInput-notchedOutline': {
+            fontSize: '18px',
           },
-          "&.Mui-error:hover .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#d32f2f",
+          '&.Mui-error:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#d32f2f',
           },
-          "&:hover .MuiOutlinedInput-notchedOutline": {
+          '&:hover .MuiOutlinedInput-notchedOutline': {
             borderColor: colorPalette.primary,
           },
         },
@@ -115,7 +114,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           margin: 0,
-          paddingTop: "5px",
+          paddingTop: '5px',
         },
       },
     },
@@ -123,12 +122,12 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           color: colorPalette.secondary,
-          margin: "15px auto",
-          borderRadius: "5px",
-          "&.active": {
+          margin: '15px auto',
+          borderRadius: '5px',
+          '&.active': {
             backgroundColor: colorPalette.hover,
             color: colorPalette.primary,
-            ".MuiListItemIcon-root svg": {
+            '.MuiListItemIcon-root svg': {
               fill: colorPalette.primary,
             },
           },
@@ -138,14 +137,14 @@ export const theme = createTheme({
     MuiListItemButton: {
       styleOverrides: {
         root: {
-          borderRadius: "5px",
-          paddingTop: "5px",
-          paddingBottom: "5px",
-          transition: "all 0.3s",
-          "&:hover": {
+          borderRadius: '5px',
+          paddingTop: '5px',
+          paddingBottom: '5px',
+          transition: 'all 0.3s',
+          '&:hover': {
             backgroundColor: colorPalette.hover,
             color: colorPalette.primary,
-            ".MuiListItemIcon-root svg": {
+            '.MuiListItemIcon-root svg': {
               fill: colorPalette.primary,
             },
           },
@@ -155,15 +154,15 @@ export const theme = createTheme({
     MuiListItemIcon: {
       styleOverrides: {
         root: {
-          minWidth: "40px",
+          minWidth: '40px',
         },
       },
     },
     MuiListItemText: {
       styleOverrides: {
         root: {
-          ".MuiTypography-root": {
-            fontWeight: "500",
+          '.MuiTypography-root': {
+            fontWeight: '500',
           },
         },
       },
@@ -171,9 +170,9 @@ export const theme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          "&.MuiDrawer-paper": {
-            borderRight: "none",
-            transition: "all 225ms cubic-bezier(0, 0, 0.2, 1) 0ms !important",
+          '&.MuiDrawer-paper': {
+            borderRight: 'none',
+            transition: 'all 225ms cubic-bezier(0, 0, 0.2, 1) 0ms !important',
           },
         },
       },
@@ -182,16 +181,18 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: colorPalette.hover,
-          transform: "scale(1)",
-          "&::after": {
+          transform: 'scale(1)',
+          '&::after': {
             background:
-              "linear-gradient(90deg,transparent,#00a78321,transparent)",
+              'linear-gradient(90deg,transparent,#00a78321,transparent)',
           },
-          "&>*": {
-            visibility: "unset",
+          '&>*': {
+            visibility: 'unset',
           },
         },
       },
     },
   },
 });
+
+export default theme;

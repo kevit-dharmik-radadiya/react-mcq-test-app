@@ -1,13 +1,14 @@
-import CompanyLogo from "../../assets/images/logos/Company.png";
-import OnlineTest from "../../assets/images/backgrounds/Online-Test.svg";
-import Button from "../../components/Button/Button";
-import { NavLink as RouterLink } from "react-router-dom";
-import { useAppSelector } from "../../app/hook";
-import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
+import { NavLink as RouterLink } from 'react-router-dom';
+import CompanyLogo from '../../assets/images/logos/Company.png';
+import OnlineTest from '../../assets/images/backgrounds/Online-Test.svg';
+import Button from '../../components/Button/Button';
+import { useAppSelector } from '../../app/hook';
+import ROUTE_CONSTANTS_VARIABLE from '../../constants/routeConstants';
+import { RootState } from '../../app/store';
 
 const Home = () => {
   const authStatus: boolean = useAppSelector(
-    ({ auth }: Record<string, any>) => auth?.authStatus ?? false
+    ({ auth }: RootState) => auth?.authStatus ?? false
   );
 
   return (
@@ -30,7 +31,7 @@ const Home = () => {
         <p className="text-secondary">
           The test is timed to add an extra element of excitement, and you can
           review your results at the end to see where you need to improve.
-          Whether you're a student preparing for an exam or just looking to
+          Whether you&apos;re a student preparing for an exam or just looking to
           brush up on your general knowledge, QuickQuiz is the perfect tool for
           you.
         </p>
