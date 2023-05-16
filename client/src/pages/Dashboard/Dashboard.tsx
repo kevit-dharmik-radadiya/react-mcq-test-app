@@ -1,14 +1,15 @@
-import { NavLink } from "react-router-dom";
-import Learning from "../../assets/images/logos/Learning.svg";
-import Submissions from "../../assets/images/logos/Submissions.svg";
-import Contact from "../../assets/images/logos/Contact.svg";
-import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
-import { useAppSelector } from "../../app/hook";
-import Hotline from "../../assets/images/logos/Hotline";
+import { NavLink } from 'react-router-dom';
+import Learning from '../../assets/images/logos/Learning.svg';
+import Submissions from '../../assets/images/logos/Submissions.svg';
+import Contact from '../../assets/images/logos/Contact.svg';
+import ROUTE_CONSTANTS_VARIABLE from '../../constants/routeConstants';
+import { useAppSelector } from '../../app/hook';
+import Hotline from '../../assets/images/logos/Hotline';
+import { RootState } from '../../app/store';
 
 const Dashboard = () => {
-  const userDetails: Record<string, any> = useAppSelector(
-    ({ user }: Record<string, any>) => user?.userDetails ?? {}
+  const userDetails = useAppSelector(
+    ({ user }: RootState) => user?.userDetails ?? {}
   );
 
   return (

@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   FormControl,
@@ -5,12 +7,10 @@ import {
   MenuItem,
   Select,
   SelectChangeEvent,
-} from "@mui/material";
-import Button from "../../components/Button/Button";
-import { useEffect, useState } from "react";
-import ApiService from "../../services/apiService";
-import { QUIZ_URLS } from "../../constants/urlConstants";
-import { useNavigate } from "react-router-dom";
+} from '@mui/material';
+import Button from '../../components/Button/Button';
+import ApiService from '../../services/apiService';
+import { QUIZ_URLS } from '../../constants/urlConstants';
 
 interface Language {
   _id: string;
@@ -18,13 +18,13 @@ interface Language {
 }
 
 const initializeValue: Language = {
-  _id: "",
-  language: "Select",
+  _id: '',
+  language: 'Select',
 };
 
 const Quiz = () => {
   const [languages, setLanguages] = useState<Language[]>([initializeValue]);
-  const [languageId, setLanguageId] = useState<string>("");
+  const [languageId, setLanguageId] = useState<string>('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const Quiz = () => {
       <h4 className="text-placeholder medium mt-4">Instructions</h4>
       <ol className="text-placeholder small">
         <li>
-          Click on the <strong className="text-primary">Let's go!</strong>{" "}
+          Click on the <strong className="text-primary">Let&apos;s go!</strong>{' '}
           button to begin the exam.
         </li>
         <li>Read each question carefully before answering.</li>
@@ -85,7 +85,7 @@ const Quiz = () => {
         Additionally, taking the exam can be a valuable learning experience as
         it can highlight areas where you need to improve your knowledge or
         understanding of the subject matter. <br />
-        <br /> So, stay focused and motivated to do your{" "}
+        <br /> So, stay focused and motivated to do your{' '}
         <strong className="text-primary">best in the exam!</strong>
       </p>
 
@@ -112,10 +112,10 @@ const Quiz = () => {
       <Box>
         <Button
           variant="contained"
-          disabled={languageId ? false : true}
+          disabled={languageId === ''}
           onClick={handleClick}
         >
-          Let's go!
+          Let&apos;s go!
         </Button>
       </Box>
     </section>

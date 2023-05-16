@@ -1,29 +1,40 @@
 import _ from 'lodash';
 import Box from '@mui/material/Box';
+import { ReactNode, useEffect, useState } from 'react';
+import {
+  AppBar,
+  Avatar,
+  Badge,
+  Breadcrumbs,
+  Toolbar,
+  Typography,
+} from '@mui/material';
+import { Notifications } from '@mui/icons-material';
+import { useLocation } from 'react-router-dom';
 import Sidebar from '../Sidebar/Sidebar';
-import { useEffect, useState } from 'react';
 import Menu from '../../assets/images/Menu';
 import Profile from '../../assets/images/Profile.png';
 import { useAppDispatch, useAppSelector } from '../../app/hook';
-import { getUserDetails } from '../../store/actions/userAction';
+import getUserDetails from '../../store/actions/userAction';
 import { getUserIDFromLocalStorage } from '../../helpers/localStorageHelper';
-import { AppBar, Avatar, Badge, Breadcrumbs, Toolbar, Typography } from '@mui/material';
 import Setting from '../../assets/images/logos/Setting';
-import { Notifications } from '@mui/icons-material';
-import { useLocation } from 'react-router-dom';
 import SIDEBAR_CONSTANTS from '../Sidebar/sidebarConstants';
 import { handleDrawerToggle } from '../../store/reducers/layoutSlice';
+import { RootState } from '../../app/store';
 
-const Layout = (props: any) => {
-  const [scrollTop, setScrollTop] = useState(0);
-  const layout: Record<string, any> = useAppSelector(
-    ({ layout }: Record<string, any>) => layout ?? {},
-  );
+interface LayoutProps {
+  children: ReactNode;
+}
+const Layout = ({ children }: LayoutProps) => {
+  const [scrollTop, setScrollTop] = useState<number>(0);
+  const layoutConfig = useAppSelector(({ layout }: RootState) => layout ?? {});
   const dispatch = useAppDispatch();
   const location = useLocation();
   const path = location.pathname;
-  const breadcrumbText = path.split('/')[1];
-  const breadcrumbIcon = SIDEBAR_CONSTANTS.filter((item) => item.name === breadcrumbText);
+  const breadcrumbText: string = path.split('/')[1];
+  const breadcrumbIcon = SIDEBAR_CONSTANTS.filter(
+    (item) => item.name === breadcrumbText
+  );
 
   useEffect(() => {
     const userID = getUserIDFromLocalStorage() ?? '';
@@ -35,7 +46,7 @@ const Layout = (props: any) => {
     setScrollTop(element.scrollTop);
   };
 
-  const drawerWidth: number = layout.drawerCollapse ? 120 : 250;
+  const drawerWidth: number = layoutConfig.drawerCollapse ? 120 : 250;
 
   return (
     <Box className="layout d-flex">
@@ -65,7 +76,9 @@ const Layout = (props: any) => {
           <Breadcrumbs aria-label="breadcrumb">
             <Typography className="breadcrumb text-secondary">
               {breadcrumbIcon[0].icon}
-              <span className="breadcrumb-title">{_.capitalize(breadcrumbText)}</span>
+              <span className="breadcrumb-title">
+                {_.capitalize(breadcrumbText)}
+              </span>
             </Typography>
           </Breadcrumbs>
         </Toolbar>
@@ -89,7 +102,7 @@ const Layout = (props: any) => {
         className="main scrollbar-hover"
         onScroll={handleScroll}
       >
-        {props.children}
+        {children}
       </Box>
     </Box>
   );

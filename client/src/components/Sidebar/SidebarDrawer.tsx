@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Box,
   Divider,
   IconButton,
@@ -10,35 +9,36 @@ import {
   ListItemText,
   Tooltip,
   Zoom,
-} from "@mui/material";
-import Company from "../../assets/images/logos/Company";
-import { useAppDispatch, useAppSelector } from "../../app/hook";
-import SIDEBAR_CONSTANTS from "./sidebarConstants";
-import LogoutIcon from "../../assets/images/sidebar/LogoutIcon";
-import { logOutUser } from "../../store/actions/authAction";
+} from '@mui/material';
+import { ArrowBackIosNew, ArrowForwardIos } from '@mui/icons-material';
+import { NavLink as RouterLink, useNavigate } from 'react-router-dom';
+import Company from '../../assets/images/logos/Company';
+import { useAppDispatch, useAppSelector } from '../../app/hook';
+import SIDEBAR_CONSTANTS from './sidebarConstants';
+import LogoutIcon from '../../assets/images/sidebar/LogoutIcon';
+import { logOutUser } from '../../store/actions/authAction';
 import {
   handleCollapse,
   handleDrawerToggle,
-} from "../../store/reducers/layoutSlice";
-import { ArrowBackIosNew, ArrowForwardIos } from "@mui/icons-material";
-import { NavLink as RouterLink, useNavigate } from "react-router-dom";
+} from '../../store/reducers/layoutSlice';
+import { RootState } from '../../app/store';
 
 const SidebarDrawer = () => {
   // const userDetails: Record<string, any> = useAppSelector(
   //   ({ user }: Record<string, any>) => user?.userDetails ?? {}
   // );
-  const layout: Record<string, any> = useAppSelector(
-    ({ layout }: Record<string, any>) => layout ?? {}
-  );
+  const layoutConfig = useAppSelector(({ layout }: RootState) => layout ?? {});
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   return (
-    <Box className={`drawer ${layout.drawerCollapse && "drawer-collapse"}`}>
+    <Box
+      className={`drawer ${layoutConfig.drawerCollapse && 'drawer-collapse'}`}
+    >
       <Box>
         <Box className="company text-center lh-0">
           {Company}
-          {!layout.drawerCollapse && (
+          {!layoutConfig.drawerCollapse && (
             <span className="company-text text-primary bold">uiz</span>
           )}
         </Box>
@@ -54,16 +54,16 @@ const SidebarDrawer = () => {
       </Box>
       <Box className="drawer-menu">
         <List>
-          {layout.drawerCollapse
+          {layoutConfig.drawerCollapse
             ? SIDEBAR_CONSTANTS.map((menu) => (
                 <Tooltip
+                  key={menu.name}
                   arrow
                   TransitionComponent={Zoom}
                   title={menu.label}
                   placement="right"
                 >
                   <ListItem
-                    key={menu.name}
                     disablePadding
                     onClick={() => dispatch(handleDrawerToggle())}
                     component={RouterLink}
@@ -71,7 +71,7 @@ const SidebarDrawer = () => {
                   >
                     <ListItemButton>
                       <ListItemIcon>{menu.icon}</ListItemIcon>
-                      {!layout.drawerCollapse && (
+                      {!layoutConfig.drawerCollapse && (
                         <ListItemText primary={menu.label} />
                       )}
                     </ListItemButton>
@@ -88,7 +88,7 @@ const SidebarDrawer = () => {
                 >
                   <ListItemButton>
                     <ListItemIcon>{menu.icon}</ListItemIcon>
-                    {!layout.drawerCollapse && (
+                    {!layoutConfig.drawerCollapse && (
                       <ListItemText primary={menu.label} />
                     )}
                   </ListItemButton>
@@ -106,7 +106,9 @@ const SidebarDrawer = () => {
           >
             <ListItemButton>
               <ListItemIcon>{LogoutIcon}</ListItemIcon>
-              {!layout.drawerCollapse && <ListItemText primary="Logout" />}
+              {!layoutConfig.drawerCollapse && (
+                <ListItemText primary="Logout" />
+              )}
             </ListItemButton>
           </ListItem>
         </List>
@@ -118,7 +120,7 @@ const SidebarDrawer = () => {
         className="collapse"
         onClick={() => dispatch(handleCollapse())}
       >
-        {layout.drawerCollapse ? (
+        {layoutConfig.drawerCollapse ? (
           <ArrowForwardIos fontSize="inherit" />
         ) : (
           <ArrowBackIosNew fontSize="inherit" />

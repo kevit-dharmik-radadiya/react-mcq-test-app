@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { IconButton } from "@mui/material";
-import { ArrowBackIosNew, ArrowForwardIos } from "@mui/icons-material";
-import { useAppDispatch, useAppSelector } from "../../../app/hook";
-import { getQuizDetails } from "../../../store/actions/quizAction";
-import Button from "../../../components/Button/Button";
-import ApiService from "../../../services/apiService";
-import { QUIZ_URLS } from "../../../constants/urlConstants";
-import { ROUTE_CONSTANTS_VARIABLE } from "../../../constants/routeConstants";
-import RadioButtonGroup from "../../../components/RadioButtonGroup/RadioButtonGroup";
-import QuizBeganSkeleton from "./QuizBeganSkeleton";
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { IconButton } from '@mui/material';
+import { ArrowBackIosNew, ArrowForwardIos } from '@mui/icons-material';
+import { useAppDispatch, useAppSelector } from '../../../app/hook';
+import getQuizDetails from '../../../store/actions/quizAction';
+import Button from '../../../components/Button/Button';
+import ApiService from '../../../services/apiService';
+import { QUIZ_URLS } from '../../../constants/urlConstants';
+import ROUTE_CONSTANTS_VARIABLE from '../../../constants/routeConstants';
+import RadioButtonGroup from '../../../components/RadioButtonGroup/RadioButtonGroup';
+import QuizBeganSkeleton from './QuizBeganSkeleton';
 
 interface QuizData {
   questionId: string;
@@ -17,7 +17,7 @@ interface QuizData {
 }
 
 const QuizBegan = () => {
-  const [selectedOption, setSelectedOption] = useState<string>("");
+  const [selectedOption, setSelectedOption] = useState<string>('');
   const [isSelected, setIsSelected] = useState<boolean>(true);
   const [quizData, setQuizData] = useState<QuizData[]>([]);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
@@ -31,7 +31,7 @@ const QuizBegan = () => {
   );
 
   useEffect(() => {
-    const languageID = id ?? "";
+    const languageID = id ?? '';
     dispatch(getQuizDetails({ id: languageID }));
   }, []);
 
@@ -86,7 +86,7 @@ const QuizBegan = () => {
       setIsSubmitted((prev) => !prev);
       return;
     }
-    setSelectedOption("");
+    setSelectedOption('');
     if (quizData[index + 1]) {
       setSelectedOption(quizData[index + 1].answerId);
     }
@@ -102,7 +102,7 @@ const QuizBegan = () => {
   return (
     <div className="quiz-began">
       <h2 className="text-primary mt-0">General Knowledge</h2>
-      {quizDetails[0]._id === "0" ? (
+      {quizDetails[0]._id === '0' ? (
         <QuizBeganSkeleton />
       ) : (
         <div className="quiz-began_box mt-3">
@@ -121,11 +121,11 @@ const QuizBegan = () => {
             />
           </div>
           <div className="error text-danger small mx-1 mt-2">
-            {!isSelected && "Please select an option"}
+            {!isSelected && 'Please select an option'}
           </div>
           <div className="controls text-center mt-4">
             <div className="text-primary text-body bold">
-              <span>{quizDetails[index].number}</span> /{" "}
+              <span>{quizDetails[index].number}</span> /{' '}
               <span>{quizDetails.length}</span>
             </div>
             <div className="mt-3">
@@ -134,8 +134,8 @@ const QuizBegan = () => {
                 aria-label="Left"
                 size="small"
                 sx={{
-                  border: "2px solid #00a783",
-                  mr: "10px",
+                  border: '2px solid #00a783',
+                  mr: '10px',
                 }}
                 disabled={index <= 0 && true}
                 onClick={() => onClickPrevious(index)}
@@ -152,7 +152,7 @@ const QuizBegan = () => {
                   aria-label="Left"
                   size="small"
                   sx={{
-                    border: "2px solid #00a783",
+                    border: '2px solid #00a783',
                   }}
                   onClick={() => onClickNext(index)}
                 >

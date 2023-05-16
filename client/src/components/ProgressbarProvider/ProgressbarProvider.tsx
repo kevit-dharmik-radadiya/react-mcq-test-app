@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from 'react';
 
 interface ProgressbarProps {
   values: Array<number>;
@@ -8,7 +8,7 @@ interface ProgressbarProps {
 const ProgressbarProvider = (props: ProgressbarProps) => {
   const { values, children } = props;
   const interval = 100;
-  const [state, setState] = useState(0);
+  const [state, setState] = useState<number>(0);
 
   useEffect(() => {
     const id = setTimeout(() => {

@@ -1,29 +1,28 @@
-import { Backdrop, Box, Fade, IconButton, Modal } from "@mui/material";
-import { ReactNode } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hook";
-import { closeModal } from "../../store/reducers/modalSlice";
-import { Close } from "@mui/icons-material";
+import { Backdrop, Box, Fade, IconButton, Modal } from '@mui/material';
+import { ReactNode } from 'react';
+import { Close } from '@mui/icons-material';
+import { useAppDispatch, useAppSelector } from '../../app/hook';
+import { closeModal } from '../../store/reducers/modalSlice';
+import { RootState } from '../../app/store';
 
 interface ModalProps {
   id: string;
   title: string;
-  size?: string;
   children: ReactNode;
+  size?: string;
 }
 
 const CustomModal = (props: ModalProps) => {
-  const { id, title, size = "small", children } = props;
+  const { id, title, children, size } = props;
   const dispatch = useAppDispatch();
-  const modal: Record<string, any> = useAppSelector(
-    ({ modal }: Record<string, any>) => modal ?? {}
-  );
+  const modalConfig = useAppSelector(({ modal }: RootState) => modal ?? {});
 
   return (
     <Modal
       aria-labelledby="modal-title"
       aria-describedby="modal-description"
       className="modal"
-      open={id === modal.index}
+      open={id === modalConfig.index}
       onClose={() => dispatch(closeModal())}
       closeAfterTransition
       slots={{ backdrop: Backdrop }}
@@ -33,7 +32,7 @@ const CustomModal = (props: ModalProps) => {
         },
       }}
     >
-      <Fade in={id === modal.index}>
+      <Fade in={id === modalConfig.index}>
         <Box className={`modal-content modal-${size}`}>
           <Box className="modal-header">
             <h2 id="modal-title" className="text-primary m-0">
@@ -54,6 +53,10 @@ const CustomModal = (props: ModalProps) => {
       </Fade>
     </Modal>
   );
+};
+
+CustomModal.defaultProps = {
+  size: 'small',
 };
 
 export default CustomModal;

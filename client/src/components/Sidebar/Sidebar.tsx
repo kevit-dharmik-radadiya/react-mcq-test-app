@@ -1,43 +1,33 @@
-import Drawer from "@mui/material/Drawer";
-import { useAppDispatch, useAppSelector } from "../../app/hook";
-import SidebarDrawer from "./SidebarDrawer";
-import { handleDrawerToggle } from "../../store/reducers/layoutSlice";
+import Drawer from '@mui/material/Drawer';
+import { useAppDispatch, useAppSelector } from '../../app/hook';
+import SidebarDrawer from './SidebarDrawer';
+import { handleDrawerToggle } from '../../store/reducers/layoutSlice';
+import { RootState } from '../../app/store';
 
 interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window?: () => Window;
   drawerWidth: number;
 }
 
 const Sidebar = (props: Props) => {
-  const { window, drawerWidth } = props;
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
-
-  const layout: Record<string, any> = useAppSelector(
-    ({ layout }: Record<string, any>) => layout ?? {}
-  );
+  const { drawerWidth } = props;
+  const layoutConfig = useAppSelector(({ layout }: RootState) => layout ?? {});
   const dispatch = useAppDispatch();
 
   return (
     <>
       <Drawer
-        container={container}
         variant="temporary"
-        open={layout.mobileOpen}
+        open={layoutConfig.mobileOpen}
         onClose={() => dispatch(handleDrawerToggle())}
         ModalProps={{
           keepMounted: true,
         }}
         sx={{
-          display: { xs: "block", md: "none" },
-          "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
+          display: { xs: 'block', md: 'none' },
+          '& .MuiDrawer-paper': {
+            boxSizing: 'border-box',
             width: drawerWidth,
-            overflowY: "unset",
+            overflowY: 'unset',
           },
         }}
         className="sidebar-drawer temporary"
@@ -47,11 +37,11 @@ const Sidebar = (props: Props) => {
       <Drawer
         variant="permanent"
         sx={{
-          display: { xs: "none", md: "block" },
-          "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
+          display: { xs: 'none', md: 'block' },
+          '& .MuiDrawer-paper': {
+            boxSizing: 'border-box',
             width: drawerWidth,
-            overflowY: "unset",
+            overflowY: 'unset',
           },
         }}
         className="sidebar-drawer permanent"

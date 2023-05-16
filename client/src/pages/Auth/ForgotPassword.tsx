@@ -1,20 +1,22 @@
-import AuthTemplate from "./authTemplate/AuthTemplate";
-import { FormControl } from "@mui/material";
-import Input from "../../components/input/Input";
-import ForgotPasswordSVG from "../../assets/images/backgrounds/Forgot-Password.svg";
-import { isEmail } from "../../helpers/validationHelper";
-import { forgotPassword } from "../../store/actions/authAction";
-import { useNavigate } from "react-router-dom";
-import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
-import { useAppDispatch, useAppSelector } from "../../app/hook";
+import { KeyboardEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FormControl } from '@mui/material';
+import AuthTemplate from './authTemplate/AuthTemplate';
+import Input from '../../components/input/Input';
+import ForgotPasswordSVG from '../../assets/images/backgrounds/Forgot-Password.svg';
+import { isEmail } from '../../helpers/validationHelper';
+import { forgotPassword } from '../../store/actions/authAction';
+import ROUTE_CONSTANTS_VARIABLE from '../../constants/routeConstants';
+import { useAppDispatch, useAppSelector } from '../../app/hook';
 import {
   setErrorStatus,
   setInputValues,
-} from "../../store/reducers/authValidateSlice";
+} from '../../store/reducers/authValidateSlice';
+import { RootState } from '../../app/store';
 
 const ForgotPassword = () => {
-  const authValidate: Record<string, any> = useAppSelector(
-    ({ authValidate }: Record<string, any>) => authValidate ?? {}
+  const auth = useAppSelector(
+    ({ authValidate }: RootState) => authValidate ?? {}
   );
 
   const dispatch = useAppDispatch();
@@ -26,19 +28,19 @@ const ForgotPassword = () => {
   };
 
   const onClickForgotPassword = async () => {
-    const isEmailValid = isEmail("email", authValidate.email);
+    const isEmailValid = isEmail('email', auth.email);
 
     dispatch(setErrorStatus({ isEmailValid }));
 
     if (isEmailValid.status) {
-      await forgotPassword(authValidate.email?.trim(), () =>
+      await forgotPassword(auth.email?.trim(), () =>
         navigate(ROUTE_CONSTANTS_VARIABLE.LOGIN)
       );
     }
   };
 
-  const onEnterKeyUp = (event: any) => {
-    if (event.key === "Enter") {
+  const onEnterKeyUp = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
       onClickForgotPassword();
     }
   };
@@ -53,28 +55,24 @@ const ForgotPassword = () => {
       authImageWidth="400px"
       buttonEvent={onClickForgotPassword}
       buttonText="Proceed"
-      backToPage={true}
+      backToPage
     >
-      {
-        <>
-          <div className="auth_form">
-            <FormControl>
-              <Input
-                variant="outlined"
-                label="Email"
-                name="email"
-                type="email"
-                placeholder="Email"
-                value={authValidate.email}
-                onChange={onChangeEmail}
-                onKeyUp={onEnterKeyUp}
-                helperText={authValidate.error.email.message}
-                error={!authValidate.error.email.status}
-              />
-            </FormControl>
-          </div>
-        </>
-      }
+      <div className="auth_form">
+        <FormControl>
+          <Input
+            variant="outlined"
+            label="Email"
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={auth.email}
+            onChange={onChangeEmail}
+            onKeyUp={onEnterKeyUp}
+            helperText={auth.error.email.message}
+            error={!auth.error.email.status}
+          />
+        </FormControl>
+      </div>
     </AuthTemplate>
   );
 };
