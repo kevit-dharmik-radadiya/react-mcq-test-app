@@ -1,13 +1,15 @@
-import { displayErrors } from "../../helpers/errorNotifyHelper";
-import authApiServices from "../../services/authApiServices";
+import { NavigateFunction } from 'react-router-dom';
+import { Dispatch } from '@reduxjs/toolkit';
+import displayErrors from '../../helpers/errorNotifyHelper';
+import authApiServices from '../../services/authApiServices';
 import {
   saveAuthTokenToLocalStorage,
   saveUserIDToLocalStorage,
-} from "../../helpers/localStorageHelper";
-import { successNotification } from "../../helpers/notifyHelper";
-import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
-import { login } from "../reducers/authSlice";
-import { resetAuthStates } from "../reducers/authValidateSlice";
+} from '../../helpers/localStorageHelper';
+import { successNotification } from '../../helpers/notifyHelper';
+import ROUTE_CONSTANTS_VARIABLE from '../../constants/routeConstants';
+import { login } from '../reducers/authSlice';
+import { resetAuthStates } from '../reducers/authValidateSlice';
 
 type LoginUserProps = {
   email: string;
@@ -16,26 +18,29 @@ type LoginUserProps = {
 
 export const loginUser = (
   { email, password }: LoginUserProps,
-  navigate: any
+  navigate: NavigateFunction
 ) => {
-  return async (dispatch: any) => {
+  return async (dispatch: Dispatch) => {
     try {
       const data = {
         email: email.toLowerCase().trim(),
         password: password.trim(),
       };
       const response = await authApiServices.loginUser(data);
-      if (response?.data?.success === true) {
-        const { token, _id } = response?.data?.data;
+      const responseData = response?.data;
+      if (responseData?.success === true) {
+        const { token, _id: id } = responseData.data;
         saveAuthTokenToLocalStorage(token);
-        saveUserIDToLocalStorage(_id);
-        successNotification(response?.data?.message ?? "Login successfully");
+        saveUserIDToLocalStorage(id);
+        successNotification(responseData?.message ?? 'Login successfully');
         dispatch(login(true));
         navigate(ROUTE_CONSTANTS_VARIABLE.DASHBOARD);
         return true;
-      } else return false;
+      }
+      return false;
     } catch (e) {
       displayErrors(e);
+      return false;
     }
   };
 };
@@ -48,7 +53,7 @@ type RegisterUserProps = {
 
 export const registerUser = (
   { email, password, username }: RegisterUserProps,
-  navigate: any
+  navigate: NavigateFunction
 ) => {
   return async () => {
     try {
@@ -60,13 +65,15 @@ export const registerUser = (
       const response = await authApiServices.registerUser(data);
       if (response?.data?.success === true) {
         successNotification(
-          response?.data?.message ?? "Registration successfully"
+          response?.data?.message ?? 'Registration successfully'
         );
         navigate(ROUTE_CONSTANTS_VARIABLE.LOGIN);
         return true;
-      } else return false;
+      }
+      return false;
     } catch (e) {
       displayErrors(e);
+      return false;
     }
   };
 };
@@ -79,14 +86,17 @@ export const forgotPassword = async (email: string, callBack: () => void) => {
     if (response?.status === 200) {
       successNotification(response?.data?.message);
       callBack();
+      return true;
     }
+    return false;
   } catch (e) {
     displayErrors(e);
+    return false;
   }
 };
 
-export const logOutUser = (navigate: any) => {
-  return async (dispatch: any) => {
+export const logOutUser = (navigate: NavigateFunction) => {
+  return async (dispatch: Dispatch) => {
     try {
       // const response = await AuthApiServices.logoutUser();
       // if (response?.status === 200) {
@@ -101,12 +111,14 @@ export const logOutUser = (navigate: any) => {
       dispatch(resetAuthStates());
       dispatch(login(false));
       dispatch({
-        type: "LOGOUT_USER",
+        type: 'LOGOUT_USER',
       });
       navigate(ROUTE_CONSTANTS_VARIABLE.LOGIN);
-      successNotification("Logged out successfully.");
+      successNotification('Logged out successfully.');
+      return true;
     } catch (e) {
       displayErrors(e);
+      return false;
     }
   };
 };
