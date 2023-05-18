@@ -17,7 +17,7 @@ const BackToPage = ({ to, text }: BackButtonProps) => {
         to={to}
         size="small"
         sx={{
-          border: '2px solid #00a783',
+          border: '2px solid #009978',
         }}
       >
         <ArrowBackIosNew fontSize="inherit" />

@@ -42,5 +42,4 @@ const rootReducer = (state: any, action: any) => {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-type RootState = ReturnType<typeof appReducer>;
 export default persistedReducer;

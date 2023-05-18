@@ -12,9 +12,8 @@ const Input = (props: OutlinedTextFieldProps) => {
   } = props;
   return (
     <TextField
-      autoComplete="on"
       variant={variant}
-      label={label}
+      hiddenLabel
       value={value}
       size={size}
       type={type}

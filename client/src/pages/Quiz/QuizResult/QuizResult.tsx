@@ -1,10 +1,8 @@
-import React from "react";
-
 const QuizResult = () => {
   return (
     <section className="quiz-result">
       <div className="text-center">
-        <p className="text-light-b large bold">Quiz Result</p>
+        <p className="text-light-black large bold">Quiz Result</p>
         <h2 className="text-primary xxx-large">Congratulations!</h2>
         <p className="text-secondary">You passed the exam</p>
         <div className="alert alert-success mx-auto mt-3">

@@ -1,9 +1,9 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { ReactNode } from 'react';
 import Button from '../../../components/Button/Button';
-import CompanyLogo from '../../../assets/images/logos/Company.png';
 import BackToPage from '../../BackToPage';
 import ROUTE_CONSTANTS_VARIABLE from '../../../constants/routeConstants';
+import Company from '../../../assets/images/logos/Company';
 
 type AuthTemplateProps = {
   title: string;
@@ -53,7 +53,7 @@ const AuthTemplate = (props: AuthTemplateProps) => {
           role="button"
           tabIndex={0}
         >
-          <img src={CompanyLogo} alt="Company Logo" width="90px" />
+          <Company size="5em" />
         </div>
         <div className="auth_content">
           <div className="auth_user-info">
@@ -85,7 +85,7 @@ const AuthTemplate = (props: AuthTemplateProps) => {
         </div>
       </div>
       <div className="auth_right-side flex-center-15 flex-column bg-primary-light d-md-none p-50">
-        <div className="text-center text-light-b">
+        <div className="text-center text-light-black">
           <h4 className="large m-0">{imageTitle}</h4>
           <p>{imageSubTitle}</p>
         </div>

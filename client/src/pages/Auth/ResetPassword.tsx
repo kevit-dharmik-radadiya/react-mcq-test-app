@@ -1,5 +1,5 @@
 import { FormControl, IconButton, InputAdornment } from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Lock, Visibility, VisibilityOff } from '@mui/icons-material';
 import AuthTemplate from './authTemplate/AuthTemplate';
 import Input from '../../components/input/Input';
 import ResetPasswordSVG from '../../assets/images/backgrounds/Reset-Password.svg';
@@ -22,14 +22,6 @@ const ResetPassword = () => {
   const onHandleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     dispatch(setInputValues({ name, value }));
-  };
-
-  const handleClickShowPassword = () => {
-    dispatch(showPassword(''));
-  };
-
-  const handleClickShowConfirmPassword = () => {
-    dispatch(showPassword('confirm'));
   };
 
   const onClickForgotPassword = async () => {
@@ -79,9 +71,17 @@ const ResetPassword = () => {
             helperText={auth.error.password.message}
             error={!auth.error.password.status}
             InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Lock />
+                </InputAdornment>
+              ),
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton onClick={handleClickShowPassword} size="large">
+                  <IconButton
+                    onClick={() => dispatch(showPassword(''))}
+                    size="large"
+                  >
                     {auth.showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
@@ -104,10 +104,15 @@ const ResetPassword = () => {
             }
             error={!auth.error.confirmPassword.status || !auth.isMatch}
             InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Lock />
+                </InputAdornment>
+              ),
               endAdornment: (
                 <InputAdornment position="end">
                   <IconButton
-                    onClick={handleClickShowConfirmPassword}
+                    onClick={() => dispatch(showPassword('confirm'))}
                     size="large"
                   >
                     {auth.showConfirmPassword ? (

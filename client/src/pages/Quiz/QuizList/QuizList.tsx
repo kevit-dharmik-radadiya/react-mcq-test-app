@@ -55,7 +55,7 @@ const QuizList = () => {
             But it is the people of India who truly make it a beautiful place
           </p>
           <a
-            className="flex-center text-light-b small cursor-pointer mt-4 medium"
+            className="flex-center text-light-black small cursor-pointer mt-4 medium"
             href="/quiz"
           >
             <span className="lh-0 mr-1">
@@ -102,7 +102,7 @@ const QuizList = () => {
                 <div>
                   <NavLink
                     to={quiz._id}
-                    className="card-action text-light-b small cursor-pointer mt-3 text-decoration-none"
+                    className="card-action text-light-black small cursor-pointer mt-3 text-decoration-none"
                   >
                     <span className="lh-0">
                       <PlayCircleOutlined fontSize="medium" />

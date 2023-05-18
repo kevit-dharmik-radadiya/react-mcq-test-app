@@ -22,12 +22,12 @@ const Dashboard = () => {
       <div className="dashboard-box my-2">
         <div className="box-content position-relative">
           <div>
-            <p className="text-light-b x-large">Give a</p>
+            <p className="text-light-black x-large">Give a</p>
             <p className="text-primary xxx-large f-500">Exam</p>
           </div>
           <NavLink
             to={ROUTE_CONSTANTS_VARIABLE.QUIZ}
-            className="text-light-b medium text-decoration-none text-hover-underline"
+            className="text-light-black medium text-decoration-none text-hover-underline"
           >
             Start Now
           </NavLink>
@@ -35,12 +35,12 @@ const Dashboard = () => {
         </div>
         <div className="box-content wide position-relative">
           <div>
-            <p className="text-light-b x-large">Find Your</p>
+            <p className="text-light-black x-large">Find Your</p>
             <p className="text-primary xxx-large f-500">Submissions</p>
           </div>
           <NavLink
             to={ROUTE_CONSTANTS_VARIABLE.SUBMISSIONS}
-            className="text-light-b medium text-decoration-none text-hover-underline"
+            className="text-light-black medium text-decoration-none text-hover-underline"
           >
             Find Now
           </NavLink>
@@ -53,7 +53,7 @@ const Dashboard = () => {
 
         <div className="contact-us w-100">
           <h3 className="text-white large">Contact Us</h3>
-          <p className="text-light-white">
+          <p className="text-LIGHT_WHITE">
             Contact out best support team for any issue
           </p>
           <a href="tel:+919874563210" className="d-block text-white mt-4">

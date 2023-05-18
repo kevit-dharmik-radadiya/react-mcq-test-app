@@ -1,11 +1,11 @@
-import { Box, Tooltip, Zoom } from "@mui/material";
-import { useEffect, useState } from "react";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
-import ApiService from "../../services/apiService";
-import { QUIZ_URLS } from "../../constants/urlConstants";
-import SubmissionsSkeleton from "./SubmissionsSkeleton";
-import ProgressbarProvider from "../../components/ProgressbarProvider/ProgressbarProvider";
+import { Box, Tooltip, Zoom } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import ApiService from '../../services/apiService';
+import { QUIZ_URLS } from '../../constants/urlConstants';
+import SubmissionsSkeleton from './SubmissionsSkeleton';
+import ProgressbarProvider from '../../components/ProgressbarProvider/ProgressbarProvider';
 
 const Submissions = () => {
   const [score, setScore] = useState([]);
@@ -20,7 +20,7 @@ const Submissions = () => {
 
   return (
     <section className="submissions">
-      <h2 className="text-light-b mt-0">Hey Buddy!</h2>
+      <h2 className="text-light-black mt-0">Hey Buddy!</h2>
       <p className="text-secondary">Find your Submissions here</p>
       <Box className="submissions-content">
         {score.length <= 0 ? (
@@ -33,8 +33,8 @@ const Submissions = () => {
           score.map((item: any) => {
             const date = new Date(item.dateTaken);
             const formattedDate = date
-              .toLocaleDateString("en-GB")
-              .replace(/\//g, "-");
+              .toLocaleDateString('en-GB')
+              .replace(/\//g, '-');
             return (
               <Box className="submission-card" key={item._id}>
                 <div>
@@ -44,7 +44,7 @@ const Submissions = () => {
                     title={item.testDetails.testName}
                     placement="top"
                   >
-                    <h3 className="text-ellipsis text-light-b subtitle m-0">
+                    <h3 className="text-ellipsis text-light-black subtitle m-0">
                       {item.testDetails.testName}
                     </h3>
                   </Tooltip>
@@ -61,11 +61,11 @@ const Submissions = () => {
                         text={`${percentage}%`}
                         strokeWidth={10}
                         styles={buildStyles({
-                          textSize: "22px",
+                          textSize: '22px',
                           pathTransitionDuration: 1,
-                          pathColor: `#00a783`,
-                          textColor: "#00a783",
-                          trailColor: "#00a78321",
+                          pathColor: `#009978`,
+                          textColor: '#009978',
+                          trailColor: '#00997821',
                         })}
                       />
                     )}

@@ -1,5 +1,11 @@
 import { FormControl, IconButton, InputAdornment } from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import {
+  Email,
+  Lock,
+  Person4,
+  Visibility,
+  VisibilityOff,
+} from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import SignUp from '../../assets/images/backgrounds/Sign-Up.svg';
 import AuthTemplate from './authTemplate/AuthTemplate';
@@ -84,7 +90,6 @@ const Register = () => {
         <FormControl>
           <Input
             variant="outlined"
-            label="Username"
             name="username"
             type="text"
             placeholder="Username"
@@ -92,12 +97,18 @@ const Register = () => {
             onChange={onHandleChangeInput}
             helperText={auth.error.username.message}
             error={!auth.error.username.status}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Person4 />
+                </InputAdornment>
+              ),
+            }}
           />
         </FormControl>
         <FormControl>
           <Input
             variant="outlined"
-            label="Email"
             name="email"
             type="email"
             placeholder="Email"
@@ -105,12 +116,18 @@ const Register = () => {
             onChange={onHandleChangeInput}
             helperText={auth.error.email.message}
             error={!auth.error.email.status}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Email />
+                </InputAdornment>
+              ),
+            }}
           />
         </FormControl>
         <FormControl>
           <Input
             variant="outlined"
-            label="Password"
             name="password"
             type={auth.showPassword ? 'text' : 'password'}
             placeholder="Password"
@@ -119,6 +136,11 @@ const Register = () => {
             helperText={auth.error.password.message}
             error={!auth.error.password.status}
             InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Lock />
+                </InputAdornment>
+              ),
               endAdornment: (
                 <InputAdornment position="end">
                   <IconButton onClick={handleClickShowPassword} size="large">

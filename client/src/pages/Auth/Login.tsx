@@ -1,6 +1,6 @@
 import { FormControl, IconButton, InputAdornment } from '@mui/material';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Email, Lock, Visibility, VisibilityOff } from '@mui/icons-material';
 import SignIn from '../../assets/images/backgrounds/Sign-In.svg';
 import AuthTemplate from './authTemplate/AuthTemplate';
 import Input from '../../components/input/Input';
@@ -74,6 +74,13 @@ const Login = () => {
             onChange={onHandleChangeInput}
             helperText={auth.error.email.message}
             error={!auth.error.email.status}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Email />
+                </InputAdornment>
+              ),
+            }}
           />
         </FormControl>
         <FormControl>
@@ -88,6 +95,11 @@ const Login = () => {
             helperText={auth.error.password.message}
             error={!auth.error.password.status}
             InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Lock />
+                </InputAdornment>
+              ),
               endAdornment: (
                 <InputAdornment position="end">
                   <IconButton onClick={handleClickShowPassword} size="large">

@@ -72,7 +72,7 @@ export const isEmail = (fieldName: string, val: string) => {
 export const passwordValidate = (
   fieldName: string,
   password: string,
-  isShowValidation: boolean,
+  isShowValidation?: boolean,
   confirmPassword?: string
 ) => {
   const passwordRegex =

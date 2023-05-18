@@ -1,9 +1,13 @@
-const Company = (
+interface CompanyProps {
+  size: string;
+}
+
+const Company = ({ size }: CompanyProps) => (
   <svg
     className="svg-icon"
-    width="50px"
-    height="50px"
-    fill="#00a783"
+    width={size}
+    height={size}
+    fill="#009978"
     viewBox="0 0 1024 1024"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"

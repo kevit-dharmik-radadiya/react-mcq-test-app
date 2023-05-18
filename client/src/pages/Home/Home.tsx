@@ -1,10 +1,10 @@
 import { NavLink as RouterLink } from 'react-router-dom';
-import CompanyLogo from '../../assets/images/logos/Company.png';
 import OnlineTest from '../../assets/images/backgrounds/Online-Test.svg';
 import Button from '../../components/Button/Button';
 import { useAppSelector } from '../../app/hook';
 import ROUTE_CONSTANTS_VARIABLE from '../../constants/routeConstants';
 import { RootState } from '../../app/store';
+import Company from '../../assets/images/logos/Company';
 
 const Home = () => {
   const authStatus: boolean = useAppSelector(
@@ -14,11 +14,11 @@ const Home = () => {
   return (
     <div className="flex-center-15 mh-100">
       <div className="flex-center-15 flex-column mw-md text-center mx-auto p-24">
-        <div className="flex-center-15">
-          <img src={CompanyLogo} alt="Company Logo" width="50px" />
-          <h1 className="text-primary xxx-large">QuickQuiz</h1>
+        <div className="flex-center">
+          <Company size="4.5em" />
+          <h1 className="text-primary xxx-large">uiz</h1>
         </div>
-        <p className="text-light-b title py-50">
+        <p className="text-light-black title py-50">
           QuickQuiz is an online MCQ test designed to help you assess your
           knowledge on various subjects.
         </p>

@@ -1,6 +1,7 @@
 import { KeyboardEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FormControl } from '@mui/material';
+import { FormControl, InputAdornment } from '@mui/material';
+import { Email } from '@mui/icons-material';
 import AuthTemplate from './authTemplate/AuthTemplate';
 import Input from '../../components/input/Input';
 import ForgotPasswordSVG from '../../assets/images/backgrounds/Forgot-Password.svg';
@@ -70,6 +71,13 @@ const ForgotPassword = () => {
             onKeyUp={onEnterKeyUp}
             helperText={auth.error.email.message}
             error={!auth.error.email.status}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Email />
+                </InputAdornment>
+              ),
+            }}
           />
         </FormControl>
       </div>

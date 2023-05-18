@@ -12,7 +12,6 @@ import {
 } from '@mui/material';
 import { ArrowBackIosNew, ArrowForwardIos } from '@mui/icons-material';
 import { NavLink as RouterLink, useNavigate } from 'react-router-dom';
-import Company from '../../assets/images/logos/Company';
 import { useAppDispatch, useAppSelector } from '../../app/hook';
 import SIDEBAR_CONSTANTS from './sidebarConstants';
 import LogoutIcon from '../../assets/images/sidebar/LogoutIcon';
@@ -22,6 +21,7 @@ import {
   handleDrawerToggle,
 } from '../../store/reducers/layoutSlice';
 import { RootState } from '../../app/store';
+import Company from '../../assets/images/logos/Company';
 
 const SidebarDrawer = () => {
   // const userDetails: Record<string, any> = useAppSelector(
@@ -37,7 +37,7 @@ const SidebarDrawer = () => {
     >
       <Box>
         <Box className="company text-center lh-0">
-          {Company}
+          <Company size="50px " />
           {!layoutConfig.drawerCollapse && (
             <span className="company-text text-primary bold">uiz</span>
           )}

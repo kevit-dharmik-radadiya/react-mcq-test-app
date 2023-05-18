@@ -106,7 +106,7 @@ const QuizBegan = () => {
         <QuizBeganSkeleton />
       ) : (
         <div className="quiz-began_box mt-3">
-          <div className="question text-light-b f-500">
+          <div className="question text-light-black f-500">
             <span className="text-primary bold mx-1">
               {quizDetails[index].number}.
             </span>
@@ -134,7 +134,7 @@ const QuizBegan = () => {
                 aria-label="Left"
                 size="small"
                 sx={{
-                  border: '2px solid #00a783',
+                  border: '2px solid #009978',
                   mr: '10px',
                 }}
                 disabled={index <= 0 && true}
@@ -152,7 +152,7 @@ const QuizBegan = () => {
                   aria-label="Left"
                   size="small"
                   sx={{
-                    border: '2px solid #00a783',
+                    border: '2px solid #009978',
                   }}
                   onClick={() => onClickNext(index)}
                 >
