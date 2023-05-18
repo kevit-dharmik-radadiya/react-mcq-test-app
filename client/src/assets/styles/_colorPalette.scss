@@ -1,17 +1,25 @@
-$primary-color: #00a783;
-$primary-hover-color: #009978;
-$primary-light-color: #00a78380;
-$bg-light-color: #00a78321;
-$secondary-color: #979797;
-$secondary-hover-color: #7a7a7a;
-$light-black-color: #263238;
-$dark-grey-color: #666666;
-$placeholder-color: #6d6b6b;
-$danger-color: #d32f2f;
-$white-color: #ffffff;
-$light-white: #ffffffcc;
-$black-color: #000000;
-$warning-color: #ebbc00;
-$hover-color: #00a78321;
-$danger-hover-color: #d32f2f21;
-$shadow-color:#cbcbcb;
+// Color Palette
+$PRIMARY: #009978;
+$SECONDARY: #979797;
+$WHITE: #ffffff;
+$LIGHT_WHITE: #ffffffcc;
+$BLACK: #000000;
+$LIGHT_BLACK: #263238;
+$PLACEHOLDER: #6d6b6b;
+$DANGER: #d32f2f;
+$DANGER_LIGHT: #d32f2f21;
+$WARNING: #ebbc00;
+
+// Background Colors
+$BG_PRIMARY: #009978;
+$BG_PRIMARY_LIGHT: #00997880;
+$BG_LIGHT: #00997821;
+$BG_WHITE: #ffffff;
+$BG_DANGER: #d32f2f;
+$BG_WARNING: #ebbc00;
+
+// Shadow Colors
+$SHADOW: #cbcbcb;
+
+// Backdrop Colors
+$BACKDROP: #000000b3;

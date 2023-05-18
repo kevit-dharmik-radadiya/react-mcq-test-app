@@ -13,8 +13,8 @@
       position: fixed;
       top: 18px;
       right: 24px;
-      background-color: $white-color;
-      box-shadow: 0 0 10px $shadow-color;
+      background-color: $BG_WHITE;
+      box-shadow: 0 0 10px $SHADOW;
       padding: 10px 15px;
       border-radius: 10px;
       display: flex;
@@ -25,7 +25,7 @@
         cursor: pointer;
         &:hover {
           .svg-icon {
-            fill: #00a783 !important;
+            fill: $PRIMARY !important;
           }
         }
       }

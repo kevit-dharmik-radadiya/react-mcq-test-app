@@ -45,6 +45,6 @@ module.exports = {
       custom: 'ignore'
     }],
     "react-hooks/exhaustive-deps": 'warn', // Get rid of error and show error on hook
-    'no-unneeded-ternary': ["error", { defaultAssignment: false }],
+    'no-else-return': ["error", { allowElseIf: true }]
   },
 };

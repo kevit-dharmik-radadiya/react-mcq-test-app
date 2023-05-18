@@ -1,38 +1,38 @@
-@import "colorPalette";
-@import "typography";
+@import 'colorPalette';
+@import 'typography';
 
 /* Color Classes Start */
 
 .text-primary {
-  color: $primary-color;
+  color: $PRIMARY;
 }
 
 .text-secondary {
-  color: $secondary-color;
+  color: $SECONDARY;
 }
 
 .text-placeholder {
-  color: $placeholder-color;
+  color: $PLACEHOLDER;
 }
 
 .text-danger {
-  color: $danger-color;
+  color: $DANGER;
 }
 
 .text-default {
-  color: $black-color;
+  color: $BLACK;
 }
 
-.text-light-b {
-  color: $light-black-color;
+.text-light-black {
+  color: $LIGHT_BLACK;
 }
 
 .text-white {
-  color: $white-color;
+  color: $WHITE;
 }
 
 .text-light-white {
-  color: $light-white;
+  color: $LIGHT_WHITE;
 }
 
 /* Color Classes END */
@@ -95,11 +95,11 @@
 
 // Background
 .bg-primary {
-  background-color: $primary-color !important;
+  background-color: $BG_PRIMARY !important;
 }
 
 .bg-primary-light {
-  background-color: $primary-light-color;
+  background-color: $BG_PRIMARY_LIGHT;
 }
 
 // Height and Width
@@ -214,7 +214,7 @@
 }
 
 .text-hover:hover {
-  color: $primary-color;
+  color: $PRIMARY;
 }
 
 // Font Weight
@@ -252,15 +252,15 @@
 // Toast
 
 .toast-success {
-  background-color: $primary-color;
+  background-color: $BG_PRIMARY;
 }
 
 .toast-error {
-  background-color: $danger-color;
+  background-color: $BG_DANGER;
 }
 
 .toast-warning {
-  background-color: $warning-color;
+  background-color: $BG_WARNING;
 }
 
 // Other
