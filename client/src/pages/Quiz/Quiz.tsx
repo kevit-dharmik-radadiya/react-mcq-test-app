@@ -1,42 +1,45 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  Box,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-} from '@mui/material';
+import { Box, FormControl } from '@mui/material';
+import { Language } from '@mui/icons-material';
 import Button from '../../components/Button/Button';
 import ApiService from '../../services/apiService';
 import { QUIZ_URLS } from '../../constants/urlConstants';
+import CustomAutocomplete from '../../components/Autocomplete/Autocomplete';
 
-interface Language {
+interface LanguageProps {
   _id: string;
   language: string;
 }
 
-const initializeValue: Language = {
-  _id: '',
-  language: 'Select',
+type Option = {
+  label: string;
+  value: string;
+};
+
+const initializeValue: Option = {
+  label: '',
+  value: '',
 };
 
 const Quiz = () => {
-  const [languages, setLanguages] = useState<Language[]>([initializeValue]);
+  const [languages, setLanguages] = useState<Option[]>([initializeValue]);
   const [languageId, setLanguageId] = useState<string>('');
   const navigate = useNavigate();
 
   useEffect(() => {
     const getLanguages = async () => {
       const response = await ApiService.getData(`${QUIZ_URLS.GET_LANGUAGES}`);
-      setLanguages(response?.data?.data);
+      const options = response?.data?.data.map((e: LanguageProps) => {
+        return { label: e.language, value: e.language };
+      });
+      setLanguages(options);
     };
     getLanguages();
   }, []);
 
-  const handleChange = (event: SelectChangeEvent<string>) => {
-    setLanguageId(event.target.value);
+  const handleChange = (value: Option) => {
+    setLanguageId(value ? value.value : '');
   };
 
   const handleClick = () => {
@@ -90,25 +93,17 @@ const Quiz = () => {
       </p>
 
       <FormControl className="select-language">
-        <InputLabel id="demo-simple-select-label">Select Language</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
+        <CustomAutocomplete
+          id="language"
           value={languageId}
-          label="Select Language"
-          onChange={handleChange}
-        >
-          {languages.map((language) => (
-            <MenuItem
-              key={language._id}
-              value={language.language.toLowerCase()}
-            >
-              {language.language}
-            </MenuItem>
-          ))}
-        </Select>
+          dataOptions={languages}
+          placeholder="Select Language"
+          adornmentStart={Language}
+          onChange={(_, value) => {
+            handleChange(value);
+          }}
+        />
       </FormControl>
-
       <Box>
         <Button
           variant="contained"
