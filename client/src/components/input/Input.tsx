@@ -1,19 +1,19 @@
-import { FC } from "react";
-import { TextField, OutlinedTextFieldProps } from "@mui/material";
+import { TextField, OutlinedTextFieldProps } from '@mui/material';
 
-const Input: FC<OutlinedTextFieldProps> = ({
-  variant,
-  label,
-  value,
-  size = "medium",
-  type,
-  className,
-  ...restProps
-}) => {
+const Input = (props: OutlinedTextFieldProps) => {
+  const {
+    variant,
+    label,
+    value,
+    size = 'medium',
+    type,
+    className,
+    ...restProps
+  } = props;
   return (
     <TextField
       variant={variant}
-      label={label}
+      hiddenLabel
       value={value}
       size={size}
       type={type}

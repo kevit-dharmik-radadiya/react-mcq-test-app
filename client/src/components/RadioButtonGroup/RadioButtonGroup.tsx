@@ -1,4 +1,4 @@
-import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
+import { FormControlLabel, Radio, RadioGroup } from '@mui/material';
 
 type Option = {
   _id: string;
@@ -22,7 +22,7 @@ const RadioButtonGroup = (props: RadioButtonGroupProps) => {
       onChange={onChange}
       className={className}
     >
-      {options.map((option: any) => {
+      {options.map((option: Option) => {
         return (
           <FormControlLabel
             key={option._id}

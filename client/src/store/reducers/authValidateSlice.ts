@@ -1,6 +1,6 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-interface initialReducerProps {
+interface InitialReducerProps {
   email: string;
   password: string;
   username: string;
@@ -33,11 +33,11 @@ interface InputValuesPayload {
   value: string;
 }
 
-const initialValidState: initialReducerProps = {
-  email: "",
-  password: "",
-  username: "",
-  confirmPassword: "",
+const initialValidState: InitialReducerProps = {
+  email: '',
+  password: '',
+  username: '',
+  confirmPassword: '',
   error: {
     email: {
       status: true,
@@ -62,18 +62,17 @@ const initialValidState: initialReducerProps = {
 };
 
 const authValidateSlice = createSlice({
-  name: "authValid",
+  name: 'authValid',
   initialState: initialValidState,
   reducers: {
     setErrorStatus: (state, action) => {
-      console.log(action);
       const {
         isEmailValid,
         isPasswordValid,
         isUsernameValid,
         isConfirmPasswordValid,
         isMatch,
-      } = action?.payload;
+      } = action.payload;
 
       state.error = {
         email: isEmailValid ?? state.error.email,
@@ -87,11 +86,11 @@ const authValidateSlice = createSlice({
       state: Record<string, any>,
       action: PayloadAction<InputValuesPayload>
     ) => {
-      const { name, value } = action?.payload;
+      const { name, value } = action.payload;
       state[name] = value;
     },
     showPassword: (state, action: PayloadAction<string>) => {
-      if (action?.payload === "confirm") {
+      if (action?.payload === 'confirm') {
         state.showConfirmPassword = !state.showConfirmPassword;
       } else {
         state.showPassword = !state.showPassword;

@@ -1,18 +1,21 @@
-import { ReactNode } from "react";
-import { Navigate, useLocation } from "react-router-dom";
-import { useAppSelector } from "../app/hook";
+import { ReactNode } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useAppSelector } from '../app/hook';
+import { RootState } from '../app/store';
 
 interface Props {
-  children?: ReactNode;
+  children: ReactNode;
 }
 
-export const ProtectedRoute = ({ children, ...props }: Props) => {
-  let location = useLocation();
+const ProtectedRoute = ({ children }: Props) => {
+  const location = useLocation();
   const authStatus: boolean = useAppSelector(
-    ({ auth }: Record<string, any>) => auth?.authStatus ?? false
+    ({ auth }: RootState) => auth?.authStatus ?? false
   );
   if (!authStatus) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
-  return children as any;
+  return <>{children}</>;
 };
+
+export default ProtectedRoute;

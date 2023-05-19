@@ -1,5 +1,5 @@
 .link {
-  color: $primary-color;
+  color: $PRIMARY;
   font-weight: 500;
   &.decoration-none {
     text-decoration: none;
@@ -42,12 +42,12 @@
   .Toastify__toast {
     min-height: 45px;
     border-radius: 5px;
-    color: $white-color;
+    color: $WHITE;
   }
 }
 
 .Toastify__close-button--light {
-  color: $white-color;
+  color: $WHITE;
 }
 
 // Alert
@@ -60,20 +60,20 @@
 }
 
 .alert-success {
-  background-color: $hover-color;
-  color: $primary-color;
+  background-color: $BG_LIGHT;
+  color: $PRIMARY;
 }
 
 .alert-danger {
-  background-color: $danger-hover-color;
-  color: $danger-color;
+  background-color: $BG_DANGER;
+  color: $DANGER;
 }
 
 .tag {
   width: max-content;
   padding: 2px 5px;
-  background: $hover-color;
-  color: $primary-color;
+  background-color: $BG_LIGHT;
+  color: $PRIMARY;
   border-radius: 5px;
   font-size: $extra-small;
   font-weight: 500;
@@ -83,13 +83,13 @@
   position: relative;
   width: max-content;
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     bottom: -2px;
     width: 100%;
     height: 3px;
-    background-color: $primary-color;
+    background-color: $BG_PRIMARY;
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.75s ease-in-out;

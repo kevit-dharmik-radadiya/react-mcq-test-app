@@ -1,12 +1,18 @@
-const Menu = (props: any) => {
+interface Props {
+  fill: string;
+  size: string;
+}
+
+const Menu = (props: Props) => {
+  const { fill, size } = props;
   return (
     <svg
-      className="svg-icon menu-icon"
+      className="svg-icon"
       style={{
-        width: props.size,
-        height: props.size,
+        width: size,
+        height: size,
         verticalAlign: "middle",
-        fill: props.fill,
+        fill: fill,
         overflow: "hidden",
       }}
       viewBox="0 0 1024 1024"

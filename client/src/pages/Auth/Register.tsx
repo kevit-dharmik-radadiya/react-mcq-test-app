@@ -1,26 +1,33 @@
-import { FormControl, IconButton, InputAdornment } from "@mui/material";
-import SignUp from "../../assets/images/backgrounds/Sign-Up.svg";
-import AuthTemplate from "./authTemplate/AuthTemplate";
-import Input from "../../components/input/Input";
+import { FormControl, IconButton, InputAdornment } from '@mui/material';
+import {
+  Email,
+  Lock,
+  Person4,
+  Visibility,
+  VisibilityOff,
+} from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
+import SignUp from '../../assets/images/backgrounds/Sign-Up.svg';
+import AuthTemplate from './authTemplate/AuthTemplate';
+import Input from '../../components/input/Input';
 import {
   isEmail,
   passwordValidate,
   usernameValidate,
-} from "../../helpers/validationHelper";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { registerUser } from "../../store/actions/authAction";
-import { useAppDispatch, useAppSelector } from "../../app/hook";
-import { useNavigate } from "react-router-dom";
-import { ROUTE_CONSTANTS_VARIABLE } from "../../constants/routeConstants";
+} from '../../helpers/validationHelper';
+import { registerUser } from '../../store/actions/authAction';
+import { useAppDispatch, useAppSelector } from '../../app/hook';
+import ROUTE_CONSTANTS_VARIABLE from '../../constants/routeConstants';
 import {
   setErrorStatus,
   setInputValues,
   showPassword,
-} from "../../store/reducers/authValidateSlice";
+} from '../../store/reducers/authValidateSlice';
+import { RootState } from '../../app/store';
 
 const Register = () => {
-  const authValidate: Record<string, any> = useAppSelector(
-    ({ authValidate }: Record<string, any>) => authValidate ?? {}
+  const auth = useAppSelector(
+    ({ authValidate }: RootState) => authValidate ?? {}
   );
 
   const dispatch = useAppDispatch();
@@ -32,17 +39,13 @@ const Register = () => {
   };
 
   const handleClickShowPassword = () => {
-    dispatch(showPassword(""));
+    dispatch(showPassword(''));
   };
 
   const onClickLogin = async () => {
-    const isUsernameValid = usernameValidate("username", authValidate.username);
-    const isEmailValid = isEmail("email", authValidate.email);
-    const isPasswordValid = passwordValidate(
-      "password",
-      authValidate.password,
-      true
-    );
+    const isUsernameValid = usernameValidate('username', auth.username);
+    const isEmailValid = isEmail('email', auth.email);
+    const isPasswordValid = passwordValidate('password', auth.password, true);
 
     dispatch(
       setErrorStatus({ isEmailValid, isPasswordValid, isUsernameValid })
@@ -56,15 +59,15 @@ const Register = () => {
       const response = await dispatch(
         registerUser(
           {
-            email: authValidate.email,
-            password: authValidate.password,
-            username: authValidate.username,
+            email: auth.email,
+            password: auth.password,
+            username: auth.username,
           },
           navigate
         )
       );
       if (!response) {
-        dispatch(setInputValues({ name: "password", value: "" }));
+        dispatch(setInputValues({ name: 'password', value: '' }));
       }
     }
   };
@@ -83,62 +86,72 @@ const Register = () => {
       buttonEvent={onClickLogin}
       buttonText="Sign Up"
     >
-      {
-        <div className="auth_form">
-          <FormControl>
-            <Input
-              variant="outlined"
-              label="Username"
-              name="username"
-              type="text"
-              placeholder="Username"
-              value={authValidate.username}
-              onChange={onHandleChangeInput}
-              helperText={authValidate.error.username.message}
-              error={!authValidate.error.username.status}
-            />
-          </FormControl>
-          <FormControl>
-            <Input
-              variant="outlined"
-              label="Email"
-              name="email"
-              type="email"
-              placeholder="Email"
-              value={authValidate.email}
-              onChange={onHandleChangeInput}
-              helperText={authValidate.error.email.message}
-              error={!authValidate.error.email.status}
-            />
-          </FormControl>
-          <FormControl>
-            <Input
-              variant="outlined"
-              label="Password"
-              name="password"
-              type={authValidate.showPassword ? "text" : "password"}
-              placeholder="Password"
-              value={authValidate.password}
-              onChange={onHandleChangeInput}
-              helperText={authValidate.error.password.message}
-              error={!authValidate.error.password.status}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton onClick={handleClickShowPassword} size="large">
-                      {authValidate.showPassword ? (
-                        <VisibilityOff />
-                      ) : (
-                        <Visibility />
-                      )}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </FormControl>
-        </div>
-      }
+      <div className="auth_form">
+        <FormControl>
+          <Input
+            variant="outlined"
+            name="username"
+            type="text"
+            placeholder="Username"
+            value={auth.username}
+            onChange={onHandleChangeInput}
+            helperText={auth.error.username.message}
+            error={!auth.error.username.status}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Person4 />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </FormControl>
+        <FormControl>
+          <Input
+            variant="outlined"
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={auth.email}
+            onChange={onHandleChangeInput}
+            helperText={auth.error.email.message}
+            error={!auth.error.email.status}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Email />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </FormControl>
+        <FormControl>
+          <Input
+            variant="outlined"
+            name="password"
+            type={auth.showPassword ? 'text' : 'password'}
+            placeholder="Password"
+            value={auth.password}
+            onChange={onHandleChangeInput}
+            helperText={auth.error.password.message}
+            error={!auth.error.password.status}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Lock />
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton onClick={handleClickShowPassword} size="large">
+                    {auth.showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+        </FormControl>
+      </div>
     </AuthTemplate>
   );
 };

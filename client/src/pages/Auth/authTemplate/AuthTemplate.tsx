@@ -1,16 +1,16 @@
-import Button from "../../../components/Button/Button";
-import CompanyLogo from "../../../assets/images/logos/Company.png";
-import { NavLink, useNavigate } from "react-router-dom";
-import React, { MouseEvent } from "react";
-import BackToPage from "../../BackToPage";
-import { ROUTE_CONSTANTS_VARIABLE } from "../../../constants/routeConstants";
+import { NavLink, useNavigate } from 'react-router-dom';
+import { ReactNode } from 'react';
+import Button from '../../../components/Button/Button';
+import BackToPage from '../../BackToPage';
+import ROUTE_CONSTANTS_VARIABLE from '../../../constants/routeConstants';
+import Company from '../../../assets/images/logos/Company';
 
 type AuthTemplateProps = {
   title: string;
   subTitle?: string;
   authImage: string;
   authImageWidth: string;
-  imageTitle?: React.ReactNode;
+  imageTitle?: ReactNode;
   imageSubTitle?: string;
   children: JSX.Element;
   buttonEvent?: () => void;
@@ -39,15 +39,21 @@ const AuthTemplate = (props: AuthTemplateProps) => {
   } = props;
 
   const navigate = useNavigate();
-  const handleClick = (event: MouseEvent) => {
-    navigate("/");
+  const handleClick = () => {
+    navigate('/');
   };
 
   return (
     <div className="auth grid grid-lg-6 grid-md-12 h-100">
       <div className="auth_left-side flex-center-15 p-50">
-        <div className="company-logo cursor-pointer" onClick={handleClick}>
-          <img src={CompanyLogo} alt="Company Logo" width="90px" />
+        <div
+          className="company-logo cursor-pointer"
+          onClick={handleClick}
+          onKeyDown={() => {}}
+          role="button"
+          tabIndex={0}
+        >
+          <Company size="5em" />
         </div>
         <div className="auth_content">
           <div className="auth_user-info">
@@ -79,11 +85,10 @@ const AuthTemplate = (props: AuthTemplateProps) => {
         </div>
       </div>
       <div className="auth_right-side flex-center-15 flex-column bg-primary-light d-md-none p-50">
-        <div className="text-center text-light-b">
+        <div className="text-center text-light-black">
           <h4 className="large m-0">{imageTitle}</h4>
           <p>{imageSubTitle}</p>
         </div>
-        <div></div>
         <div className="text-center w-100">
           <img src={authImage} alt="Login" width={authImageWidth} />
         </div>
@@ -91,4 +96,16 @@ const AuthTemplate = (props: AuthTemplateProps) => {
     </div>
   );
 };
+
+AuthTemplate.defaultProps = {
+  subTitle: '',
+  imageTitle: null,
+  imageSubTitle: '',
+  buttonEvent: undefined,
+  redirectText: '',
+  redirectLink: '',
+  redirectLinkText: '',
+  backToPage: false,
+};
+
 export default AuthTemplate;

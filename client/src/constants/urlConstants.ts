@@ -13,6 +13,7 @@ export const USER_URLS = {
 export const QUIZ_URLS = {
   GET_LANGUAGES: `${REQUEST_URL}test/getTests`,
   GET_QUIZ: `${REQUEST_URL}questions/getQuestionsByTest`,
+  GET_QUIZ_LIST: `${REQUEST_URL}test/getTests`,
   SUBMIT_QUIZ: `${REQUEST_URL}test/submitTest`,
   GET_SCORE: `${REQUEST_URL}score/getScores`,
 };

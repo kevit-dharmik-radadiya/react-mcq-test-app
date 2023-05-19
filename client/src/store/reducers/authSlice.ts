@@ -1,15 +1,15 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-interface initialReducerProps {
+interface InitialReducerProps {
   authStatus: boolean;
 }
 
-const initialAuthState: initialReducerProps = {
+const initialAuthState: InitialReducerProps = {
   authStatus: false,
 };
 
 const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState: initialAuthState,
   reducers: {
     login: (state, action: PayloadAction<boolean>) => {

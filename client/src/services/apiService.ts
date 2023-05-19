@@ -82,6 +82,7 @@ instance.interceptors.response.use(
           }
         } catch (e) {
           if (axios.isAxiosError(e)) {
+            store.dispatch(login(false));
             store.dispatch({
               type: "LOGOUT_USER",
             });

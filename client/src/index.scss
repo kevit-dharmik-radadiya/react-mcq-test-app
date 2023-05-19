@@ -1,9 +1,9 @@
-@import "./assets/styles/colorPalette";
-@import "./assets/styles/typography";
-@import "./assets/styles/commonStyle";
-@import "./pages/pages";
-@import "./components/componentStyles";
-@import "./assets/styles/utility";
+@import './assets/styles/colorPalette';
+@import './assets/styles/typography';
+@import './assets/styles/commonStyle';
+@import './pages/pages';
+@import './components/componentStyles';
+@import './assets/styles/utility';
 
 html,
 body,
@@ -25,7 +25,7 @@ body {
 
   *::placeholder {
     font-size: $placeholder;
-    color: $placeholder-color;
+    color: $PLACEHOLDER;
   }
 }
 
@@ -46,7 +46,7 @@ p {
 /* scrollbar starts here */
 
 * {
-  scrollbar-color: $primary-color white;
+  scrollbar-color: $PRIMARY white;
   scrollbar-width: thin;
 }
 
@@ -64,14 +64,14 @@ p {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: $secondary-color;
+  background: $SECONDARY;
   border-radius: 7px;
   background-clip: padding-box;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: $primary-color;
+  background: $PRIMARY;
 }
 
 /* scrollbar ends here */

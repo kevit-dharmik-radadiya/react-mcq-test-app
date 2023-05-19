@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-interface initialReducerProps {
+interface InitialReducerProps {
   userDetails: {
     email: string;
     lastLoginAt: string;
@@ -9,12 +9,12 @@ interface initialReducerProps {
   };
 }
 
-const initialUserState: initialReducerProps = {
-  userDetails: { email: "", lastLoginAt: "", userName: "", _id: "" },
+const initialUserState: InitialReducerProps = {
+  userDetails: { email: '', lastLoginAt: '', userName: '', _id: '' },
 };
 
 const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState: initialUserState,
   reducers: {
     setUserDetails: (state, action: Record<string, any>) => {

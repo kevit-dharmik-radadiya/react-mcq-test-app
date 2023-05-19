@@ -1,38 +1,31 @@
-import { Skeleton, SxProps } from "@mui/material";
-import { ReactNode } from "react";
+import { Skeleton, SxProps } from '@mui/material';
+import { ReactNode } from 'react';
 
 interface MyComponentProps {
   iteration?: number;
   width?: number;
   height: number;
-  variant?: "rounded" | "text" | "rectangular" | "circular";
+  variant?: 'rounded' | 'text' | 'rectangular' | 'circular';
   className?: string;
   sx?: SxProps;
   children?: ReactNode;
 }
 
 const SkeletonLoader = (props: MyComponentProps) => {
-  const {
-    iteration = 1,
-    width,
-    height,
-    variant = "rounded",
-    className,
-    sx,
-    children,
-  } = props;
-  
+  const { iteration, width, height, variant, className, sx, children } = props;
+
   const iterationCount: number[] = Array.from(
-    { length: iteration },
+    { length: iteration || 1 },
     (_, index: number) => index
   );
 
   if (iteration) {
     return (
       <>
-        {iterationCount.map(() => {
+        {iterationCount.map((e) => {
           return (
             <Skeleton
+              key={e}
               animation="wave"
               width={width}
               height={height}
@@ -59,6 +52,15 @@ const SkeletonLoader = (props: MyComponentProps) => {
       {children}
     </Skeleton>
   );
+};
+
+SkeletonLoader.defaultProps = {
+  iteration: 1,
+  variant: 'rounded',
+  className: '',
+  sx: {},
+  children: null,
+  width: undefined,
 };
 
 export default SkeletonLoader;

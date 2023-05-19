@@ -1,22 +1,22 @@
-import { Navigate, createBrowserRouter } from "react-router-dom";
-import Login from "../pages/Auth/Login";
-import Dashboard from "../pages/Dashboard/Dashboard";
-import Root from "../pages/Root";
-import Error from "../pages/Error";
-import Home from "../pages/Home/Home";
-import Register from "../pages/Auth/Register";
-import { UnProtectedRoute } from "./UnProtectedRoute";
-import { ProtectedRoute } from "./ProtectedRoute";
-import ForgotPassword from "../pages/Auth/ForgotPassword";
-import ResetPassword from "../pages/Auth/ResetPassword";
-import { ROUTE_CONSTANTS_VARIABLE } from "../constants/routeConstants";
-import Submissions from "../pages/Submissions/Submissions";
-import Quiz from "../pages/Quiz/Quiz";
-import QuizBegan from "../pages/Quiz/QuizBegan/QuizBegan";
-import QuizResult from "../pages/Quiz/QuizResult/QuizResult";
-import QuizList from "../pages/Quiz/QuizList/QuizList";
+import { Navigate, createBrowserRouter } from 'react-router-dom';
+import Login from '../pages/Auth/Login';
+import Dashboard from '../pages/Dashboard/Dashboard';
+import Root from '../pages/Root';
+import Error from '../pages/Error';
+import Home from '../pages/Home/Home';
+import Register from '../pages/Auth/Register';
+import UnProtectedRoute from './UnProtectedRoute';
+import ProtectedRoute from './ProtectedRoute';
+import ForgotPassword from '../pages/Auth/ForgotPassword';
+import ResetPassword from '../pages/Auth/ResetPassword';
+import ROUTE_CONSTANTS_VARIABLE from '../constants/routeConstants';
+import Submissions from '../pages/Submissions/Submissions';
+import Quiz from '../pages/Quiz/Quiz';
+import QuizBegan from '../pages/Quiz/QuizBegan/QuizBegan';
+import QuizResult from '../pages/Quiz/QuizResult/QuizResult';
+import QuizList from '../pages/Quiz/QuizList/QuizList';
 
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: ROUTE_CONSTANTS_VARIABLE.ROOT,
     element: <Root />,
@@ -75,7 +75,7 @@ export const router = createBrowserRouter([
             ),
           },
           {
-            path: ":language",
+            path: ':language',
             children: [
               {
                 index: true,
@@ -86,7 +86,7 @@ export const router = createBrowserRouter([
                 ),
               },
               {
-                path: ":id",
+                path: ':id',
                 element: (
                   <ProtectedRoute>
                     <QuizBegan />
@@ -96,7 +96,7 @@ export const router = createBrowserRouter([
             ],
           },
           {
-            path: "result",
+            path: 'result',
             element: (
               <ProtectedRoute>
                 <QuizResult />
@@ -116,7 +116,9 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "*",
+    path: '*',
     element: <Navigate to={ROUTE_CONSTANTS_VARIABLE.DASHBOARD} replace />,
   },
 ]);
+
+export default router;

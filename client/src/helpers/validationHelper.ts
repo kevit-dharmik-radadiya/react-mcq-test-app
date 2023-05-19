@@ -1,9 +1,12 @@
-import _ from "lodash";
+import _ from 'lodash';
 
 /**
- * Checks if the value is an empty object, collection, map, or set.
- * @param val This parameter holds the value that needs to be Checked for Empty value.
- * @returns This method returns a Boolean value(Returns true if the given value is an Empty value, else false).
+ * This is a TypeScript function that checks if a value is empty or not.
+ * @param {any} val - The `val` parameter is of type `any`, which means it can accept any data type as
+ * input. It is the value that needs to be checked for emptiness.
+ * @returns A boolean value indicating whether the input `val` is empty or not. `true` is returned if
+ * the input is `null`, `undefined`, an empty string, or a string containing only whitespace
+ * characters. `false` is returned otherwise.
  */
 export const isEmpty = (val: any): boolean => {
   let isValEmpty = true;
@@ -14,11 +17,15 @@ export const isEmpty = (val: any): boolean => {
 };
 
 /**
- * Checks if entered user email is match Regex Expression or not.
- * @param email This parameter holds the email value that needs to be Checked for valid email.
- * @returns This method returns a Regex Expression Match Array(Returns null if the given value is not matched).
+ * This is a TypeScript function that validates whether an email address is in a valid format.
+ * @param {string} email - The email parameter is a string that represents an email address that needs
+ * to be validated.
+ * @returns The function `isValidateEmail` takes in a string argument `email` and returns a regular
+ * expression match result. The regular expression is used to validate if the email string is in a
+ * valid email format. If the email is valid, the function returns an array of matches, otherwise it
+ * returns null.
  */
-const isValidateEmail = (email: any) => {
+const isValidateEmail = (email: string) => {
   return String(email)
     .toLowerCase()
     .match(
@@ -27,10 +34,14 @@ const isValidateEmail = (email: any) => {
 };
 
 /**
- * Checks if entered user email is valid or not.
- * @param fieldName This parameter use in validation message.
- * @param val This parameter holds the email value that user entered.
- * @returns This method returns an Object with status and message properties.
+ * The function checks if a given string is a valid email address and returns an object with a status
+ * and message.
+ * @param {string} fieldName - a string representing the name of the email field being validated.
+ * @param {string} val - val is a string parameter that represents the email address that needs to be
+ * validated.
+ * @returns The function `isEmail` returns an object with two properties: `status` and `message`. The
+ * `status` property is a boolean value indicating whether the email address is valid or not. The
+ * `message` property is a string that provides additional information about the validation status.
  */
 export const isEmail = (fieldName: string, val: string) => {
   if (isEmpty(val)) {
@@ -41,26 +52,32 @@ export const isEmail = (fieldName: string, val: string) => {
   } else if (!isValidateEmail(val)) {
     return { status: false, message: `Invalid ${fieldName} address.` };
   }
-  return { status: true, message: "" };
+  return { status: true, message: '' };
 };
 
 /**
- * Checks if entered user password is valid or not and is also used to confirm the password.
- * @param fieldName This parameter use in validation message.
- * @param password This parameter holds the password value that user entered.
- * @param isShowValidation This parameter used if you want to show validation message
- * @param confirmPassword This parameter holds the confirm password value that user entered.
- * @returns
+ * This is a TypeScript function that validates a password based on certain criteria and returns a
+ * status and message.
+ * @param {string} fieldName - a string representing the name of the password field being validated.
+ * @param {string} password - The password string that needs to be validated.
+ * @param {boolean} isShowValidation - A boolean value that determines whether or not to show
+ * validation messages. If it is true, validation messages will be shown. If it is false, validation
+ * messages will not be shown.
+ * @param {string} [confirmPassword] - An optional parameter that represents the confirmed password
+ * entered by the user. It is used to check if the password and confirm password fields match.
+ * @returns An object with two properties: "status" and "message". The "status" property indicates
+ * whether the password validation was successful or not, and the "message" property provides a message
+ * explaining the result of the validation.
  */
 export const passwordValidate = (
   fieldName: string,
-  password: string = "",
-  isShowValidation: boolean = false,
-  confirmPassword: string = ""
+  password: string,
+  isShowValidation?: boolean,
+  confirmPassword?: string
 ) => {
   const passwordRegex =
     /^(?=.*[A-Za-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@#$!%*?&]{8,}$/;
-  if (password === "" || password === undefined || password === null) {
+  if (password === '' || password === undefined || password === null) {
     return {
       status: false,
       message: `Please enter ${fieldName}`,
@@ -77,14 +94,20 @@ export const passwordValidate = (
     };
   }
 
-  return { status: true, message: "" };
+  return { status: true, message: '' };
 };
 
 /**
- *
- * @param fieldName This parameter use in validation message.
- * @param val This parameter holds the username value that user entered.
- * @returns
+ * This is a TypeScript function that validates a username input by checking if it is empty or contains
+ * whitespace.
+ * @param {string} fieldName - a string representing the name of the field being validated (in this
+ * case, the username field)
+ * @param {string} val - val is a string parameter that represents the value of the username input
+ * field. It is used to validate the input and check if it is empty or contains any whitespace
+ * characters.
+ * @returns an object with two properties: `status` and `message`. The `status` property is a boolean
+ * value indicating whether the validation was successful or not. The `message` property is a string
+ * that provides additional information about the validation result.
  */
 export const usernameValidate = (fieldName: string, val: string) => {
   const regex = /\s/g;

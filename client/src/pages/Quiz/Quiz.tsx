@@ -1,42 +1,45 @@
-import {
-  Box,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-} from "@mui/material";
-import Button from "../../components/Button/Button";
-import { useEffect, useState } from "react";
-import ApiService from "../../services/apiService";
-import { QUIZ_URLS } from "../../constants/urlConstants";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Box, FormControl } from '@mui/material';
+import { Language } from '@mui/icons-material';
+import Button from '../../components/Button/Button';
+import ApiService from '../../services/apiService';
+import { QUIZ_URLS } from '../../constants/urlConstants';
+import CustomAutocomplete from '../../components/Autocomplete/Autocomplete';
 
-interface Language {
+interface LanguageProps {
   _id: string;
   language: string;
 }
 
-const initializeValue: Language = {
-  _id: "",
-  language: "Select",
+type Option = {
+  label: string;
+  value: string;
+};
+
+const initializeValue: Option = {
+  label: '',
+  value: '',
 };
 
 const Quiz = () => {
-  const [languages, setLanguages] = useState<Language[]>([initializeValue]);
-  const [languageId, setLanguageId] = useState<string>("");
+  const [languages, setLanguages] = useState<Option[]>([initializeValue]);
+  const [languageId, setLanguageId] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const getLanguages = async () => {
       const response = await ApiService.getData(`${QUIZ_URLS.GET_LANGUAGES}`);
-      setLanguages(response?.data?.data);
+      const options = response?.data?.data.map((e: LanguageProps) => {
+        return { label: e.language, value: e.language };
+      });
+      setLanguages(options);
     };
     getLanguages();
   }, []);
 
-  const handleChange = (event: SelectChangeEvent<string>) => {
-    setLanguageId(event.target.value);
+  const handleChange = (value: Option) => {
+    setLanguageId(value ? value.value : null);
   };
 
   const handleClick = () => {
@@ -44,7 +47,7 @@ const Quiz = () => {
   };
 
   return (
-    <section className="quiz p-24">
+    <section className="quiz">
       <h2 className="text-primary my-2 mt-0">Welcome to the Quiz!</h2>
       <p className="text-secondary mw-md">
         This exam is designed to test your understanding of the subject matter
@@ -56,7 +59,7 @@ const Quiz = () => {
       <h4 className="text-placeholder medium mt-4">Instructions</h4>
       <ol className="text-placeholder small">
         <li>
-          Click on the <strong className="text-primary">Let's go!</strong>{" "}
+          Click on the <strong className="text-primary">Let&apos;s go!</strong>{' '}
           button to begin the exam.
         </li>
         <li>Read each question carefully before answering.</li>
@@ -85,37 +88,29 @@ const Quiz = () => {
         Additionally, taking the exam can be a valuable learning experience as
         it can highlight areas where you need to improve your knowledge or
         understanding of the subject matter. <br />
-        <br /> So, stay focused and motivated to do your{" "}
+        <br /> So, stay focused and motivated to do your{' '}
         <strong className="text-primary">best in the exam!</strong>
       </p>
 
       <FormControl className="select-language">
-        <InputLabel id="demo-simple-select-label">Select Language</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
+        <CustomAutocomplete
+          id="language"
           value={languageId}
-          label="Select Language"
-          onChange={handleChange}
-        >
-          {languages.map((language) => (
-            <MenuItem
-              key={language._id}
-              value={language.language.toLowerCase()}
-            >
-              {language.language}
-            </MenuItem>
-          ))}
-        </Select>
+          dataOptions={languages}
+          placeholder="Select Language"
+          adornmentStart={Language}
+          onChange={(_, value) => {
+            handleChange(value);
+          }}
+        />
       </FormControl>
-
       <Box>
         <Button
           variant="contained"
-          disabled={languageId ? false : true}
+          disabled={languageId === null}
           onClick={handleClick}
         >
-          Let's go!
+          Let&apos;s go!
         </Button>
       </Box>
     </section>

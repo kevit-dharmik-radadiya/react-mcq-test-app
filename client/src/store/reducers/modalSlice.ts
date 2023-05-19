@@ -1,22 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-interface initialReducerProps {
+interface InitialReducerProps {
   index: string;
 }
 
-const initialModalState: initialReducerProps = {
-  index: "",
+const initialModalState: InitialReducerProps = {
+  index: '',
 };
 
 const modalSlice = createSlice({
-  name: "modal",
+  name: 'modal',
   initialState: initialModalState,
   reducers: {
     openModal: (state, action) => {
       state.index = action.payload;
     },
     closeModal: (state) => {
-      state.index = "";
+      state.index = '';
     },
   },
 });

@@ -1,31 +1,28 @@
-import { createTheme } from "@mui/material";
-import Sidebar from ".././assets/images/backgrounds/Sidebar.png";
+import { createTheme } from '@mui/material';
 
-const colorPalette = {
-  primary: "#00a783",
-  secondary: "#979797",
-  lightPrimary: "#00a78380",
-  white: "#FFFFFF",
-  placeholder: "#6d6b6b",
-  darkGrey: "#666666",
-  hover: "#00a78321",
+const COLOR_PALETTE = {
+  PRIMARY: '#009978',
+  SECONDARY: '#979797',
+  WHITE: '#FFFFFF',
+  BG_LIGHT: '#00997821',
+  BORDER: '#00000014',
 };
 
-export const theme = createTheme({
+const theme = createTheme({
   palette: {
     primary: {
-      main: colorPalette.primary,
-      contrastText: colorPalette.white,
+      main: COLOR_PALETTE.PRIMARY,
+      contrastText: COLOR_PALETTE.WHITE,
     },
     secondary: {
-      main: colorPalette.secondary,
-      contrastText: colorPalette.white,
+      main: COLOR_PALETTE.SECONDARY,
+      contrastText: COLOR_PALETTE.WHITE,
     },
   },
   typography: {
-    fontFamily: "Poppins",
+    fontFamily: 'Poppins',
     button: {
-      textTransform: "none",
+      textTransform: 'none',
     },
   },
   components: {
@@ -33,10 +30,10 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           marginRight: 0,
-          padding: "10px",
-          transition: "all 0.3s",
-          "&:hover": {
-            backgroundColor: colorPalette.hover,
+          padding: '10px',
+          transition: 'all 0.3s',
+          '&:hover': {
+            backgroundColor: COLOR_PALETTE.BG_LIGHT,
           },
         },
       },
@@ -44,37 +41,37 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: "5px",
-          padding: "0 24px",
-          height: "40px",
-          fontSize: "1.125rem",
-          whiteSpace: "nowrap",
-          boxShadow: "0px 0px 8px 1px rgba(0, 0, 0, 0.16)",
+          borderRadius: '10px',
+          padding: '0 24px',
+          height: '45px',
+          fontSize: '1.125rem',
+          whiteSpace: 'nowrap',
+          boxShadow: '0px 0px 8px 1px rgba(0, 0, 0, 0.16)',
         },
       },
     },
     MuiRadio: {
       styleOverrides: {
         root: {
-          padding: "6px",
+          padding: '6px',
         },
       },
     },
     MuiFormControl: {
       styleOverrides: {
         root: {
-          width: "100%",
+          width: '100%',
         },
       },
     },
     MuiFormLabel: {
       styleOverrides: {
         root: {
-          "&.Mui-focused": {
-            fontSize: "18px",
+          '&.Mui-focused': {
+            fontSize: '18px',
           },
-          "&.MuiInputLabel-shrink": {
-            fontSize: "18px",
+          '&.MuiInputLabel-shrink': {
+            fontSize: '18px',
           },
         },
       },
@@ -82,15 +79,15 @@ export const theme = createTheme({
     MuiTextField: {
       styleOverrides: {
         root: {
-          marginBottom: "20px",
+          marginBottom: '20px',
         },
       },
     },
     MuiFormControlLabel: {
       styleOverrides: {
         root: {
-          "& .MuiTypography-root": {
-            fontSize: "14px",
+          '& .MuiTypography-root': {
+            fontSize: '14px',
           },
         },
       },
@@ -98,15 +95,42 @@ export const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          borderRadius: "5px",
-          ".MuiOutlinedInput-notchedOutline": {
-            fontSize: "18px",
+          borderRadius: '10px',
+          '.MuiInputAdornment-root': {
+            color: COLOR_PALETTE.SECONDARY,
           },
-          "&.Mui-error:hover .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#d32f2f",
+          '&.Mui-focused': {
+            '.MuiInputAdornment-root, .MuiSelect-select svg': {
+              color: COLOR_PALETTE.PRIMARY,
+            },
+            '&.Mui-error': {
+              '.MuiInputAdornment-root': {
+                color: '#d32f2f',
+              },
+            },
           },
-          "&:hover .MuiOutlinedInput-notchedOutline": {
-            borderColor: colorPalette.primary,
+          '&.Mui-focused .MuiInputAdornment-root': {
+            color: COLOR_PALETTE.PRIMARY,
+          },
+          '.MuiOutlinedInput-notchedOutline': {
+            fontSize: '18px',
+            borderColor: COLOR_PALETTE.BORDER,
+            borderWidth: '2px',
+          },
+          '&.Mui-error:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#d32f2f',
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: COLOR_PALETTE.PRIMARY,
+          },
+        },
+      },
+    },
+    MuiAutocomplete: {
+      styleOverrides: {
+        root: {
+          '.MuiInputAdornment-root': {
+            margin: '8px',
           },
         },
       },
@@ -115,21 +139,21 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           margin: 0,
-          paddingTop: "5px",
+          paddingTop: '5px',
         },
       },
     },
     MuiListItem: {
       styleOverrides: {
         root: {
-          color: colorPalette.secondary,
-          margin: "15px 0",
-          borderRadius: "5px",
-          "&.active": {
-            backgroundColor: colorPalette.hover,
-            color: colorPalette.primary,
-            ".MuiListItemIcon-root svg": {
-              fill: colorPalette.primary,
+          color: COLOR_PALETTE.SECONDARY,
+          margin: '15px auto',
+          borderRadius: '10px',
+          '&.active': {
+            backgroundColor: COLOR_PALETTE.BG_LIGHT,
+            color: COLOR_PALETTE.PRIMARY,
+            '.MuiListItemIcon-root svg': {
+              fill: COLOR_PALETTE.PRIMARY,
             },
           },
         },
@@ -138,15 +162,16 @@ export const theme = createTheme({
     MuiListItemButton: {
       styleOverrides: {
         root: {
-          borderRadius: "5px",
-          paddingTop: "5px",
-          paddingBottom: "5px",
-          transition: "all 0.3s",
-          "&:hover": {
-            backgroundColor: colorPalette.hover,
-            color: colorPalette.primary,
-            ".MuiListItemIcon-root svg": {
-              fill: colorPalette.primary,
+          borderRadius: '5px',
+          paddingTop: '5px',
+          paddingBottom: '5px',
+          transition: 'all 0.3s',
+          '&:hover': {
+            backgroundColor: COLOR_PALETTE.BG_LIGHT,
+            color: COLOR_PALETTE.PRIMARY,
+            borderRadius: '10px',
+            '.MuiListItemIcon-root svg': {
+              fill: COLOR_PALETTE.PRIMARY,
             },
           },
         },
@@ -155,15 +180,15 @@ export const theme = createTheme({
     MuiListItemIcon: {
       styleOverrides: {
         root: {
-          minWidth: "40px",
+          minWidth: '40px',
         },
       },
     },
     MuiListItemText: {
       styleOverrides: {
         root: {
-          ".MuiTypography-root": {
-            fontWeight: "500",
+          '.MuiTypography-root': {
+            fontWeight: '500',
           },
         },
       },
@@ -171,11 +196,24 @@ export const theme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          "&.MuiDrawer-paper": {
-            backgroundImage: `url(${Sidebar})`,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "bottom",
-            backgroundSize: "contain",
+          '&.MuiDrawer-paper': {
+            borderRight: 'none',
+            transition: 'all 400ms cubic-bezier(0, 0, 0.2, 1) 0ms !important',
+          },
+          '&.MuiAutocomplete-paper': {
+            color: '#263238',
+            borderRadius: '10px',
+            border: '2px solid #00000014',
+            marginTop: '3px',
+            boxShadow: 'none',
+            '.MuiAutocomplete-listbox .MuiAutocomplete-option': {
+              margin: '2px 5px',
+              borderRadius: '10px',
+              ' &[aria-selected="true"]': {
+                backgroundColor: COLOR_PALETTE.BG_LIGHT,
+                color: '#009978',
+              },
+            },
           },
         },
       },
@@ -183,17 +221,19 @@ export const theme = createTheme({
     MuiSkeleton: {
       styleOverrides: {
         root: {
-          backgroundColor: colorPalette.hover,
-          transform: "scale(1)",
-          "&::after": {
+          backgroundColor: COLOR_PALETTE.BG_LIGHT,
+          transform: 'scale(1)',
+          '&::after': {
             background:
-              "linear-gradient(90deg,transparent,#00a78321,transparent)",
+              'linear-gradient(90deg,transparent,#00997821,transparent)',
           },
-          "&>*": {
-            visibility: "unset",
+          '&>*': {
+            visibility: 'unset',
           },
         },
       },
-    }
+    },
   },
 });
+
+export default theme;

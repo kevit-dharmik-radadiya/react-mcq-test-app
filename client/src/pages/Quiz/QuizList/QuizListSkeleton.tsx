@@ -1,9 +1,9 @@
-import SkeletonLoader from "../../../components/SkeletonLoader/SkeletonLoader";
 import {
   PhotoSizeSelectActual,
   PlayCircleOutlined,
   Visibility,
-} from "@mui/icons-material";
+} from '@mui/icons-material';
+import SkeletonLoader from '../../../components/SkeletonLoader/SkeletonLoader';
 
 const QuizListSkeleton = () => {
   return (
@@ -11,7 +11,7 @@ const QuizListSkeleton = () => {
       <div className="card-thumb">
         <SkeletonLoader
           height={155}
-          sx={{ display: "flex", maxWidth: "100%" }}
+          sx={{ display: 'flex', maxWidth: '100%' }}
           className="flex-center"
         >
           <PhotoSizeSelectActual className="text-primary" fontSize="large" />
@@ -29,12 +29,12 @@ const QuizListSkeleton = () => {
         <SkeletonLoader width={120} height={30} className="mt-2" />
         <SkeletonLoader height={15} className="mt-2" iteration={3} />
         <div>
-          <a className="card-action text-primary small cursor-pointer mt-3">
+          <div className="card-action text-primary small cursor-pointer mt-3">
             <span className="lh-0">
               <PlayCircleOutlined fontSize="medium" />
             </span>
             <SkeletonLoader width={80} height={15} />
-          </a>
+          </div>
         </div>
       </div>
     </div>
