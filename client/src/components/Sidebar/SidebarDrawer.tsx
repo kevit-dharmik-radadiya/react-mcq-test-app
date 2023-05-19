@@ -37,7 +37,7 @@ const SidebarDrawer = () => {
     >
       <Box>
         <Box className="company text-center lh-0">
-          <Company size="50px " />
+          <Company size="50px" />
           {!layoutConfig.drawerCollapse && (
             <span className="company-text text-primary bold">uiz</span>
           )}

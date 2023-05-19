@@ -1,5 +1,5 @@
-import { QUIZ_URLS } from "../constants/urlConstants";
-import ApiService from "./apiService";
+import { QUIZ_URLS } from '../constants/urlConstants';
+import ApiService from './apiService';
 
 const quizApiServices = {
   getQuizDetails: (id: string) =>

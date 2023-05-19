@@ -1,10 +1,10 @@
-/* eslint-disable no-param-reassign */
-import axios, { AxiosRequestConfig } from "axios";
-import { getAuthTokenFromLocalStorage } from "../helpers/localStorageHelper";
-import authApiServices from "./authApiServices";
-import { store } from "../app/store";
-import { errorNotification } from "../helpers/notifyHelper";
-import { login } from "../store/reducers/authSlice";
+/* eslint-disable import/no-cycle */
+import axios, { AxiosRequestConfig } from 'axios';
+import { getAuthTokenFromLocalStorage } from '../helpers/localStorageHelper';
+import { store } from '../app/store';
+import { errorNotification } from '../helpers/notifyHelper';
+import { login } from '../store/reducers/authSlice';
+import authApiServices from './authApiServices';
 
 const instance = axios.create({
   timeout: 10000,
@@ -25,7 +25,7 @@ instance.interceptors.request.use(
 
     // If the application exists cancel
     if (sourceRequest[request.url]) {
-      sourceRequest[request.url].cancel("Previous same call cancellation");
+      sourceRequest[request.url].cancel('Previous same call cancellation');
     }
 
     // Store or update application token+
@@ -66,29 +66,29 @@ instance.interceptors.response.use(
   async (error) => {
     const resType = error?.request?.responseType;
     const statusCode = error?.response?.status ?? 0;
-    if (resType === "blob") {
+    if (resType === 'blob') {
       const err = await error?.response?.data?.text();
       return Promise.reject(JSON.parse(err));
     }
     switch (statusCode) {
       case 401:
         try {
-          const response: any = await authApiServices.logoutUser();
+          const response = await authApiServices.logoutUser();
           if (response.status === 200) {
             store.dispatch(login(false));
             store.dispatch({
-              type: "LOGOUT_USER",
+              type: 'LOGOUT_USER',
             });
           }
         } catch (e) {
           if (axios.isAxiosError(e)) {
             store.dispatch(login(false));
             store.dispatch({
-              type: "LOGOUT_USER",
+              type: 'LOGOUT_USER',
             });
-            if (e.message !== "Previous same call cancellation") {
+            if (e.message !== 'Previous same call cancellation') {
               errorNotification(
-                "For security purposes you have been logged out, you need to re login"
+                'For security purposes you have been logged out, you need to re login'
               );
             }
             return false;
@@ -97,8 +97,9 @@ instance.interceptors.response.use(
         }
         break;
       case 403:
-      // window.location.href = "/forbidden-access";
-      // return false;
+        // window.location.href = "/forbidden-access";
+        // return false;
+        break;
 
       default:
         break;

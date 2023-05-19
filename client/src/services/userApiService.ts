@@ -1,5 +1,5 @@
-import { USER_URLS } from "../constants/urlConstants";
-import ApiService from "./apiService";
+import { USER_URLS } from '../constants/urlConstants';
+import ApiService from './apiService';
 
 const userApiServices = {
   getUserDetails: (id: string) =>
