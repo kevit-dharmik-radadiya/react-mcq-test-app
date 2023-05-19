@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { ExpandMore } from '@mui/icons-material';
 import {
   Autocomplete,
@@ -51,7 +52,7 @@ const CustomAutocomplete = (props: AutocompleteProps) => {
     <Autocomplete
       id={id}
       value={value}
-      options={[...dataOptions]}
+      options={dataOptions}
       placeholder={placeholder}
       popupIcon={<ExpandMore />}
       sx={{ width: { width } }}
@@ -59,9 +60,12 @@ const CustomAutocomplete = (props: AutocompleteProps) => {
       getOptionLabel={(option) => {
         return option?.label ?? option;
       }}
-      isOptionEqualToValue={(option, optionValue) =>
-        option.value === optionValue
-      }
+      isOptionEqualToValue={(option, optionValue: string | Option) => {
+        if (_.isObject(optionValue)) {
+          return option.value === optionValue.value;
+        }
+        return option.value === optionValue;
+      }}
       onChange={(event, eventValues) => {
         onChange(event, eventValues);
       }}
@@ -72,9 +76,12 @@ const CustomAutocomplete = (props: AutocompleteProps) => {
           InputProps={{
             ...params.InputProps,
             startAdornment: (
-              <InputAdornment position="start">
-                <AdornmentStart />
-              </InputAdornment>
+              <>
+                <InputAdornment position="start">
+                  <AdornmentStart />
+                </InputAdornment>
+                {params.InputProps.startAdornment}
+              </>
             ),
           }}
         />

@@ -24,7 +24,7 @@ const initializeValue: Option = {
 
 const Quiz = () => {
   const [languages, setLanguages] = useState<Option[]>([initializeValue]);
-  const [languageId, setLanguageId] = useState<string>('');
+  const [languageId, setLanguageId] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const Quiz = () => {
   }, []);
 
   const handleChange = (value: Option) => {
-    setLanguageId(value ? value.value : '');
+    setLanguageId(value ? value.value : null);
   };
 
   const handleClick = () => {
@@ -107,7 +107,7 @@ const Quiz = () => {
       <Box>
         <Button
           variant="contained"
-          disabled={languageId === ''}
+          disabled={languageId === null}
           onClick={handleClick}
         >
           Let&apos;s go!

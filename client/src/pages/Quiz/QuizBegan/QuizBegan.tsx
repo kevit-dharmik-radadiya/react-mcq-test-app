@@ -10,6 +10,7 @@ import { QUIZ_URLS } from '../../../constants/urlConstants';
 import ROUTE_CONSTANTS_VARIABLE from '../../../constants/routeConstants';
 import RadioButtonGroup from '../../../components/RadioButtonGroup/RadioButtonGroup';
 import QuizBeganSkeleton from './QuizBeganSkeleton';
+import { RootState } from '../../../app/store';
 
 interface QuizData {
   questionId: string;
@@ -26,8 +27,8 @@ const QuizBegan = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const quizDetails: Record<string, any> = useAppSelector(
-    ({ quiz }: Record<string, any>) => quiz?.quizDetails ?? {}
+  const quizDetails = useAppSelector(
+    ({ quiz }: RootState) => quiz?.quizDetails ?? {}
   );
 
   useEffect(() => {

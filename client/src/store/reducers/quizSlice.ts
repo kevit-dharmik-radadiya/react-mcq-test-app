@@ -26,9 +26,9 @@ const quizSlice = createSlice({
   reducers: {
     setQuizDetails: (
       state,
-      action: PayloadAction<{ quizDetails: InitialReducerProps['quizDetails'] }>
+      action: PayloadAction<InitialReducerProps['quizDetails']>
     ) => {
-      state.quizDetails = action?.payload.quizDetails;
+      state.quizDetails = action?.payload;
     },
   },
 });

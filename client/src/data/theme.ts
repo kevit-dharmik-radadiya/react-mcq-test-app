@@ -148,7 +148,7 @@ const theme = createTheme({
         root: {
           color: COLOR_PALETTE.SECONDARY,
           margin: '15px auto',
-          borderRadius: '5px',
+          borderRadius: '10px',
           '&.active': {
             backgroundColor: COLOR_PALETTE.BG_LIGHT,
             color: COLOR_PALETTE.PRIMARY,
@@ -169,6 +169,7 @@ const theme = createTheme({
           '&:hover': {
             backgroundColor: COLOR_PALETTE.BG_LIGHT,
             color: COLOR_PALETTE.PRIMARY,
+            borderRadius: '10px',
             '.MuiListItemIcon-root svg': {
               fill: COLOR_PALETTE.PRIMARY,
             },
@@ -197,7 +198,7 @@ const theme = createTheme({
         root: {
           '&.MuiDrawer-paper': {
             borderRight: 'none',
-            transition: 'all 225ms cubic-bezier(0, 0, 0.2, 1) 0ms !important',
+            transition: 'all 400ms cubic-bezier(0, 0, 0.2, 1) 0ms !important',
           },
           '&.MuiAutocomplete-paper': {
             color: '#263238',
