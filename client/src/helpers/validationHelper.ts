@@ -1,5 +1,7 @@
 import _ from 'lodash';
 
+type ValidationStatus = { status: boolean; message: string };
+
 /**
  * This is a TypeScript function that checks if a value is empty or not.
  * @param {any} val - The `val` parameter is of type `any`, which means it can accept any data type as
@@ -43,7 +45,7 @@ const isValidateEmail = (email: string) => {
  * `status` property is a boolean value indicating whether the email address is valid or not. The
  * `message` property is a string that provides additional information about the validation status.
  */
-export const isEmail = (fieldName: string, val: string) => {
+export const isEmail = (fieldName: string, val: string): ValidationStatus => {
   if (isEmpty(val)) {
     return {
       status: false,
@@ -74,7 +76,7 @@ export const passwordValidate = (
   password: string,
   isShowValidation?: boolean,
   confirmPassword?: string
-) => {
+): ValidationStatus => {
   const passwordRegex =
     /^(?=.*[A-Za-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@#$!%*?&]{8,}$/;
   if (password === '' || password === undefined || password === null) {
@@ -109,7 +111,11 @@ export const passwordValidate = (
  * value indicating whether the validation was successful or not. The `message` property is a string
  * that provides additional information about the validation result.
  */
-export const usernameValidate = (fieldName: string, val: string) => {
+
+export const usernameValidate = (
+  fieldName: string,
+  val: string
+): ValidationStatus => {
   const regex = /\s/g;
   if (isEmpty(val)) {
     return {

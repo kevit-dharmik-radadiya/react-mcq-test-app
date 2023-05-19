@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
  * @param {string} message - The message to be displayed in the notification.
  * @returns All three functions are returning `false`.
  */
-export const successNotification = (message: string) => {
+export const successNotification = (message: string): boolean => {
   toast(message, {
     type: 'success',
     position: 'top-center',
@@ -24,7 +24,7 @@ export const successNotification = (message: string) => {
   return false;
 };
 
-export const errorNotification = (message: string) => {
+export const errorNotification = (message: string): boolean => {
   toast(message, {
     type: 'error',
     position: 'top-center',
@@ -40,7 +40,7 @@ export const errorNotification = (message: string) => {
   return false;
 };
 
-export const warningNotification = (message: string) => {
+export const warningNotification = (message: string): boolean => {
   toast(message, {
     type: 'warning',
     position: 'top-center',

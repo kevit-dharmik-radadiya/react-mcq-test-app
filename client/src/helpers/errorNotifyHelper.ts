@@ -26,4 +26,3 @@ const displayErrors = (e: any) => {
 };
 
 export default displayErrors;
-
