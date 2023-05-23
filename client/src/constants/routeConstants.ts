@@ -7,6 +7,10 @@ const ROUTE_CONSTANTS_VARIABLE = {
   DASHBOARD: '/dashboard',
   QUIZ: '/quiz',
   SUBMISSIONS: '/submissions',
+  COMPONENTS: '/components',
+  EXPLORE: '/explore',
+  NEWS: 'news',
+  POSTS: 'posts',
 };
 
 export default ROUTE_CONSTANTS_VARIABLE;

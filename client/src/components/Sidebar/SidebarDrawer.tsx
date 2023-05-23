@@ -11,17 +11,14 @@ import {
   Zoom,
 } from '@mui/material';
 import { ArrowBackIosNew, ArrowForwardIos } from '@mui/icons-material';
-import { NavLink as RouterLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hook';
-import SIDEBAR_CONSTANTS from './sidebarConstants';
 import LogoutIcon from '../../assets/images/sidebar/LogoutIcon';
 import { logOutUser } from '../../store/actions/authAction';
-import {
-  handleCollapse,
-  handleDrawerToggle,
-} from '../../store/reducers/layoutSlice';
+import { handleCollapse } from '../../store/reducers/layoutSlice';
 import { RootState } from '../../app/store';
 import Company from '../../assets/images/logos/Company';
+import ExpandableMenuItem from './ExpandableMenuItem ';
 
 const SidebarDrawer = () => {
   // const userDetails: Record<string, any> = useAppSelector(
@@ -54,63 +51,55 @@ const SidebarDrawer = () => {
       </Box>
       <Box className="drawer-menu">
         <List>
-          {layoutConfig.drawerCollapse
-            ? SIDEBAR_CONSTANTS.map((menu) => (
-                <Tooltip
-                  key={menu.name}
-                  arrow
-                  TransitionComponent={Zoom}
-                  title={menu.label}
-                  placement="right"
-                >
-                  <ListItem
-                    disablePadding
-                    onClick={() => dispatch(handleDrawerToggle())}
-                    component={RouterLink}
-                    to={menu.url}
-                  >
-                    <ListItemButton>
-                      <ListItemIcon>{menu.icon}</ListItemIcon>
-                      {!layoutConfig.drawerCollapse && (
-                        <ListItemText primary={menu.label} />
-                      )}
-                    </ListItemButton>
-                  </ListItem>
-                </Tooltip>
-              ))
-            : SIDEBAR_CONSTANTS.map((menu) => (
-                <ListItem
-                  key={menu.name}
-                  disablePadding
-                  onClick={() => dispatch(handleDrawerToggle())}
-                  component={RouterLink}
-                  to={menu.url}
-                >
-                  <ListItemButton>
-                    <ListItemIcon>{menu.icon}</ListItemIcon>
-                    {!layoutConfig.drawerCollapse && (
-                      <ListItemText primary={menu.label} />
-                    )}
-                  </ListItemButton>
-                </ListItem>
-              ))}
+          {/* {SIDEBAR_CONSTANTS.map((menu) => (
+            <Tooltip
+              key={menu.name}
+              arrow
+              TransitionComponent={Zoom}
+              title={layoutConfig.drawerCollapse && menu.label}
+              placement="right"
+            >
+              <ListItem
+                disablePadding
+                onClick={() => dispatch(handleDrawerToggle())}
+                component={RouterLink}
+                to={menu.url}
+              >
+                <ListItemButton>
+                  <ListItemIcon>{menu.icon}</ListItemIcon>
+                  {!layoutConfig.drawerCollapse && (
+                    <ListItemText primary={menu.label} />
+                  )}
+                </ListItemButton>
+              </ListItem>
+            </Tooltip>
+          ))} */}
+          <ExpandableMenuItem />
         </List>
       </Box>
       <Box>
         <Divider />
         <List>
-          <ListItem
-            disablePadding
-            onClick={() => dispatch(logOutUser(navigate))}
-            sx={{ my: 0 }}
+          <Tooltip
+            key="logout"
+            arrow
+            TransitionComponent={Zoom}
+            title={layoutConfig.drawerCollapse && 'Logout'}
+            placement="right"
           >
-            <ListItemButton>
-              <ListItemIcon>{LogoutIcon}</ListItemIcon>
-              {!layoutConfig.drawerCollapse && (
-                <ListItemText primary="Logout" />
-              )}
-            </ListItemButton>
-          </ListItem>
+            <ListItem
+              disablePadding
+              onClick={() => dispatch(logOutUser(navigate))}
+              sx={{ my: 0, overflow: 'hidden' }}
+            >
+              <ListItemButton>
+                <ListItemIcon>{LogoutIcon}</ListItemIcon>
+                {!layoutConfig.drawerCollapse && (
+                  <ListItemText primary="Logout" />
+                )}
+              </ListItemButton>
+            </ListItem>
+          </Tooltip>
         </List>
       </Box>
       <IconButton

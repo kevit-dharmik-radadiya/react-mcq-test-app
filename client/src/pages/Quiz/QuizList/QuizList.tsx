@@ -5,7 +5,7 @@ import { Box, IconButton } from '@mui/material';
 import { useEffect, useState } from 'react';
 import India from '../../../assets/images/thumb/quiz-english/India.png';
 import IndiaForeground from '../../../assets/images/thumb/quiz-english/India-Foreground.png';
-import CustomModal from '../../../components/Modal/Modal';
+import Modal from '../../../components/Modal/Modal';
 import { useAppDispatch } from '../../../app/hook';
 import { openModal } from '../../../store/reducers/modalSlice';
 import ApiService from '../../../services/apiService';
@@ -41,7 +41,7 @@ const QuizList = () => {
 
   return (
     <div className="quiz-list">
-      <CustomModal id="card" title="India" size="large">
+      <Modal id="card" title="India" size="large">
         <Box className="text-center">
           <img src={India} alt="India" width="70%" />
           <p className="text-secondary">
@@ -64,7 +64,7 @@ const QuizList = () => {
             Start Now
           </a>
         </Box>
-      </CustomModal>
+      </Modal>
       <h2 className="mt-0">{_.capitalize(language)} Quiz</h2>
       <p className="text-secondary">
         Below you can find list of an {_.capitalize(language)} language quiz

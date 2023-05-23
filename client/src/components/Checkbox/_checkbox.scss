@@ -1,0 +1,22 @@
+.checkbox {
+  border: 2px solid $SECONDARY;
+  border-radius: 5px;
+  position: relative;
+  &.checked {
+    border: 2px solid $PRIMARY;
+    background-color: $PRIMARY;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 2px;
+      width: 3px;
+      height: 7px;
+      border: solid $WHITE;
+      border-width: 0 2px 2px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+}

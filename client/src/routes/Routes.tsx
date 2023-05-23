@@ -15,6 +15,10 @@ import Quiz from '../pages/Quiz/Quiz';
 import QuizBegan from '../pages/Quiz/QuizBegan/QuizBegan';
 import QuizResult from '../pages/Quiz/QuizResult/QuizResult';
 import QuizList from '../pages/Quiz/QuizList/QuizList';
+import Components from '../pages/Components/Components';
+import Explore from '../pages/Explore/Explore';
+import News from '../pages/Explore/News';
+import Posts from '../pages/Explore/Posts';
 
 const router = createBrowserRouter([
   {
@@ -112,6 +116,43 @@ const router = createBrowserRouter([
             <Submissions />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: ROUTE_CONSTANTS_VARIABLE.COMPONENTS,
+        element: (
+          <ProtectedRoute>
+            <Components />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: ROUTE_CONSTANTS_VARIABLE.EXPLORE,
+        children: [
+          {
+            index: true,
+            element: (
+              <ProtectedRoute>
+                <Explore />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: ROUTE_CONSTANTS_VARIABLE.NEWS,
+            element: (
+              <ProtectedRoute>
+                <News />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: ROUTE_CONSTANTS_VARIABLE.POSTS,
+            element: (
+              <ProtectedRoute>
+                <Posts />
+              </ProtectedRoute>
+            ),
+          },
+        ],
       },
     ],
   },

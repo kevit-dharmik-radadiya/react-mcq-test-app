@@ -5,7 +5,7 @@ import { Language } from '@mui/icons-material';
 import Button from '../../components/Button/Button';
 import ApiService from '../../services/apiService';
 import { QUIZ_URLS } from '../../constants/urlConstants';
-import CustomAutocomplete from '../../components/Autocomplete/Autocomplete';
+import Autocomplete from '../../components/Autocomplete/Autocomplete';
 
 interface LanguageProps {
   _id: string;
@@ -24,7 +24,7 @@ const initializeValue: Option = {
 
 const Quiz = () => {
   const [languages, setLanguages] = useState<Option[]>([initializeValue]);
-  const [languageId, setLanguageId] = useState(null);
+  const [languageId, setLanguageId] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const Quiz = () => {
   };
 
   const handleClick = () => {
-    navigate(languageId);
+    navigate(languageId ?? '');
   };
 
   return (
@@ -93,7 +93,7 @@ const Quiz = () => {
       </p>
 
       <FormControl className="select-language">
-        <CustomAutocomplete
+        <Autocomplete
           id="language"
           value={languageId}
           dataOptions={languages}

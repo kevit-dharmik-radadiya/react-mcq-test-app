@@ -14,7 +14,7 @@
       margin: 20px 0;
       position: relative;
       .svg-icon {
-        margin-right: 50px;
+        margin-right: 40px;
         transform: rotate(105deg);
         transition: all 0.3s;
       }
@@ -22,7 +22,7 @@
         position: absolute;
         bottom: 21px;
         font-size: 36px;
-        right: 40px;
+        right: 50px;
         animation: fadeInRight 0.4s ease-in-out;
       }
     }
@@ -39,6 +39,23 @@
       overflow: auto;
       &::-webkit-scrollbar {
         display: none;
+      }
+      .sub-menu {
+        background-color: $BG_LIGHT ;
+        border-radius: 10px;
+        margin-top: 5px;
+        padding: 5px 0;
+        .MuiListItem-root {
+          margin: 0;
+          &.active {
+            background-color: transparent;
+          }
+          .MuiButtonBase-root {
+            &:hover {
+              background-color: transparent;
+            }
+          }
+        }
       }
     }
     .collapse {

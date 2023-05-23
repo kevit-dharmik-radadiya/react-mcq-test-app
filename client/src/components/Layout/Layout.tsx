@@ -46,7 +46,7 @@ const Layout = ({ children }: LayoutProps) => {
     setScrollTop(element.scrollTop);
   };
 
-  const drawerWidth: number = layoutConfig.drawerCollapse ? 120 : 250;
+  const drawerWidth: number = layoutConfig.drawerCollapse ? 120 : 280;
 
   return (
     <Box className="layout d-flex">
