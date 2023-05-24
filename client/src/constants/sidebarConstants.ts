@@ -1,11 +1,11 @@
-import ComponentsIcon from '../../assets/images/sidebar/Components';
-import DashboardIcon from '../../assets/images/sidebar/DashboardIcon';
-import ExploreIcon from '../../assets/images/sidebar/ExploreIcon';
-import NewsIcon from '../../assets/images/sidebar/NewsIcon';
-import PostsIcon from '../../assets/images/sidebar/PostsIcon';
-import QuizIcon from '../../assets/images/sidebar/QuizIcon';
-import SubmissionIcon from '../../assets/images/sidebar/SubmissionIcon';
-import ROUTE_CONSTANTS_VARIABLE from '../../constants/routeConstants';
+import ComponentsIcon from '../assets/images/sidebar/Components';
+import DashboardIcon from '../assets/images/sidebar/DashboardIcon';
+import ExploreIcon from '../assets/images/sidebar/ExploreIcon';
+import NewsIcon from '../assets/images/sidebar/NewsIcon';
+import PostsIcon from '../assets/images/sidebar/PostsIcon';
+import QuizIcon from '../assets/images/sidebar/QuizIcon';
+import SubmissionIcon from '../assets/images/sidebar/SubmissionIcon';
+import ROUTE_CONSTANTS_VARIABLE from './routeConstants';
 
 const SIDEBAR_MENU = {
   DASHBOARD: 'Dashboard',

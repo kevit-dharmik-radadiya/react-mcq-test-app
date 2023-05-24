@@ -1,3 +1,9 @@
+@mixin display-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .layout {
   .drawer-header {
     position: fixed;
@@ -64,6 +70,110 @@
       -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
       flex-shrink: 0;
+    }
+  }
+}
+
+.notification-drawer {
+  .MuiDrawer-paper {
+    max-width: 400px;
+    width: 100%;
+  }
+  .notification-item_header {
+    @include display-between;
+    background-color: #def2ee;
+    color: $PRIMARY;
+    font-weight: 500;
+    font-size: $body;
+    padding: 5px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .notifications {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .notification-header {
+      @include display-between;
+      .notification-count {
+        background-color: $BG_PRIMARY;
+        color: $WHITE;
+        border-radius: 10px;
+        width: max-content;
+        padding: 1px 8px;
+      }
+    }
+    .notification-body {
+      flex: 1 1 0;
+      overflow: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      .notification-item_body {
+        .item {
+          padding: 10px 24px;
+          border-bottom: 1px solid #e3e3e3;
+          .item_icon {
+            @include display-between;
+            .MuiIconButton-root {
+              color: $SECONDARY;
+              padding: 5px;
+              &:hover {
+                color: $PRIMARY;
+              }
+            }
+          }
+          .item_content {
+            @include display-between;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+            padding-right: 35px;
+            margin: 5px 0 10px;
+          }
+          .item_date {
+            @include display-between;
+            margin-bottom: 5px;
+          }
+        }
+      }
+      .view-all {
+        text-align: center;
+        margin-top: -22px;
+        .MuiButtonBase-root {
+          box-shadow: none;
+          font-size: $small;
+          background-color: $BG_WHITE;
+          border: 1px solid #e3e3e3;
+          border-radius: 20px;
+          height: 40px;
+        }
+      }
+    }
+    .notification-footer {
+      .notification-footer_body {
+        @include display-between;
+        padding: 24px;
+        .MuiAvatarGroup-root {
+          justify-content: flex-end;
+          .MuiAvatar-colorDefault {
+            background-color: $BG_LIGHT;
+            color: $PRIMARY;
+            border: 1px solid $PRIMARY;
+            font-size: $medium;
+          }
+        }
+        .MuiIconButton-root {
+          background-color: $BG_LIGHT;
+          padding: 7px;
+          border: 2px solid transparent;
+          &:hover {
+            color: $PRIMARY;
+            border: 2px solid $PRIMARY;
+          }
+        }
+      }
     }
   }
 }

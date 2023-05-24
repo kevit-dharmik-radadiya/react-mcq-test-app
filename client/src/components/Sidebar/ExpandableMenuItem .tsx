@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { NavLink as RouterLink, useLocation } from 'react-router-dom';
-import SIDEBAR_CONSTANTS from './sidebarConstants';
+import SIDEBAR_CONSTANTS from '../../constants/sidebarConstants';
 import { useAppDispatch, useAppSelector } from '../../app/hook';
 import { RootState } from '../../app/store';
 import { handleDrawerToggle } from '../../store/reducers/layoutSlice';

@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _, { set } from 'lodash';
 import Box from '@mui/material/Box';
 import { ReactNode, useEffect, useState } from 'react';
 import {
@@ -6,6 +6,7 @@ import {
   Avatar,
   Badge,
   Breadcrumbs,
+  Drawer,
   Toolbar,
   Typography,
 } from '@mui/material';
@@ -18,23 +19,28 @@ import { useAppDispatch, useAppSelector } from '../../app/hook';
 import getUserDetails from '../../store/actions/userAction';
 import { getUserIDFromLocalStorage } from '../../helpers/localStorageHelper';
 import Setting from '../../assets/images/logos/Setting';
-import SIDEBAR_CONSTANTS from '../Sidebar/sidebarConstants';
+import SIDEBAR_CONSTANTS from '../../constants/sidebarConstants';
 import { handleDrawerToggle } from '../../store/reducers/layoutSlice';
 import { RootState } from '../../app/store';
+import DashboardIcon from '../../assets/images/sidebar/DashboardIcon';
+import Notification from './Notification';
 
 interface LayoutProps {
   children: ReactNode;
 }
 const Layout = ({ children }: LayoutProps) => {
   const [scrollTop, setScrollTop] = useState<number>(0);
+  const [notificationDrawer, setNotificationDrawer] = useState<boolean>(false);
   const layoutConfig = useAppSelector(({ layout }: RootState) => layout ?? {});
+
   const dispatch = useAppDispatch();
   const location = useLocation();
   const path = location.pathname;
   const breadcrumbText: string = path.split('/')[1];
-  const breadcrumbIcon = SIDEBAR_CONSTANTS.filter(
-    (item) => item.name === breadcrumbText
-  );
+  const breadcrumbIcon =
+    breadcrumbText === ''
+      ? [{ icon: DashboardIcon }]
+      : SIDEBAR_CONSTANTS.filter((item) => item.name === breadcrumbText);
 
   useEffect(() => {
     const userID = getUserIDFromLocalStorage() ?? '';
@@ -43,7 +49,9 @@ const Layout = ({ children }: LayoutProps) => {
 
   const handleScroll = (event: React.UIEvent<HTMLElement>) => {
     const element = event.currentTarget as HTMLElement;
-    setScrollTop(element.scrollTop);
+    if (element.scrollTop < 2) {
+      setScrollTop(element.scrollTop);
+    }
   };
 
   const drawerWidth: number = layoutConfig.drawerCollapse ? 120 : 280;
@@ -60,7 +68,21 @@ const Layout = ({ children }: LayoutProps) => {
         <Toolbar>
           <Box className="drawer-header_control">
             <Badge badgeContent={4} color="primary" className="control-icon">
-              <Notifications className="svg-icon text-secondary" />
+              <Notifications
+                className="svg-icon text-secondary"
+                onClick={() => setNotificationDrawer((prev) => !prev)}
+              />
+              <Drawer
+                anchor="right"
+                open={notificationDrawer}
+                onClose={() => setNotificationDrawer((prev) => !prev)}
+                ModalProps={{
+                  keepMounted: true,
+                }}
+                className="notification-drawer"
+              >
+                <Notification />
+              </Drawer>
             </Badge>
             <Setting fill="#979797" size="1.5em" className="control-icon" />
             <Avatar alt="Profile" src={Profile} className="drawer-avatar" />
@@ -102,7 +124,7 @@ const Layout = ({ children }: LayoutProps) => {
         className="main scrollbar-hover"
         onScroll={handleScroll}
       >
-        {children}
+        {children}{' '}
       </Box>
     </Box>
   );
