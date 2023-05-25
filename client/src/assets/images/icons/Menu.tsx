@@ -1,19 +1,18 @@
 interface Props {
-  fill: string;
   size: string;
 }
 
 const Menu = (props: Props) => {
-  const { fill, size } = props;
+  const { size } = props;
   return (
     <svg
       className="svg-icon"
       style={{
         width: size,
         height: size,
-        verticalAlign: "middle",
-        fill: fill,
-        overflow: "hidden",
+        verticalAlign: 'middle',
+
+        overflow: 'hidden',
       }}
       viewBox="0 0 1024 1024"
       version="1.1"

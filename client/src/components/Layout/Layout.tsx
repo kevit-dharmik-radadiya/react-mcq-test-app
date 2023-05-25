@@ -1,4 +1,4 @@
-import _, { set } from 'lodash';
+import _ from 'lodash';
 import Box from '@mui/material/Box';
 import { ReactNode, useEffect, useState } from 'react';
 import {
@@ -13,17 +13,18 @@ import {
 import { Notifications } from '@mui/icons-material';
 import { useLocation } from 'react-router-dom';
 import Sidebar from '../Sidebar/Sidebar';
-import Menu from '../../assets/images/Menu';
-import Profile from '../../assets/images/Profile.png';
+import Menu from '../../assets/images/icons/Menu';
+import Profile from '../../assets/images/avatar/Profile.png';
 import { useAppDispatch, useAppSelector } from '../../app/hook';
 import getUserDetails from '../../store/actions/userAction';
 import { getUserIDFromLocalStorage } from '../../helpers/localStorageHelper';
-import Setting from '../../assets/images/logos/Setting';
+import Setting from '../../assets/images/icons/Setting';
 import SIDEBAR_CONSTANTS from '../../constants/sidebarConstants';
 import { handleDrawerToggle } from '../../store/reducers/layoutSlice';
 import { RootState } from '../../app/store';
 import DashboardIcon from '../../assets/images/sidebar/DashboardIcon';
-import Notification from './Notification';
+import Notification from '../Notification/Notification';
+import RESTRICTED_ROUTES from '../../helpers/restrictedRoutes';
 
 interface LayoutProps {
   children: ReactNode;
@@ -37,10 +38,9 @@ const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
   const path = location.pathname;
   const breadcrumbText: string = path.split('/')[1];
-  const breadcrumbIcon =
-    breadcrumbText === ''
-      ? [{ icon: DashboardIcon }]
-      : SIDEBAR_CONSTANTS.filter((item) => item.name === breadcrumbText);
+  const breadcrumbIcon = RESTRICTED_ROUTES.includes(breadcrumbText)
+    ? [{ icon: DashboardIcon }]
+    : SIDEBAR_CONSTANTS.filter((item) => item.name === breadcrumbText);
 
   useEffect(() => {
     const userID = getUserIDFromLocalStorage() ?? '';
@@ -81,17 +81,19 @@ const Layout = ({ children }: LayoutProps) => {
                 }}
                 className="notification-drawer"
               >
-                <Notification />
+                <Notification
+                  onClose={() => setNotificationDrawer((prev) => !prev)}
+                />
               </Drawer>
             </Badge>
-            <Setting fill="#979797" size="1.5em" className="control-icon" />
+            <Setting size="1.5em" className="control-icon" />
             <Avatar alt="Profile" src={Profile} className="drawer-avatar" />
             <Box
               aria-label="open drawer"
               onClick={() => dispatch(handleDrawerToggle())}
               className="drawer-menu_icon control-icon"
             >
-              <Menu fill="#979797" size="1.5em" />
+              <Menu size="1.5em" />
             </Box>
           </Box>
 

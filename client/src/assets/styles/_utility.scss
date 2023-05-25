@@ -297,6 +297,19 @@
   white-space: normal;
 }
 
+.control-icon {
+  cursor: pointer;
+  svg {
+    fill: $SECONDARY;
+  }
+  &:hover {
+    .svg-icon,
+    .MuiSvgIcon-root {
+      fill: $PRIMARY !important;
+    }
+  }
+}
+
 @media screen and (max-width: 992px) {
   .xxx-large {
     font-size: $xx-large;

@@ -1,23 +1,22 @@
-import { Box } from "@mui/material";
+import { Box } from '@mui/material';
 
 interface Props {
-  fill: string;
   size: string;
   className: string;
+  onClick?: () => void;
 }
 
 const Setting = (props: Props) => {
-  const { fill, size, className } = props;
+  const { size, className, onClick } = props;
   return (
-    <Box className={className}>
+    <Box className={className} onClick={onClick}>
       <svg
         className="svg-icon"
         style={{
           width: size,
           height: size,
-          verticalAlign: "middle",
-          fill: fill,
-          overflow: "hidden",
+          verticalAlign: 'middle',
+          overflow: 'hidden',
         }}
         viewBox="0 0 1024 1024"
         version="1.1"
@@ -27,6 +26,10 @@ const Setting = (props: Props) => {
       </svg>
     </Box>
   );
+};
+
+Setting.defaultProps = {
+  onClick: () => {},
 };
 
 export default Setting;

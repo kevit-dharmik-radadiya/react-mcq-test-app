@@ -233,6 +233,24 @@ const theme = createTheme({
         },
       },
     },
+    MuiSwitch: {
+      styleOverrides: {
+        root: {
+          width: '54px',
+          height: '34px',
+          padding: '5px',
+          '.MuiSwitch-thumb': {
+            width: '15px',
+            height: '15px',
+          },
+          '.MuiSwitch-track': {
+            backgroundColor: '#e9e9ea',
+            borderRadius: '12px',
+            opacity: 1,
+          },
+        },
+      },
+    },
   },
 });
 

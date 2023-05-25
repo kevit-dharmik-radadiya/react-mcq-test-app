@@ -18,11 +18,13 @@ type Option = {
 interface AutocompleteProps {
   id: string;
   value: any;
+  defaultValue?: any;
   width?: string;
   placeholder: string;
   dataOptions: Option[];
   adornmentStart: ElementType;
   onChange: (event: SyntheticEvent, value: any) => void;
+  className?: string;
 }
 
 const PaperComponent = (
@@ -46,7 +48,7 @@ const CustomAutocomplete = (props: AutocompleteProps) => {
     dataOptions,
     adornmentStart: AdornmentStart,
     onChange,
-    ...restProps
+    className,
   } = props;
   return (
     <Autocomplete
@@ -55,6 +57,7 @@ const CustomAutocomplete = (props: AutocompleteProps) => {
       options={dataOptions}
       placeholder={placeholder}
       popupIcon={<ExpandMore />}
+      className={className}
       sx={{ width: { width } }}
       PaperComponent={PaperComponentForward}
       getOptionLabel={(option) => {
@@ -86,13 +89,14 @@ const CustomAutocomplete = (props: AutocompleteProps) => {
           }}
         />
       )}
-      {...restProps}
     />
   );
 };
 
 CustomAutocomplete.defaultProps = {
   width: 'auto',
+  defaultValue: '',
+  className: '',
 };
 
 export default CustomAutocomplete;

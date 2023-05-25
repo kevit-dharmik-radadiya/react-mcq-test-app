@@ -1,17 +1,19 @@
 interface CompanyProps {
   size: string;
   circleFill?: string;
+  className?: string;
 }
 
-const Company = ({ size, circleFill }: CompanyProps) => (
+const Company = ({ size, circleFill, className }: CompanyProps) => (
   <svg
-    className="svg-icon"
+    className={`svg-icon ${className}`}
     width={size}
     height={size}
     fill="#009978"
     viewBox="0 0 1024 1024"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="none"
   >
     <path d="M512 322.4c-104.6 0-189.6 85-189.6 189.6s85 189.6 189.6 189.6 189.6-85 189.6-189.6-85-189.6-189.6-189.6z" />
     <path d="M784.2 252.8m-86.4 0a86.4 86.4 0 1 0 172.8 0 86.4 86.4 0 1 0-172.8 0Z" />
@@ -25,6 +27,7 @@ const Company = ({ size, circleFill }: CompanyProps) => (
 
 Company.defaultProps = {
   circleFill: '#009978',
+  className: '',
 };
 
 export default Company;
