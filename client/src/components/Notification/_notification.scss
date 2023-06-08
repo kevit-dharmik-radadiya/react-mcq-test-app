@@ -1,7 +1,3 @@
-@mixin display-align-center {
-  display: flex;
-  align-items: center;
-}
 .notification-drawer {
   .MuiDrawer-paper {
     max-width: 450px;
@@ -186,53 +182,33 @@
       }
       .connection-body {
         margin-top: 30px;
-        .connection-item {
-          border: 2px solid $BORDER_LIGHT;
-          border-radius: 10px;
-          overflow: hidden;
-          transition: all 0.3s;
-          &:hover {
-            border: 2px solid $PRIMARY;
-            .connection-item_icon {
-              background-color: $BG_LIGHT;
-              .company-icon {
-                fill: $PRIMARY;
-              }
-            }
-          }
-          .connection-item_icon {
-            background-color: $BORDER_LIGHT;
+        .card-header {
+          .card-header_icon {
             height: 50px;
-            position: relative;
-            transition: all 0.3s;
             .company-icon {
               position: absolute;
               bottom: 2px;
               transform: rotate(72deg);
               left: 9px;
-              fill: $SECONDARY;
-              transition: all 0.3s;
-            }
-            .MuiAvatar-root {
-              border: 3px solid $WHITE;
-              position: absolute;
-              top: 20px;
-              right: 15px;
             }
           }
-          .connection-item_content {
-            padding: 15px;
+        }
+        .card-body {
+          position: relative;
+          .MuiAvatar-root {
+            border: 3px solid $WHITE;
+            position: absolute;
+            top: -30px;
+            right: 15px;
           }
-          .connection-item_footer {
-            @include display-between;
-            padding: 0 15px 15px;
-            .connect {
-              @include display-align-center;
-              gap: 5px;
-              .MuiButtonBase-root {
-                padding: 5px;
-                border: 2px solid $PRIMARY;
-              }
+        }
+        .card-footer {
+          .connect {
+            @include display-align-center;
+            gap: 5px;
+            .MuiButtonBase-root {
+              padding: 5px;
+              border: 2px solid $PRIMARY;
             }
           }
         }

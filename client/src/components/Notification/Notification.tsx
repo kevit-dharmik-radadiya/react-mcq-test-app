@@ -339,22 +339,24 @@ const Notification = (props: NotificationProps) => {
             <span className="text-light-black f-500">Connections (6)</span>
           </div>
           <div className="connection-body grid grid-lg-6 grid-md-12">
-            <div className="connection-item">
-              <div className="connection-item_icon">
-                <Company size="5.5em" className="company-icon" />
+            <div className="card">
+              <div className="card-header">
+                <div className="card-header_icon">
+                  <Company size="5.5em" className="company-icon" />
+                </div>
+              </div>
+              <div className="card-body">
                 <Avatar
                   src={Profile}
                   alt="Profile"
                   sx={{ width: 60, height: 60 }}
                 />
-              </div>
-              <div className="connection-item_content">
                 <h4 className="text-primary">John Doe</h4>
                 <p className="text-secondary extra-small text-ellipsis-3">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit
                 </p>
               </div>
-              <div className="connection-item_footer">
+              <div className="card-footer">
                 <span className="extra-small text-primary f-500">View</span>
                 <div className="connect">
                   <IconButton color="primary" size="small">
@@ -366,22 +368,24 @@ const Notification = (props: NotificationProps) => {
                 </div>
               </div>
             </div>
-            <div className="connection-item">
-              <div className="connection-item_icon">
-                <Company size="5.5em" className="company-icon" />
+            <div className="card">
+              <div className="card-header">
+                <div className="card-header_icon">
+                  <Company size="5.5em" className="company-icon" />
+                </div>
+              </div>
+              <div className="card-body">
                 <Avatar
                   src={Profile1}
                   alt="Profile"
                   sx={{ width: 60, height: 60 }}
                 />
-              </div>
-              <div className="connection-item_content">
                 <h4 className="text-primary">Travis How</h4>
                 <p className="text-secondary extra-small text-ellipsis-3">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit
                 </p>
               </div>
-              <div className="connection-item_footer">
+              <div className="card-footer">
                 <span className="extra-small text-primary f-500">View</span>
                 <div className="connect">
                   <IconButton color="primary" size="small">
@@ -393,22 +397,24 @@ const Notification = (props: NotificationProps) => {
                 </div>
               </div>
             </div>
-            <div className="connection-item">
-              <div className="connection-item_icon">
-                <Company size="5.5em" className="company-icon" />
+            <div className="card">
+              <div className="card-header">
+                <div className="card-header_icon">
+                  <Company size="5.5em" className="company-icon" />
+                </div>
+              </div>
+              <div className="card-body">
                 <Avatar
                   src={Profile2}
                   alt="Profile"
                   sx={{ width: 60, height: 60 }}
                 />
-              </div>
-              <div className="connection-item_content">
                 <h4 className="text-primary">Cindy Baker</h4>
                 <p className="text-secondary extra-small text-ellipsis-3">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit
                 </p>
               </div>
-              <div className="connection-item_footer">
+              <div className="card-footer">
                 <span className="extra-small text-primary f-500">View</span>
                 <div className="connect">
                   <IconButton color="primary" size="small">

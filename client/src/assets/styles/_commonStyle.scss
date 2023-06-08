@@ -118,6 +118,51 @@
   }
 }
 
+.card {
+  border: 2px solid $BORDER_LIGHT;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s;
+  max-width: 300px;
+  &:hover {
+    border: 2px solid $PRIMARY;
+    .card-header {
+      .card-header_icon {
+        background-color: $BG_LIGHT;
+        .company-icon {
+          fill: $PRIMARY;
+        }
+      }
+    }
+  }
+  .card-header {
+    max-height: 200px;
+    overflow: hidden;
+    .card-header_icon {
+      background-color: $BORDER_LIGHT;
+      position: relative;
+      transition: all 0.3s;
+      .company-icon {
+        fill: $SECONDARY;
+        transition: all 0.3s;
+      }
+    }
+    .card-header_img {
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  .card-body {
+    padding: 15px;
+  }
+  .card-footer {
+    @include display-between;
+    padding: 0 15px 15px;
+  }
+}
+
 @media screen and (max-width: 992px) {
   .grid-md-12 {
     grid-template-columns: repeat(1, minmax(0, 1fr));

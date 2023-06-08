@@ -18,7 +18,7 @@ import QuizList from '../pages/Quiz/QuizList/QuizList';
 import Components from '../pages/Components/Components';
 import Explore from '../pages/Explore/Explore';
 import News from '../pages/Explore/News';
-import Posts from '../pages/Explore/Posts';
+import Posts from '../pages/Explore/Posts/Posts';
 
 const router = createBrowserRouter([
   {
